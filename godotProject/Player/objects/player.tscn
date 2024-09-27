@@ -1,5 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://buaasgbur8d1o"]
 
+[ext_resource type="Texture2D" uid="uid://8ojtepsjxopq" path="res://icon.svg" id="1_68f7x"]
 [ext_resource type="Texture2D" uid="uid://d1627yj5x6wb8" path="res://icon.svg" id="1_68f7x"]
 [ext_resource type="Script" path="res://Player/objects/player.gd" id="1_mbs7c"]
 
@@ -16,6 +17,7 @@ move_speed = 200.0
 acceleration = 4000.0
 jump_velocity = 300.0
 gravity = 1000.0
+attack_time = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pryu6")
@@ -26,6 +28,8 @@ texture = ExtResource("1_68f7x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="AttackSpawner" type="Node2D" parent="."]
+position = Vector2(30, 0)
 [node name="PickupCollectionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2

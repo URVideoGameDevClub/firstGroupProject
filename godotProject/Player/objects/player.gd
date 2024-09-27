@@ -11,6 +11,9 @@ extends CharacterBody2D
 @export var acceleration = 0.0
 @export var jump_velocity = 0.0
 @export var gravity = 0.0
+@export var attack_time = 0.0
+@export var attack_cooldown = 0.0
+var can_attack = true
 
 # "inventory" is an array of strings representing the items the player has picked up
 # Does not support multiple of the same item type, will change later if we need it
@@ -37,6 +40,11 @@ func _physics_process(delta):
 		# Same here, positive number to go down 
 		velocity.y += gravity * delta
 	
+	# Geffen's code: 
+	if Input.is_action_just_pressed("attack") && can_attack: 
+		attack()
+	# end of Geffen's code
+	
 	# Finally, just let the engine use the player's velocity
 	# to move the player and handle collisions
 	move_and_slide()
@@ -61,6 +69,23 @@ func add_item(item):
 # Don't think I need to explain this one tbh
 func clear_inventory():
 	inventory.clear()
+
+# Geffen's code
+var scene = preload("res://Player/objects/attack_area.tscn")
+func attack(): 
+	can_attack = false
+	
+	var instance = scene.instantiate()
+	instance.set_name("attack_area")
+	instance.position = get_node("AttackSpawner").position;
+	add_child(instance)
+	
+	await get_tree().create_timer(attack_time).timeout
+	instance.queue_free()
+	
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
+# end of Geffen's code
 
 # When another area enters the pickup collection area,
 # if it has the class name "Pickup" we'll add the item name
