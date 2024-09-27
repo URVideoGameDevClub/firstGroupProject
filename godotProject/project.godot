@@ -54,6 +54,17 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Pickups"
+2d_physics/layer_5="PlayerCollision"
+2d_physics/layer_6="PlayerHitbox"
+2d_physics/layer_7="PlayerHurtbox"
+2d_physics/layer_9="EnemyCollision"
+2d_physics/layer_10="EnemyHitbox"
+2d_physics/layer_11="EnemyHurtbox"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

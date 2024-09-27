@@ -69,3 +69,4 @@ func _on_pickup_collection_area_entered(area) -> void:
 	if area is Pickup:
 		add_item(area.item_name)
 		area.queue_free()
+		print("Inventory: ", inventory) # debug print

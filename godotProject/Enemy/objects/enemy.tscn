@@ -4,15 +4,18 @@
 [ext_resource type="Script" path="res://Enemy/objects/enemy.gd" id="1_lacui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pryu6"]
-size = Vector2(128, 128)
+size = Vector2(32, 16)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_lacui")
+move_speed = 100.0
+gravity = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pryu6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.125)
 texture = ExtResource("1_0ravp")
 
 [node name="Hitbox" type="Area2D" parent="."]

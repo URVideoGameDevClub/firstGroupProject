@@ -10,10 +10,10 @@ size = Vector2(32, 32)
 size = Vector2(40, 40)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 16
 script = ExtResource("1_mbs7c")
-move_speed = 250.0
-acceleration = 3000.0
+move_speed = 200.0
+acceleration = 4000.0
 jump_velocity = 300.0
 gravity = 1000.0
 
@@ -28,7 +28,7 @@ texture = ExtResource("1_68f7x")
 
 [node name="PickupCollectionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupCollectionArea"]

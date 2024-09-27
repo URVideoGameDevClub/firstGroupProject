@@ -8,4 +8,3 @@ func get_picked_up():
 
 func _on_area_entered(area) -> void:
 	pass
-
