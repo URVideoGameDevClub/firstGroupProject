@@ -19,6 +19,9 @@ extends CharacterBody2D
 # (Godot please add access specifiers I love encapsulation)
 @export var inventory = []
 
+# Variable holding a reference to the pickup collection area hitbox thing
+@onready var pickup_collection_area = get_node("PickupCollectionArea")
+
 func _physics_process(delta):
 	var input_axis = Input.get_axis("move_left", "move_right")
 	
@@ -55,6 +58,14 @@ func add_item(item):
 	else:
 		inventory.push_back(item)
 
-# Don't think I need to explain this one
+# Don't think I need to explain this one tbh
 func clear_inventory():
 	inventory.clear()
+
+# When another area enters the pickup collection area,
+# if it has the class name "Pickup" we'll add the item name
+# to the inventory and then free the item node that entered us
+func _on_pickup_collection_area_entered(area) -> void:
+	if area is Pickup:
+		add_item(area.item_name)
+		area.queue_free()

@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl4unk7yiblu0"]
+[gd_scene load_steps=6 format=3 uid="uid://dl4unk7yiblu0"]
 
 [ext_resource type="PackedScene" uid="uid://dqssstyn00fcf" path="res://Goal/objects/goal.tscn" id="1_xpjui"]
 [ext_resource type="PackedScene" uid="uid://ddeny46anrd7u" path="res://Enemy/objects/enemy.tscn" id="2_augfv"]
 [ext_resource type="PackedScene" uid="uid://cg8ecxdyul3i3" path="res://Wall/objects/wall.tscn" id="3_7gqld"]
 [ext_resource type="PackedScene" uid="uid://buaasgbur8d1o" path="res://Player/objects/player.tscn" id="4_x26j0"]
+[ext_resource type="PackedScene" uid="uid://dpllv06flwcqs" path="res://World/pickup/pickup.tscn" id="5_mpbk7"]
 
 [node name="Root" type="Node2D"]
 
 [node name="Goal" parent="." instance=ExtResource("1_xpjui")]
+position = Vector2(-113, -112)
 
 [node name="Enemy" parent="." instance=ExtResource("2_augfv")]
+position = Vector2(135, -110)
 
 [node name="Wall" parent="." instance=ExtResource("3_7gqld")]
+position = Vector2(3, 139)
 
 [node name="Player" parent="." instance=ExtResource("4_x26j0")]
+
+[node name="Pickup" parent="." instance=ExtResource("5_mpbk7")]
+position = Vector2(47, 43)

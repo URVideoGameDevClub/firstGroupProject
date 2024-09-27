@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddeny46anrd7u"]
+[gd_scene load_steps=4 format=3 uid="uid://ddeny46anrd7u"]
 
-[ext_resource type="Texture2D" uid="uid://car15l3384oho" path="res://icon.svg" id="1_0ravp"]
+[ext_resource type="Texture2D" uid="uid://d1627yj5x6wb8" path="res://icon.svg" id="1_0ravp"]
+[ext_resource type="Script" path="res://Enemy/objects/enemy.gd" id="1_lacui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pryu6"]
 size = Vector2(128, 128)
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_lacui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pryu6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0ravp")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
