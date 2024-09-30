@@ -36,6 +36,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="GodotProject"
 
+[global_group]
+
+player=""
+
 [input]
 
 move_left={
