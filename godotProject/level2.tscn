@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://fph2edm2g8cn"]
+
+[ext_resource type="PackedScene" uid="uid://cg8ecxdyul3i3" path="res://Wall/objects/wall.tscn" id="1_ske6q"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_ske6q")]
+
+[node name="Wall2" parent="." instance=ExtResource("1_ske6q")]
+
+[node name="Wall3" parent="." instance=ExtResource("1_ske6q")]

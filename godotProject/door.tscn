@@ -22,9 +22,11 @@ size = Vector2(51, 271)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2875")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["door"]]
 script = ExtResource("2_3c1s1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(134.5, 4.5)
 shape = SubResource("RectangleShape2D_xrkln")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

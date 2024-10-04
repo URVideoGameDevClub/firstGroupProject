@@ -32,6 +32,10 @@ window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+door="this is for all the doors"
+
 [input]
 
 move_left={
