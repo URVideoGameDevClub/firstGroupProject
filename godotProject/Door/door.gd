@@ -1,7 +1,7 @@
 extends Area2D
 
-var levelno = 1
-var nextlevelno = 2
+@export var levelno = 1
+@export var nextlevelno = 2
 
 func _ready():
 	add_to_group("doorR")

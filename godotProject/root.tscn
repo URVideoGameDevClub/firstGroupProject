@@ -10,6 +10,7 @@
 position = Vector2(198, 85)
 
 [node name="Level1" parent="." instance=ExtResource("2_fymsg")]
+position = Vector2(11, -61)
 
 [node name="Level2" parent="." instance=ExtResource("3_mqxo3")]
-position = Vector2(132, 409)
+position = Vector2(300, 542)
