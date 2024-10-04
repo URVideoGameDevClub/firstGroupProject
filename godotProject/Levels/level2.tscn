@@ -5,7 +5,10 @@
 [node name="Level2" type="Node2D"]
 
 [node name="Wall" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(253, 293)
 
 [node name="Wall2" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(381, 293)
 
 [node name="Wall3" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(124, 294)

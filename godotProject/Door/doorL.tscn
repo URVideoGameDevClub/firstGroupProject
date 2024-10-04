@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cul558nerkprw"]
+
+[ext_resource type="Texture2D" uid="uid://v3alkrluom76" path="res://Door/CONCEPT_-_Player (2) (1).png" id="1_t7pg4"]
+[ext_resource type="Script" path="res://Door/doorL.gd" id="2_bnyjm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e58ka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t7pg4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4plp"]
+size = Vector2(51, 271)
+
+[node name="DoorL" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e58ka")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_bnyjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-134, 5)
+shape = SubResource("RectangleShape2D_t4plp")
