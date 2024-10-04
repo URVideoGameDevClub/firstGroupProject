@@ -20,7 +20,9 @@ var can_attack = true
 # Please don't access this variable directly in code,
 # Instead use the functions below to interact with the inventory
 # (Godot please add access specifiers I love encapsulation)
-@export var inventory = []
+# Btw I added a type specifier to this if u don't know what it is just ignore it,
+# it's to make the @export thing work better in the editor
+@export var inventory: Array[String] = []
 
 # Variable holding a reference to the pickup collection area hitbox thing
 @onready var pickup_collection_area = get_node("PickupCollectionArea")
