@@ -15,6 +15,8 @@ extends CharacterBody2D
 @export var attack_cooldown = 0.0
 var can_attack = true
 
+@export var health = 5
+
 # "inventory" is an array of strings representing the items the player has picked up
 # Does not support multiple of the same item type, will change later if we need it
 # Please don't access this variable directly in code,
@@ -92,11 +94,12 @@ func attack():
 # When another area enters the pickup collection area,
 # if it has the class name "Pickup" we'll add the item name
 # to the inventory and then free the item node that entered us
-func _on_pickup_collection_area_entered(area) -> void:
+func _on_pickup_collection_area_entered(area):
 	if area is Pickup:
 		add_item(area.item_name)
 		area.queue_free()
 		print("Inventory: ", inventory) # debug print
-		
+
 func damage(damageAmount):
-	print("Ouch")
+	health -= damageAmount
+	print("took %d damage, now at %d hp" % [damageAmount, health])

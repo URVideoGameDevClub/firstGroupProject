@@ -10,7 +10,7 @@ size = Vector2(32, 16)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_lacui")
-move_speed = 100.0
+move_speed = 50.0
 gravity = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

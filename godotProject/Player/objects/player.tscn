@@ -13,8 +13,8 @@ size = Vector2(40, 40)
 script = ExtResource("1_mbs7c")
 move_speed = 200.0
 acceleration = 4000.0
-jump_velocity = 300.0
-gravity = 1000.0
+jump_velocity = 400.0
+gravity = 1200.0
 attack_time = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,6 +25,8 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_68f7x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="AttackSpawner" type="Node2D" parent="."]
 position = Vector2(30, 0)
