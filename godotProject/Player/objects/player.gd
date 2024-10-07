@@ -28,6 +28,11 @@ var can_attack = true
 
 # Variable holding a reference to the pickup collection area hitbox thing
 @onready var pickup_collection_area = get_node("PickupCollectionArea")
+@onready var animation_player = get_node("AnimationPlayer")
+@onready var sprite = get_node("Sprite2D")
+
+func _ready():
+	animation_player.play("idle_right")
 
 func _physics_process(delta):
 	var input_axis = Input.get_axis("move_left", "move_right")
@@ -35,7 +40,12 @@ func _physics_process(delta):
 	# This uses acceleration for smoother movement than just
 	# immediately snapping the velocity value to move_speed or something
 	velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
-
+	
+	if input_axis > 0.0:
+		sprite.flip_h = false
+	elif input_axis < 0.0:
+		sprite.flip_h = true
+	
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			# Negative number because negative y is up btw
