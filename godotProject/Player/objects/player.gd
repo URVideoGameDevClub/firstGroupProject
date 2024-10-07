@@ -14,6 +14,7 @@ extends CharacterBody2D
 @export var attack_time = 0.0
 @export var attack_cooldown = 0.0
 var can_attack = true
+var is_boosting = false
 
 @export var health = 5
 
@@ -47,12 +48,19 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	
 	if is_on_floor():
+		is_boosting = false
 		if Input.is_action_just_pressed("jump"):
 			# Negative number because negative y is up btw
 			velocity.y = -jump_velocity
+			is_boosting = true
 	else:
 		# Same here, positive number to go down 
 		velocity.y += gravity * delta
+		if is_boosting:
+			if velocity.y > 0.0:
+				is_boosting = false
+			if Input.is_action_just_released("jump"):
+				velocity.y /= 2.5
 	
 	# Geffen's code: 
 	if Input.is_action_just_pressed("attack") && can_attack: 
