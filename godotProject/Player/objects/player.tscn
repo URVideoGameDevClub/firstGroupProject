@@ -16,6 +16,7 @@ acceleration = 4000.0
 jump_velocity = 400.0
 gravity = 1200.0
 attack_time = 0.6
+attack_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pryu6")
