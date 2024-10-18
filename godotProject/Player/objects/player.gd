@@ -1,6 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
+signal player_health_updated(health)
+signal player_death
+
 # Comments by Tenzen, will add "-Tenzen" everywhere if other people start commenting
 # but I got lazy so just assume they're all written by me for now.
 # Message me if you have any questions/suggestions/thoughts!!
@@ -15,6 +18,7 @@ extends CharacterBody2D
 @export var attack_cooldown = 0.0
 var can_attack = true
 var is_boosting = false
+var is_alive = true
 
 @export var health = 5
 
@@ -36,6 +40,10 @@ func _ready():
 	animation_player.play("idle_right")
 
 func _physics_process(delta):
+	if not is_alive:
+		self.sprite.hide()
+		return
+
 	var input_axis = Input.get_axis("move_left", "move_right")
 	
 	# This uses acceleration for smoother movement than just
@@ -70,6 +78,13 @@ func _physics_process(delta):
 	# Finally, just let the engine use the player's velocity
 	# to move the player and handle collisions
 	move_and_slide()
+
+func damage(damageAmount):
+	health -= damageAmount
+	player_health_updated.emit(health)
+	if health <= 0:
+		player_death.emit()
+	print("took %d damage, now at %d hp" % [damageAmount, health])
 
 # ========== Inventory Functions ========== #
 
@@ -117,7 +132,3 @@ func _on_pickup_collection_area_entered(area):
 		add_item(area.item_name)
 		area.queue_free()
 		print("Inventory: ", inventory) # debug print
-
-func damage(damageAmount):
-	health -= damageAmount
-	print("took %d damage, now at %d hp" % [damageAmount, health])
