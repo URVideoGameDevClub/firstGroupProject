@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://fph2edm2g8cn"]
+
+[ext_resource type="PackedScene" uid="uid://cg8ecxdyul3i3" path="res://Wall/objects/wall.tscn" id="1_ske6q"]
+[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://Door/doorR.tscn" id="2_75gm8"]
+[ext_resource type="PackedScene" uid="uid://d4fmtfarl5eqt" path="res://Door/doorL.tscn" id="3_5t4s5"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(253, 293)
+
+[node name="Wall2" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(381, 293)
+
+[node name="Wall3" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(125, 293)
+
+[node name="Wall4" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(765, 293)
+
+[node name="Wall5" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(637, 293)
+
+[node name="Wall6" parent="." instance=ExtResource("1_ske6q")]
+position = Vector2(509, 293)
+
+[node name="DoorR" parent="." instance=ExtResource("2_75gm8")]
+position = Vector2(669, 89)
+
+[node name="DoorL" parent="." instance=ExtResource("3_5t4s5")]
+position = Vector2(221, 89)
+levelno = 2
+nextlevelno = 1

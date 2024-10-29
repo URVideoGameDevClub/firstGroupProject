@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c04k3f8ducxsx"]
+
+[ext_resource type="PackedScene" uid="uid://dqssstyn00fcf" path="res://Goal/objects/goal.tscn" id="1_nupno"]
+[ext_resource type="PackedScene" uid="uid://ddeny46anrd7u" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
+[ext_resource type="PackedScene" uid="uid://cg8ecxdyul3i3" path="res://Wall/objects/wall.tscn" id="4_idaer"]
+[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://Door/doorR.tscn" id="4_pt1x3"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Goal" parent="." instance=ExtResource("1_nupno")]
+position = Vector2(961, -24)
+
+[node name="Enemy" parent="." instance=ExtResource("3_7r54d")]
+position = Vector2(784, -20)
+
+[node name="Wall" parent="." instance=ExtResource("4_idaer")]
+position = Vector2(179, 248)
+
+[node name="Wall2" parent="." instance=ExtResource("4_idaer")]
+position = Vector2(-205, 248)
+
+[node name="Wall3" parent="." instance=ExtResource("4_idaer")]
+position = Vector2(-77, 248)
+
+[node name="Wall4" parent="." instance=ExtResource("4_idaer")]
+position = Vector2(51, 248)
+
+[node name="DoorR" parent="." instance=ExtResource("4_pt1x3")]
+position = Vector2(83, 44)
+new_spawn_position = Vector2(250, 10)

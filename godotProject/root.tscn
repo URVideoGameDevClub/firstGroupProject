@@ -1,3 +1,6 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl4unk7yiblu0"]
+
+[ext_resource type="PackedScene" uid="uid://c04k3f8ducxsx" path="res://Levels/level1.tscn" id="2_fymsg"]
 [gd_scene load_steps=8 format=4 uid="uid://dl4unk7yiblu0"]
 
 [ext_resource type="PackedScene" uid="uid://dqssstyn00fcf" path="res://Goal/objects/goal.tscn" id="1_xpjui"]
@@ -10,6 +13,12 @@
 
 [node name="Root" type="Node"]
 script = ExtResource("1_xwu3t")
+
+[node name="Player" parent="." instance=ExtResource("4_x26j0")]
+position = Vector2(146, 69)
+
+[node name="Level1" parent="." instance=ExtResource("2_fymsg")]
+position = Vector2(233, -48)
 
 [node name="Level" type="Node2D" parent="."]
 
