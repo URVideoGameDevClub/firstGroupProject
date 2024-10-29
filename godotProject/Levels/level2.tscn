@@ -7,27 +7,27 @@
 [node name="Level2" type="Node2D"]
 
 [node name="Wall" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(253, 293)
+position = Vector2(103, 293)
 
 [node name="Wall2" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(381, 293)
+position = Vector2(231, 293)
 
 [node name="Wall3" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(125, 293)
+position = Vector2(-25, 293)
 
 [node name="Wall4" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(765, 293)
+position = Vector2(615, 293)
 
 [node name="Wall5" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(637, 293)
+position = Vector2(487, 293)
 
 [node name="Wall6" parent="." instance=ExtResource("1_ske6q")]
-position = Vector2(509, 293)
+position = Vector2(359, 293)
 
 [node name="DoorR" parent="." instance=ExtResource("2_75gm8")]
-position = Vector2(669, 89)
+position = Vector2(519, 89)
 
 [node name="DoorL" parent="." instance=ExtResource("3_5t4s5")]
-position = Vector2(221, 89)
+position = Vector2(71, 89)
 levelno = 2
 nextlevelno = 1

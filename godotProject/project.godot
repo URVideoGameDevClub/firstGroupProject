@@ -38,9 +38,6 @@ project/assembly_name="GodotProject"
 [global_group]
 
 player=""
-
-[global_group]
-
 door="this is for all the doors"
 
 [input]

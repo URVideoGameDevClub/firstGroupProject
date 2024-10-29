@@ -37,6 +37,7 @@ var is_alive = true
 @onready var sprite = get_node("Sprite2D")
 
 func _ready():
+	Global.player = self
 	animation_player.play("idle_right")
 
 func _physics_process(delta):

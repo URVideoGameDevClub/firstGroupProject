@@ -7,13 +7,11 @@ extends Area2D
 func _ready():
 	add_to_group("doorR")
 
-
-
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		await get_tree().create_timer(1).timeout
-		get_node("/root/Root/Player").set_position(new_spawn_position)
-		get_node("/root/Root/Player").set_velocity(Vector2(0, 0))
+		Global.player.set_position(new_spawn_position)
+		Global.player.set_velocity(Vector2(0, 0))
 		load_n_unload()
 
 func load_n_unload():
