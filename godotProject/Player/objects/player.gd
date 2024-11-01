@@ -1,11 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+
 ## Emitted when player's health is updated
 signal player_health_updated(health: int)
 
 ## Emitted when player's health is updated to a value <= 0
 signal player_death
+
 
 # These four variables control player movement
 # They're set to 0.0 here but set to actual values in ./player.tscn
@@ -15,11 +17,12 @@ signal player_death
 @export var gravity = 0.0
 @export var attack_time = 0.0
 @export var attack_cooldown = 0.0
+@export var attack_damage = 1
+@export var health = 5
 var can_attack = true
 var is_boosting = false
 var is_alive = true
 
-@export var health = 5
 
 # "_inventory" is an array of strings representing the items the player has picked up
 # Does not support multiple of the same item type, will change later if we need it
@@ -27,10 +30,13 @@ var is_alive = true
 # Instead use the functions below to interact with the inventory
 @export var _inventory: Array[String] = []
 
+
 # Variable holding a reference to the pickup collection area hitbox thing
 @onready var pickup_collection_area = get_node("PickupCollectionArea")
 @onready var animation_player = get_node("AnimationPlayer")
 @onready var sprite = get_node("Sprite2D")
+@onready var attack_spawner = get_node("AttackSpawner")
+
 
 func _ready():
 	Global.player = self
@@ -116,19 +122,30 @@ func clear_inventory():
 
 
 # Geffen's code
-var scene = preload("res://Player/objects/attack_area.tscn")
+const scene = preload("res://Player/objects/attack_area.tscn")
 func attack(): 
 	can_attack = false
+	if sprite.flip_h:
+		attack_spawner.position.x = -30.0
+	else:
+		attack_spawner.position.x = 30.0
 	
 	var instance = scene.instantiate()
 	instance.set_name("attack_area")
-	instance.position = get_node("AttackSpawner").position;
+	instance.position = attack_spawner.position;
 	add_child(instance)
+
+	await get_tree().create_timer(0.05).timeout
+
+	for collision_body in instance.get_overlapping_bodies():
+		if collision_body is BasicEnemy and collision_body.has_method("be_attacked"):
+			var knockback_direction := Vector2(float(sprite.flip_h) * 32.0, 16.0)
+			collision_body.be_attacked(attack_damage, knockback_direction)
 	
 	await get_tree().create_timer(attack_time).timeout
 	instance.queue_free()
 	
-	await get_tree().create_timer(attack_cooldown).timeout
+	await get_tree().create_timer(attack_cooldown / 2.0).timeout
 	can_attack = true
 # end of Geffen's code
 

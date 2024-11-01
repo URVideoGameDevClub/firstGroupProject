@@ -12,6 +12,7 @@ size = Vector2(32, 16)
 script = ExtResource("1_lacui")
 move_speed = 50.0
 gravity = 1000.0
+health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pryu6")
@@ -19,8 +20,6 @@ shape = SubResource("RectangleShape2D_pryu6")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.125)
 texture = ExtResource("1_0ravp")
-
-[node name="Hitbox" type="Area2D" parent="."]
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["enemyWepon"]]
 position = Vector2(0, -22)
