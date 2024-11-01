@@ -1,6 +1,5 @@
 [gd_scene load_steps=8 format=3 uid="uid://buaasgbur8d1o"]
 
-[ext_resource type="Texture2D" uid="uid://ynuhm10flncn" path="res://icon.svg" id="1_68f7x"]
 [ext_resource type="Script" path="res://Player/objects/player.gd" id="1_mbs7c"]
 [ext_resource type="Texture2D" uid="uid://ciota55wpc22d" path="res://Player/Player static animation.png" id="2_nmkgx"]
 
@@ -9,6 +8,21 @@ size = Vector2(24, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf8s2"]
 size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_ftscl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_n4858"]
 resource_name = "idle_right"
@@ -26,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_ftscl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hwi7x"]

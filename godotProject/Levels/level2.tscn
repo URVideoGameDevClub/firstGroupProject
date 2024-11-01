@@ -25,9 +25,9 @@ position = Vector2(487, 293)
 position = Vector2(359, 293)
 
 [node name="DoorR" parent="." instance=ExtResource("2_75gm8")]
-position = Vector2(519, 89)
+position = Vector2(620, 187)
 
 [node name="DoorL" parent="." instance=ExtResource("3_5t4s5")]
-position = Vector2(71, 89)
+position = Vector2(-38, 187)
 levelno = 2
 nextlevelno = 1
