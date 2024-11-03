@@ -47,6 +47,8 @@ func _physics_process(delta):
 	if not is_alive:
 		self.sprite.hide()
 		return
+	elif position.y > 500.0:
+		die()
 
 	var input_axis = Input.get_axis("move_left", "move_right")
 	
@@ -89,8 +91,13 @@ func damage(damageAmount: int):
 	health -= damageAmount
 	player_health_updated.emit(health)
 	if health <= 0:
-		player_death.emit()
+		die()
 	print("took %d damage, now at %d hp" % [damageAmount, health])
+
+
+func die() -> void:
+	player_death.emit()
+	is_alive = false
 
 
 # ========== Inventory Functions ========== #
