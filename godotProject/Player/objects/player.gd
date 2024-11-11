@@ -33,15 +33,12 @@ var is_alive = true
 
 # Variable holding a reference to the pickup collection area hitbox thing
 @onready var pickup_collection_area = get_node("PickupCollectionArea")
-@onready var animation_player = get_node("AnimationPlayer")
-@onready var sprite = get_node("Sprite2D")
 @onready var attack_spawner = get_node("AttackSpawner")
 @onready var anim_sprite = get_node("AnimatedSprite2D")
 
 
 func _ready():
 	Global.player = self
-	animation_player.play("idle_right")
 
 
 func _physics_process(delta):
@@ -62,9 +59,9 @@ func _physics_process(delta):
 		anim_sprite.play("idle")
 	
 	if input_axis > 0.0:
-		sprite.flip_h = false
+		anim_sprite.flip_h = true
 	elif input_axis < 0.0:
-		sprite.flip_h = true
+		anim_sprite.flip_h = false
 	
 	if is_on_floor():
 		is_boosting = false
@@ -138,7 +135,7 @@ func clear_inventory():
 const scene = preload("res://Player/objects/attack_area.tscn")
 func attack(): 
 	can_attack = false
-	if sprite.flip_h:
+	if anim_sprite.flip_h:
 		attack_spawner.position.x = -30.0
 	else:
 		attack_spawner.position.x = 30.0
@@ -152,7 +149,7 @@ func attack():
 
 	for collision_body in instance.get_overlapping_bodies():
 		if collision_body is BasicEnemy and collision_body.has_method("be_attacked"):
-			var knockback_direction := Vector2(float(sprite.flip_h) * 32.0, 16.0)
+			var knockback_direction := Vector2(float(anim_sprite.flip_h) * 32.0, 16.0)
 			collision_body.be_attacked(attack_damage, knockback_direction)
 	
 	await get_tree().create_timer(attack_time).timeout
