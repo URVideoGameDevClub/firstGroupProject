@@ -36,6 +36,7 @@ var is_alive = true
 @onready var animation_player = get_node("AnimationPlayer")
 @onready var sprite = get_node("Sprite2D")
 @onready var attack_spawner = get_node("AttackSpawner")
+@onready var anim_sprite = get_node("AnimatedSprite2D")
 
 
 func _ready():
@@ -55,6 +56,10 @@ func _physics_process(delta):
 	# This uses acceleration for smoother movement than just
 	# immediately snapping the velocity value to move_speed or something
 	velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
+	if velocity.x:
+		anim_sprite.play("run")
+	else:
+		anim_sprite.play("idle")
 	
 	if input_axis > 0.0:
 		sprite.flip_h = false
@@ -95,6 +100,7 @@ func damage(damageAmount: int):
 	print("took %d damage, now at %d hp" % [damageAmount, health])
 
 
+## Die
 func die() -> void:
 	player_death.emit()
 	is_alive = false
