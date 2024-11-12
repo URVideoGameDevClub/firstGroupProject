@@ -9,6 +9,8 @@ signal player_health_updated(health: int)
 signal player_death
 
 
+var level_no = 1
+
 # These four variables control player movement
 # They're set to 0.0 here but set to actual values in ./player.tscn
 @export var move_speed = 0.0
@@ -52,11 +54,16 @@ func _physics_process(delta):
 	
 	# This uses acceleration for smoother movement than just
 	# immediately snapping the velocity value to move_speed or something
-	velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
+
+  if level_no == 1 && get_node("/root/Root/Level" + str(level_no) + "/Wind").blowing:
+		velocity.x = move_toward(velocity.x, (move_speed * input_axis) - get_node("/root/Root/Level" + str(level_no) + "/Wind").speed, acceleration * delta)
+	else: velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
+
 	if velocity.x:
 		anim_sprite.play("run")
 	else:
 		anim_sprite.play("idle")
+
 	
 	if input_axis > 0.0:
 		anim_sprite.flip_h = true

@@ -29,6 +29,7 @@ func load_n_unload():
 	
 	# Remove the current level
 	var level = get_node("/root/Root/Level" + str(levelno))
+	Global.player.level_no = nextlevelno
 	get_node("/root/Root").remove_child(level)
 	level.call_deferred("free")
 	print("part 2 done")
