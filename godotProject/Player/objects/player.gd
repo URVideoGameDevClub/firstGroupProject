@@ -133,12 +133,13 @@ func clear_inventory():
 
 # Geffen's code
 const scene = preload("res://Player/objects/attack_area.tscn")
+## Spawn attack area and damage enemies in the collision zone
 func attack(): 
 	can_attack = false
 	if anim_sprite.flip_h:
-		attack_spawner.position.x = -30.0
-	else:
 		attack_spawner.position.x = 30.0
+	else:
+		attack_spawner.position.x = -30.0
 	
 	var instance = scene.instantiate()
 	instance.set_name("attack_area")

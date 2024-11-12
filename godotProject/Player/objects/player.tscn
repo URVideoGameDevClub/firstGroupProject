@@ -144,6 +144,5 @@ shape = SubResource("RectangleShape2D_mf8s2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bo2k4")
 animation = &"idle"
-frame_progress = 0.810252
 
 [connection signal="area_entered" from="PickupCollectionArea" to="." method="_on_pickup_collection_area_entered"]
