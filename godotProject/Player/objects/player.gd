@@ -33,31 +33,35 @@ var is_alive = true
 
 # Variable holding a reference to the pickup collection area hitbox thing
 @onready var pickup_collection_area = get_node("PickupCollectionArea")
-@onready var animation_player = get_node("AnimationPlayer")
-@onready var sprite = get_node("Sprite2D")
 @onready var attack_spawner = get_node("AttackSpawner")
+@onready var anim_sprite = get_node("AnimatedSprite2D")
 
 
 func _ready():
 	Global.player = self
-	animation_player.play("idle_right")
 
 
 func _physics_process(delta):
 	if not is_alive:
 		self.sprite.hide()
 		return
+	elif position.y > 500.0:
+		die()
 
 	var input_axis = Input.get_axis("move_left", "move_right")
 	
 	# This uses acceleration for smoother movement than just
 	# immediately snapping the velocity value to move_speed or something
 	velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
+	if velocity.x:
+		anim_sprite.play("run")
+	else:
+		anim_sprite.play("idle")
 	
 	if input_axis > 0.0:
-		sprite.flip_h = false
+		anim_sprite.flip_h = true
 	elif input_axis < 0.0:
-		sprite.flip_h = true
+		anim_sprite.flip_h = false
 	
 	if is_on_floor():
 		is_boosting = false
@@ -89,8 +93,14 @@ func damage(damageAmount: int):
 	health -= damageAmount
 	player_health_updated.emit(health)
 	if health <= 0:
-		player_death.emit()
+		die()
 	print("took %d damage, now at %d hp" % [damageAmount, health])
+
+
+## Die
+func die() -> void:
+	player_death.emit()
+	is_alive = false
 
 
 # ========== Inventory Functions ========== #
@@ -123,12 +133,13 @@ func clear_inventory():
 
 # Geffen's code
 const scene = preload("res://Player/objects/attack_area.tscn")
+## Spawn attack area and damage enemies in the collision zone
 func attack(): 
 	can_attack = false
-	if sprite.flip_h:
-		attack_spawner.position.x = -30.0
-	else:
+	if anim_sprite.flip_h:
 		attack_spawner.position.x = 30.0
+	else:
+		attack_spawner.position.x = -30.0
 	
 	var instance = scene.instantiate()
 	instance.set_name("attack_area")
@@ -138,9 +149,8 @@ func attack():
 	await get_tree().create_timer(0.05).timeout
 
 	for collision_body in instance.get_overlapping_bodies():
-		if collision_body is BasicEnemy and collision_body.has_method("be_attacked"):
-			var knockback_direction := Vector2(float(sprite.flip_h) * 32.0, 16.0)
-			collision_body.be_attacked(attack_damage, knockback_direction)
+		if collision_body is BasicEnemy and collision_body.has_method("receive_attack_damage"):
+			collision_body.receive_attack_damage(attack_damage)
 	
 	await get_tree().create_timer(attack_time).timeout
 	instance.queue_free()
@@ -158,4 +168,3 @@ func _on_pickup_collection_area_entered(area: Area2D):
 		add_item(area.item_name)
 		area.queue_free()
 		print("Inventory: ", _inventory) # debug print
-

@@ -5,6 +5,7 @@ extends Area2D
 @export var levelno = 1
 @export var nextlevelno = 2
 @export var new_spawn_position = Vector2(0, 0)
+@export var delay := 0.5
 
 
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(delay).timeout
 		Global.player.set_position(new_spawn_position)
 		Global.player.set_velocity(Vector2(0, 0))
 		load_n_unload()

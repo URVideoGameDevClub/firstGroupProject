@@ -18,3 +18,8 @@ func _ready():
 				game_state = GameState.DEAD
 				get_tree().get_nodes_in_group("player")[0].queue_free()
 				)
+
+#this doenst work
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload_scene"):
+		get_tree().reload_current_scene()
