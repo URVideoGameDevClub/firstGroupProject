@@ -149,9 +149,8 @@ func attack():
 	await get_tree().create_timer(0.05).timeout
 
 	for collision_body in instance.get_overlapping_bodies():
-		if collision_body is BasicEnemy and collision_body.has_method("be_attacked"):
-			var knockback_direction := Vector2(float(anim_sprite.flip_h) * 32.0, 16.0)
-			collision_body.be_attacked(attack_damage, knockback_direction)
+		if collision_body is BasicEnemy and collision_body.has_method("receive_attack_damage"):
+			collision_body.receive_attack_damage(attack_damage)
 	
 	await get_tree().create_timer(attack_time).timeout
 	instance.queue_free()
@@ -169,4 +168,3 @@ func _on_pickup_collection_area_entered(area: Area2D):
 		add_item(area.item_name)
 		area.queue_free()
 		print("Inventory: ", _inventory) # debug print
-

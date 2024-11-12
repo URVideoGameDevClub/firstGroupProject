@@ -11,6 +11,7 @@ size = Vector2(32, 16)
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_lacui")
 move_speed = 50.0
+acceleration = 1000.0
 gravity = 1000.0
 health = 2
 

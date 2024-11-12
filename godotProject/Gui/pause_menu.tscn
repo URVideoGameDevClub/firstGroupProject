@@ -39,6 +39,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Resume"
 
+[node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings (this doesnt do anything lol)"
+
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit
