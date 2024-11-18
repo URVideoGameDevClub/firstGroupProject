@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://rbvdsecpmg4k"]
+
+[ext_resource type="Script" path="res://Gui/debug_panel.gd" id="1_jn7yn"]
+
+[node name="DebugPanel" type="CanvasLayer"]
+script = ExtResource("1_jn7yn")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
