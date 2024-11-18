@@ -49,15 +49,17 @@ func _physics_process(delta):
 		return
 	elif position.y > 500.0:
 		die()
-
+	
 	var input_axis = Input.get_axis("move_left", "move_right")
 	
 	# This uses acceleration for smoother movement than just
 	# immediately snapping the velocity value to move_speed or something
 
-  if level_no == 1 && get_node("/root/Root/Level" + str(level_no) + "/Wind").blowing:
-		velocity.x = move_toward(velocity.x, (move_speed * input_axis) - get_node("/root/Root/Level" + str(level_no) + "/Wind").speed, acceleration * delta)
-	else: velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
+	# Commenting this out temporarily while I fix it
+	#if level_no == 1 && get_node("/root/Root/Level" + str(level_no) + "/Wind").blowing:
+		#velocity.x = move_toward(velocity.x, (move_speed * input_axis) - get_node("/root/Root/Level" + str(level_no) + "/Wind").speed, acceleration * delta)
+	#else:
+	velocity.x = move_toward(velocity.x, move_speed * input_axis, acceleration * delta)
 
 	if velocity.x:
 		anim_sprite.play("run")
