@@ -9,9 +9,11 @@ enum State { IDLE, RUN, AIR }
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var low_gravity_multiplier := 0.75
+@export var attack_damage := 1
 
 
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite := $AnimatedSprite2D
+@onready var attack_hitbox := $AttackHitbox
 
 
 var state := State.IDLE
@@ -29,9 +31,15 @@ func _physics_process(delta: float) -> void:
 
 	if input_vector.x > 0.0:
 		sprite.flip_h = true
+		attack_hitbox.position.x = abs(attack_hitbox.position.x)
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
+		attack_hitbox.position.x = -abs(attack_hitbox.position.x)
 	
+	if Input.is_action_just_pressed(&"attack"):
+		_send_attacks()
+		# Note: remove this later and turn it into a real state. This is just for debugging.
+
 	match state:
 		State.IDLE:
 			_idle()
@@ -115,10 +123,14 @@ func _air() -> void:
 		set_state(State.IDLE, {"land": true})
 
 
+func _send_attacks() -> void:
+	for potential_opp in attack_hitbox.get_overlapping_bodies():
+		if potential_opp is BasicEnemy:
+			print("Enemy Attacked")
+
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == &"air_start":
 		jump_animation_in_progress = false
 	elif sprite.animation == &"air_finish":
 		land_animation_in_progress = false
-
