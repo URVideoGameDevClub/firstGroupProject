@@ -6,6 +6,7 @@ extends Area2D
 @export var nextlevelno = 2
 @export var new_spawn_position = Vector2(0, 0)
 @export var delay := 0.5
+@export var level: PackedScene
 
 
 func _ready():
@@ -22,8 +23,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func load_n_unload():
 	# Add the next level
-	var next_level_resource = load("res://Levels/level" + str(nextlevelno) + ".tscn")
-	var next_level = next_level_resource.instantiate()
+	var next_level := level.instantiate()
 	get_node("/root/Root").add_child(next_level)
 	print("part 1 done")
 	

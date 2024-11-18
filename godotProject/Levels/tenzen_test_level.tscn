@@ -24,3 +24,5 @@ position = Vector2(-240, 128)
 position = Vector2(10, 96)
 move_speed = 180.0
 jump_velocity = 400.0
+gravity = 1400.0
+low_gravity_multiplier = 0.7

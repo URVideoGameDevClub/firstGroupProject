@@ -102,7 +102,7 @@ func _air() -> void:
 		local_gravity *= low_gravity_multiplier
 
 	velocity.x = input_vector.x * move_speed
-	velocity.y += gravity * this_delta
+	velocity.y += local_gravity * this_delta
 	move_and_slide()
 
 	if not jump_animation_in_progress:
