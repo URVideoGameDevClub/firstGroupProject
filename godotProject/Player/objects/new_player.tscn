@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bo7ruckc5q446"]
+[gd_scene load_steps=56 format=3 uid="uid://bo7ruckc5q446"]
 
 [ext_resource type="Script" path="res://Player/objects/new_player.gd" id="1_7lba1"]
 [ext_resource type="Texture2D" uid="uid://b0p4ckqar88ym" path="res://Player/Player idle animation.png" id="1_il7cg"]
@@ -26,10 +26,6 @@ region = Rect2(256, 0, 32, 32)
 atlas = ExtResource("4_loc45")
 region = Rect2(288, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wags4"]
-atlas = ExtResource("4_loc45")
-region = Rect2(320, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwjma"]
 atlas = ExtResource("4_loc45")
 region = Rect2(352, 0, 32, 32)
@@ -45,10 +41,6 @@ region = Rect2(416, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dac3x"]
 atlas = ExtResource("4_loc45")
 region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw5y7"]
-atlas = ExtResource("4_loc45")
-region = Rect2(480, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82ydp"]
 atlas = ExtResource("4_loc45")
@@ -228,9 +220,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wags4")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wwjma")
 }, {
 "duration": 1.0,
@@ -241,9 +230,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dac3x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qw5y7")
 }],
 "loop": false,
 "name": &"air_finish",
@@ -405,8 +391,8 @@ shape = SubResource("RectangleShape2D_u4jn6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_754dc")
-animation = &"single_attack"
-frame = 7
+animation = &"air_finish"
+frame = 3
 frame_progress = 1.0
 flip_h = true
 
