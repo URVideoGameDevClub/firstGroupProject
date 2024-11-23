@@ -2,13 +2,15 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR }
+enum State { IDLE, RUN, AIR, ATTACK }
 
 
 @export var move_speed: float
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var low_gravity_multiplier := 0.75
+@export var health := 3
+@export var max_health := 3
 @export var attack_damage := 1
 
 
@@ -18,11 +20,11 @@ enum State { IDLE, RUN, AIR }
 
 var state := State.IDLE
 var input_vector := Vector2.ZERO
-## Member variable delta so I don't have to pass it everywhere
 var this_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
+var can_attack := true
 
 
 func _physics_process(delta: float) -> void:
@@ -42,11 +44,11 @@ func _physics_process(delta: float) -> void:
 
 	match state:
 		State.IDLE:
-			_idle()
+			_idle_state()
 		State.RUN:
-			_run()
+			_run_state()
 		State.AIR:
-			_air()
+			_air_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
@@ -72,7 +74,7 @@ func set_state(value: State, opts := {}) -> void:
 	state = value
 
 
-func _idle() -> void:
+func _idle_state() -> void:
 	velocity.x = 0.0
 	move_and_slide()
 
@@ -87,7 +89,7 @@ func _idle() -> void:
 		set_state(State.RUN)
 
 
-func _run() -> void:
+func _run_state() -> void:
 	velocity.x = input_vector.x * move_speed
 	move_and_slide()
 
@@ -101,7 +103,7 @@ func _run() -> void:
 		set_state(State.IDLE)
 
 
-func _air() -> void:
+func _air_state() -> void:
 	if Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
 	
@@ -123,14 +125,29 @@ func _air() -> void:
 		set_state(State.IDLE, {"land": true})
 
 
+func _attack_state() -> void:
+	sprite.play(&"attack")
+	_send_attacks()
+	await sprite.animation_finished
+
+	set_state(State.IDLE)
+
+
 func _send_attacks() -> void:
-	for potential_opp in attack_hitbox.get_overlapping_bodies():
+	for potential_opp: Node2D in attack_hitbox.get_overlapping_bodies():
+		# TODO: Change to use new Enemy class
 		if potential_opp is BasicEnemy:
 			print("Enemy Attacked")
 
 
+# Signal callbacks
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == &"air_start":
 		jump_animation_in_progress = false
 	elif sprite.animation == &"air_finish":
 		land_animation_in_progress = false
+
+
+func _on_attack_timer_timeout() -> void:
+	can_attack = true
+
