@@ -12,6 +12,7 @@ enum State { IDLE, RUN, AIR, ATTACK }
 @export var health := 3
 @export var max_health := 3
 @export var attack_damage := 1
+@export var debug_log := false
 
 
 @onready var sprite := $AnimatedSprite2D
@@ -29,7 +30,8 @@ var jump_held := false
 # I've been preferring explicit getters/setters like this one tbh
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
 func set_state(value: State, opts := {}) -> void:
-	print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
+	if debug_log:
+		print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
 
 	jump_animation_in_progress = false
 	land_animation_in_progress = false
