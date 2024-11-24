@@ -392,6 +392,8 @@ shape = SubResource("RectangleShape2D_u4jn6")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_754dc")
 animation = &"attack"
+frame = 7
+frame_progress = 1.0
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -406,7 +408,4 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
 shape = SubResource("CircleShape2D_wgawy")
 
-[node name="AttackTimer" type="Timer" parent="."]
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_animation_finished"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

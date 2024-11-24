@@ -24,8 +24,45 @@ var this_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
-var can_attack := true
 
+
+# I've been preferring explicit getters/setters like this one tbh
+## Set player state. Optional second argument is a dictionary used to configure the state transition.
+func set_state(value: State, opts := {}) -> void:
+	print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
+
+	jump_animation_in_progress = false
+	land_animation_in_progress = false
+	jump_held = false
+
+	if value == State.AIR and "jump" in opts and opts["jump"] == true:
+		velocity.y = -jump_velocity
+		jump_animation_in_progress = true
+		jump_held = true
+		sprite.play(&"air_start")
+	elif "land" in opts and opts["land"] == true:
+		land_animation_in_progress = true
+		sprite.play(&"air_finish")
+	elif value == State.ATTACK:
+		sprite.play(&"attack")
+		_send_attacks()
+
+	state = value
+
+
+func state_to_string(s: State) -> String:
+	match s:
+		State.IDLE:
+			return "IDLE"
+		State.RUN:
+			return "RUN"
+		State.AIR:
+			return "AIR"
+		State.ATTACK:
+			return "ATTACK"
+		_:
+			return "INVALID STATE '%s'" % s
+		
 
 func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
@@ -37,10 +74,6 @@ func _physics_process(delta: float) -> void:
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
 		attack_hitbox.position.x = -abs(attack_hitbox.position.x)
-	
-	if Input.is_action_just_pressed(&"attack"):
-		_send_attacks()
-		# Note: remove this later and turn it into a real state. This is just for debugging.
 
 	match state:
 		State.IDLE:
@@ -49,29 +82,10 @@ func _physics_process(delta: float) -> void:
 			_run_state()
 		State.AIR:
 			_air_state()
+		State.ATTACK:
+			_attack_state()
 		_:
 			push_error("Invalid player state %d" % state)
-
-
-# I've been preferring explicit getters/setters like this one tbh
-## Set player state. Optional second argument is a dictionary used to configure the state transition.
-func set_state(value: State, opts := {}) -> void:
-	jump_animation_in_progress = false
-	land_animation_in_progress = false
-	jump_held = false
-
-	if value == State.AIR:
-		if "jump" in opts and opts["jump"] == true:
-			velocity.y = -jump_velocity
-			jump_animation_in_progress = true
-			jump_held = true
-			sprite.play(&"air_start")
-	else:
-		if "land" in opts and opts["land"] == true:
-			land_animation_in_progress = true
-			sprite.play(&"air_finish")
-
-	state = value
 
 
 func _idle_state() -> void:
@@ -81,7 +95,9 @@ func _idle_state() -> void:
 	if not land_animation_in_progress:
 		sprite.play(&"idle")
 
-	if Input.is_action_just_pressed(&"jump"):
+	if Input.is_action_just_pressed(&"attack"):
+		set_state(State.ATTACK)
+	elif Input.is_action_just_pressed(&"jump"):
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -95,7 +111,9 @@ func _run_state() -> void:
 
 	sprite.play(&"run")
 
-	if Input.is_action_just_pressed(&"jump"):
+	if Input.is_action_just_pressed(&"attack"):
+		set_state(State.ATTACK)
+	elif Input.is_action_just_pressed(&"jump"):
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -126,11 +144,7 @@ func _air_state() -> void:
 
 
 func _attack_state() -> void:
-	sprite.play(&"attack")
-	_send_attacks()
-	await sprite.animation_finished
-
-	set_state(State.IDLE)
+	pass
 
 
 func _send_attacks() -> void:
@@ -142,12 +156,11 @@ func _send_attacks() -> void:
 
 # Signal callbacks
 func _on_sprite_animation_finished() -> void:
+	# TODO: Change this to a match statement?
 	if sprite.animation == &"air_start":
 		jump_animation_in_progress = false
 	elif sprite.animation == &"air_finish":
 		land_animation_in_progress = false
-
-
-func _on_attack_timer_timeout() -> void:
-	can_attack = true
+	elif sprite.animation == &"attack":
+		set_state(State.IDLE)
 
