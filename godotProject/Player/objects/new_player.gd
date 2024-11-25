@@ -2,14 +2,20 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR }
+enum State { IDLE, RUN, AIR, ATTACK }
+
+
+signal player_death
 
 
 @export var move_speed: float
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var low_gravity_multiplier := 0.75
+@export var health := 3
+@export var max_health := 3
 @export var attack_damage := 1
+@export var debug_log := false
 
 
 @onready var sprite := $AnimatedSprite2D
@@ -18,12 +24,50 @@ enum State { IDLE, RUN, AIR }
 
 var state := State.IDLE
 var input_vector := Vector2.ZERO
-## Member variable delta so I don't have to pass it everywhere
 var this_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
 
+
+# I've been preferring explicit getters/setters like this one tbh
+## Set player state. Optional second argument is a dictionary used to configure the state transition.
+func set_state(value: State, opts := {}) -> void:
+	if debug_log:
+		print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
+
+	jump_animation_in_progress = false
+	land_animation_in_progress = false
+	jump_held = false
+
+	if value == State.AIR and "jump" in opts and opts["jump"] == true:
+		velocity.y = -jump_velocity
+		jump_animation_in_progress = true
+		jump_held = true
+		sprite.play(&"air_start")
+	elif "land" in opts and opts["land"] == true:
+		land_animation_in_progress = true
+		sprite.play(&"air_finish")
+	elif value == State.ATTACK:
+		sprite.play(&"attack")
+		_send_attacks()
+
+	state = value
+
+
+func state_to_string(s: State) -> String:
+	match s:
+		State.IDLE:
+			return "IDLE"
+		State.RUN:
+			return "RUN"
+		State.AIR:
+			return "AIR"
+		State.ATTACK:
+			return "ATTACK"
+		_:
+			return "INVALID STATE '%s'" % s
+		
 
 func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
@@ -35,51 +79,30 @@ func _physics_process(delta: float) -> void:
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
 		attack_hitbox.position.x = -abs(attack_hitbox.position.x)
-	
-	if Input.is_action_just_pressed(&"attack"):
-		_send_attacks()
-		# Note: remove this later and turn it into a real state. This is just for debugging.
 
 	match state:
 		State.IDLE:
-			_idle()
+			_idle_state()
 		State.RUN:
-			_run()
+			_run_state()
 		State.AIR:
-			_air()
+			_air_state()
+		State.ATTACK:
+			_attack_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
 
-# I've been preferring explicit getters/setters like this one tbh
-## Set player state. Optional second argument is a dictionary used to configure the state transition.
-func set_state(value: State, opts := {}) -> void:
-	jump_animation_in_progress = false
-	land_animation_in_progress = false
-	jump_held = false
-
-	if value == State.AIR:
-		if "jump" in opts and opts["jump"] == true:
-			velocity.y = -jump_velocity
-			jump_animation_in_progress = true
-			jump_held = true
-			sprite.play(&"air_start")
-	else:
-		if "land" in opts and opts["land"] == true:
-			land_animation_in_progress = true
-			sprite.play(&"air_finish")
-
-	state = value
-
-
-func _idle() -> void:
+func _idle_state() -> void:
 	velocity.x = 0.0
 	move_and_slide()
 
 	if not land_animation_in_progress:
 		sprite.play(&"idle")
 
-	if Input.is_action_just_pressed(&"jump"):
+	if Input.is_action_just_pressed(&"attack"):
+		set_state(State.ATTACK)
+	elif Input.is_action_just_pressed(&"jump"):
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -87,13 +110,15 @@ func _idle() -> void:
 		set_state(State.RUN)
 
 
-func _run() -> void:
+func _run_state() -> void:
 	velocity.x = input_vector.x * move_speed
 	move_and_slide()
 
 	sprite.play(&"run")
 
-	if Input.is_action_just_pressed(&"jump"):
+	if Input.is_action_just_pressed(&"attack"):
+		set_state(State.ATTACK)
+	elif Input.is_action_just_pressed(&"jump"):
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -101,7 +126,7 @@ func _run() -> void:
 		set_state(State.IDLE)
 
 
-func _air() -> void:
+func _air_state() -> void:
 	if Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
 	
@@ -123,14 +148,24 @@ func _air() -> void:
 		set_state(State.IDLE, {"land": true})
 
 
+func _attack_state() -> void:
+	pass
+
+
 func _send_attacks() -> void:
-	for potential_opp in attack_hitbox.get_overlapping_bodies():
+	for potential_opp: Node2D in attack_hitbox.get_overlapping_bodies():
+		# TODO: Change to use new Enemy class
 		if potential_opp is BasicEnemy:
 			print("Enemy Attacked")
 
 
+# Signal callbacks
 func _on_sprite_animation_finished() -> void:
+	# TODO: Change this to a match statement?
 	if sprite.animation == &"air_start":
 		jump_animation_in_progress = false
 	elif sprite.animation == &"air_finish":
 		land_animation_in_progress = false
+	elif sprite.animation == &"attack":
+		set_state(State.IDLE)
+
