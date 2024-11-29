@@ -2,7 +2,7 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR, ATTACK }
+enum State { IDLE, RUN, AIR, ATTACK, WALL }
 
 
 signal player_death
@@ -12,6 +12,7 @@ signal player_death
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var low_gravity_multiplier := 0.75
+@export var wall_max_fall_speed := 64.0
 @export var health := 3
 @export var max_health := 3
 @export var attack_damage := 1
@@ -20,6 +21,8 @@ signal player_death
 
 @onready var sprite := $AnimatedSprite2D
 @onready var attack_hitbox := $AttackHitbox
+@onready var wall_cast := $WallCast
+@onready var wall_cast_length: float = wall_cast.target_position.length()
 
 
 var state := State.IDLE
@@ -28,6 +31,7 @@ var this_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
+var last_wall_normal_x := 0.0
 
 
 # I've been preferring explicit getters/setters like this one tbh
@@ -51,6 +55,8 @@ func set_state(value: State, opts := {}) -> void:
 	elif value == State.ATTACK:
 		sprite.play(&"attack")
 		_send_attacks()
+	elif value == State.WALL:
+		last_wall_normal_x = get_last_slide_collision().get_normal().x
 
 	state = value
 
@@ -65,12 +71,15 @@ func state_to_string(s: State) -> String:
 			return "AIR"
 		State.ATTACK:
 			return "ATTACK"
+		State.WALL:
+			return "WALL"
 		_:
 			return "INVALID STATE '%s'" % s
-		
+
 
 func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
+	wall_cast.target_position.x = sign(input_vector.x) * wall_cast_length
 	this_delta = delta
 
 	if input_vector.x > 0.0:
@@ -79,6 +88,9 @@ func _physics_process(delta: float) -> void:
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
 		attack_hitbox.position.x = -abs(attack_hitbox.position.x)
+	
+	if is_on_wall():
+		last_wall_normal_x = get_last_slide_collision().get_normal().x
 
 	match state:
 		State.IDLE:
@@ -89,6 +101,8 @@ func _physics_process(delta: float) -> void:
 			_air_state()
 		State.ATTACK:
 			_attack_state()
+		State.WALL:
+			_wall_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
@@ -144,12 +158,25 @@ func _air_state() -> void:
 		else:
 			sprite.play(&"air_descending")
 
-	if is_on_floor() and velocity.y >= 0.0:
+	if is_on_wall() and abs(last_wall_normal_x + input_vector.x) < 0.5:
+		set_state(State.WALL)
+	elif is_on_floor() and velocity.y >= 0.0:
 		set_state(State.IDLE, {"land": true})
 
 
 func _attack_state() -> void:
 	pass
+
+
+func _wall_state() -> void:
+	velocity.y += gravity * this_delta
+	velocity.y = minf(velocity.y, wall_max_fall_speed)
+	move_and_slide()
+
+	if is_on_floor():
+		set_state(State.IDLE)
+	elif not wall_cast.is_colliding():
+		set_state(State.AIR)
 
 
 func _send_attacks() -> void:
@@ -168,4 +195,3 @@ func _on_sprite_animation_finished() -> void:
 		land_animation_in_progress = false
 	elif sprite.animation == &"attack":
 		set_state(State.IDLE)
-

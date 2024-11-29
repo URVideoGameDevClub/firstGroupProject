@@ -14,3 +14,4 @@ move_speed = 180.0
 jump_velocity = 400.0
 gravity = 1400.0
 low_gravity_multiplier = 0.7
+debug_log = true
