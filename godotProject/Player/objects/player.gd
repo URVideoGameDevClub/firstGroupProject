@@ -158,7 +158,7 @@ func attack():
 	await get_tree().create_timer(0.05).timeout
 
 	for collision_body in instance.get_overlapping_bodies():
-		if collision_body is BasicEnemy and collision_body.has_method("receive_attack_damage"):
+		if collision_body is Enemy and collision_body.has_method("receive_attack_damage"):
 			collision_body.receive_attack_damage(attack_damage)
 	
 	await get_tree().create_timer(attack_time).timeout

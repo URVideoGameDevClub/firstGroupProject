@@ -125,7 +125,8 @@ func _air() -> void:
 
 func _send_attacks() -> void:
 	for potential_opp in attack_hitbox.get_overlapping_bodies():
-		if potential_opp is BasicEnemy:
+		if potential_opp is Enemy:
+			potential_opp.takeDamage(1)
 			print("Enemy Attacked")
 
 
