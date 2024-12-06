@@ -19,10 +19,11 @@ signal player_death
 @export var debug_log := false
 
 
-@onready var sprite := $AnimatedSprite2D
-@onready var attack_hitbox := $AttackHitbox
-@onready var wall_cast := $WallCast
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_hitbox: Area2D = $AttackHitbox
+@onready var wall_cast: RayCast2D = $WallCast
 @onready var wall_cast_length: float = wall_cast.target_position.length()
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 
 var state := State.IDLE
@@ -32,6 +33,7 @@ var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
 var last_wall_normal_x := 0.0
+var can_jump := true
 
 
 # I've been preferring explicit getters/setters like this one tbh
@@ -57,6 +59,8 @@ func set_state(value: State, opts := {}) -> void:
 		_send_attacks()
 	elif value == State.WALL:
 		last_wall_normal_x = get_last_slide_collision().get_normal().x
+	elif state == State.IDLE or state == State.RUN:
+		can_jump = true
 
 	state = value
 
@@ -108,6 +112,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _idle_state() -> void:
+	can_jump = true
 	velocity.x = 0.0
 	move_and_slide()
 
@@ -116,7 +121,7 @@ func _idle_state() -> void:
 
 	if Input.is_action_just_pressed(&"attack"):
 		set_state(State.ATTACK)
-	elif Input.is_action_just_pressed(&"jump"):
+	elif _get_jump():
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -125,6 +130,7 @@ func _idle_state() -> void:
 
 
 func _run_state() -> void:
+	can_jump = true
 	velocity.x = input_vector.x * move_speed
 	move_and_slide()
 
@@ -132,7 +138,7 @@ func _run_state() -> void:
 
 	if Input.is_action_just_pressed(&"attack"):
 		set_state(State.ATTACK)
-	elif Input.is_action_just_pressed(&"jump"):
+	elif _get_jump():
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -141,9 +147,13 @@ func _run_state() -> void:
 
 
 func _air_state() -> void:
-	if Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
+	coyote_timer.start()
+	if _get_jump():
+		can_jump = false
+		set_state(State.AIR, {"jump": true})
+	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
-	
+
 	var local_gravity := gravity
 	if jump_held == true:
 		local_gravity *= low_gravity_multiplier
@@ -186,6 +196,13 @@ func _send_attacks() -> void:
 			print("Enemy Attacked")
 
 
+func _get_jump() -> bool:
+	if is_on_floor():
+		return Input.is_action_just_pressed(&"jump") and can_jump
+	else:
+		return Input.is_action_pressed(&"jump") and can_jump
+
+
 # Signal callbacks
 func _on_sprite_animation_finished() -> void:
 	# TODO: Change this to a match statement?
@@ -195,3 +212,7 @@ func _on_sprite_animation_finished() -> void:
 		land_animation_in_progress = false
 	elif sprite.animation == &"attack":
 		set_state(State.IDLE)
+
+
+func _on_coyote_timer_timeout() -> void:
+	can_jump = false
