@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://drq6lpqsi5t0o"]
 
-[ext_resource type="Script" path="res://Door/NewDoor/test_door.gd" id="1_51hd3"]
+[ext_resource type="Script" path="res://Door/NewDoor/new_door.gd" id="1_lqjt1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjf41"]
 
 [node name="TestDoor" type="Node2D"]
-script = ExtResource("1_51hd3")
+script = ExtResource("1_lqjt1")
 
 [node name="Area2D" type="Area2D" parent="."]
 
