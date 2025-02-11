@@ -23,8 +23,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	area.body_entered.connect(_on_area_2d_body_entered)
-	
 	if area == null:
 		push_error("area is null")
 	if target_room == null:
@@ -35,6 +33,9 @@ func _ready() -> void:
 		push_error("id == %d < 0, please change from default" % id)
 	if target_id < 0:
 		push_error("target_id == %d < 0, please change from default" % target_id)
+	
+	if not area.body_entered.is_connected(_on_area_2d_body_entered):
+		area.body_entered.connect(_on_area_2d_body_entered)
 
 
 ## Connect body_entered signals here.
