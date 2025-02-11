@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cp6f2mv1b0i51" path="res://Levels/test_level.tscn" id="3_m0rw5"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://Gui/gui.tscn" id="4_yot6p"]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" node_paths=PackedStringArray("current_level")]
 script = ExtResource("1_xwu3t")
+current_level = NodePath("TestLevel")
 
 [node name="Gui" parent="." instance=ExtResource("4_yot6p")]
 
