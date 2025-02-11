@@ -5,9 +5,6 @@ extends CharacterBody2D
 enum State { IDLE, RUN, AIR, ATTACK, WALL }
 
 
-signal player_death
-
-
 @export var move_speed: float
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -36,7 +33,6 @@ var last_wall_normal_x := 0.0
 var can_jump := true
 
 
-# I've been preferring explicit getters/setters like this one tbh
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
 func set_state(value: State, opts := {}) -> void:
 	if debug_log:

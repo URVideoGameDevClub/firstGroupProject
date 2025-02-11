@@ -1,4 +1,5 @@
-class_name Global
+## Global singleton class, mainly for signals right now
 extends Node
 
-static var player: Player
+
+signal door_entered(door: NewDoor)
