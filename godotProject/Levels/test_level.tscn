@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=4 uid="uid://cp6f2mv1b0i51"]
+[gd_scene load_steps=3 format=4 uid="uid://cp6f2mv1b0i51"]
 
-[ext_resource type="PackedScene" uid="uid://drq6lpqsi5t0o" path="res://Door/NewDoor/test_door.tscn" id="3_2uj6s"]
 [ext_resource type="PackedScene" uid="uid://0gdxb068m7v6" path="res://World/Tilemap/Tilemap.tscn" id="3_mr61w"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/new_player.tscn" id="6_b1doi"]
 
@@ -15,6 +14,3 @@ move_speed = 180.0
 jump_velocity = 400.0
 gravity = 1400.0
 low_gravity_multiplier = 0.7
-
-[node name="TestDoor" parent="." instance=ExtResource("3_2uj6s")]
-position = Vector2(180, 9)

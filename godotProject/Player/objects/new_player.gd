@@ -61,7 +61,7 @@ func set_state(value: State, opts := {}) -> void:
 	state = value
 
 
-func state_to_string(s: State) -> String:
+static func state_to_string(s: State) -> String:
 	match s:
 		State.IDLE:
 			return "IDLE"
