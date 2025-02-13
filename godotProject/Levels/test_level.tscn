@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=4 uid="uid://cp6f2mv1b0i51"]
+[gd_scene load_steps=4 format=4 uid="uid://cp6f2mv1b0i51"]
 
 [ext_resource type="PackedScene" uid="uid://0gdxb068m7v6" path="res://World/Tilemap/Tilemap.tscn" id="3_mr61w"]
+[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://Enemy/objects/squirrel_enemy.tscn" id="3_np8g5"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/new_player.tscn" id="6_b1doi"]
 
 [node name="TestLevel" type="Node2D"]
@@ -14,3 +15,6 @@ move_speed = 180.0
 jump_velocity = 400.0
 gravity = 1400.0
 low_gravity_multiplier = 0.7
+
+[node name="SquirrelEnemy" parent="." instance=ExtResource("3_np8g5")]
+position = Vector2(-222, 128)
