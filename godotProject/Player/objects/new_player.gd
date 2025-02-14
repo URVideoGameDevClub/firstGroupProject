@@ -37,11 +37,11 @@ var can_jump := true
 func set_state(value: State, opts := {}) -> void:
 	if debug_log:
 		print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
-
+	
 	jump_animation_in_progress = false
 	land_animation_in_progress = false
 	jump_held = false
-
+	
 	if value == State.AIR and "jump" in opts and opts["jump"] == true:
 		velocity.y = -jump_velocity
 		jump_animation_in_progress = true
@@ -57,7 +57,7 @@ func set_state(value: State, opts := {}) -> void:
 		last_wall_normal_x = get_last_slide_collision().get_normal().x
 	elif state == State.IDLE or state == State.RUN:
 		can_jump = true
-
+	
 	state = value
 
 
@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	wall_cast.target_position.x = sign(input_vector.x) * wall_cast_length
 	this_delta = delta
-
+	
 	if input_vector.x > 0.0:
 		sprite.flip_h = true
 		attack_hitbox.position.x = abs(attack_hitbox.position.x)
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_wall():
 		last_wall_normal_x = get_last_slide_collision().get_normal().x
-
+	
 	match state:
 		State.IDLE:
 			_idle_state()
@@ -111,13 +111,14 @@ func _idle_state() -> void:
 	can_jump = true
 	velocity.x = 0.0
 	move_and_slide()
-
+	
 	if not land_animation_in_progress:
 		sprite.play(&"idle")
-
+	
 	if Input.is_action_just_pressed(&"attack"):
 		set_state(State.ATTACK)
 	elif _get_jump():
+		can_jump = false
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -129,12 +130,13 @@ func _run_state() -> void:
 	can_jump = true
 	velocity.x = input_vector.x * move_speed
 	move_and_slide()
-
+	
 	sprite.play(&"run")
-
+	
 	if Input.is_action_just_pressed(&"attack"):
 		set_state(State.ATTACK)
 	elif _get_jump():
+		can_jump = false
 		set_state(State.AIR, {"jump": true})
 	elif not is_on_floor():
 		set_state(State.AIR)
@@ -149,21 +151,21 @@ func _air_state() -> void:
 		set_state(State.AIR, {"jump": true})
 	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
-
+	
 	var local_gravity := gravity
 	if jump_held == true:
 		local_gravity *= low_gravity_multiplier
-
+	
 	velocity.x = input_vector.x * move_speed
 	velocity.y += local_gravity * this_delta
 	move_and_slide()
-
+	
 	if not jump_animation_in_progress:
 		if velocity.y < 0.0:
 			sprite.play(&"air_ascending")
 		else:
 			sprite.play(&"air_descending")
-
+	
 	if is_on_wall() and abs(last_wall_normal_x + input_vector.x) < 0.5:
 		set_state(State.WALL)
 	elif is_on_floor() and velocity.y >= 0.0:
