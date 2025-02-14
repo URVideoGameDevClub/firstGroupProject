@@ -186,10 +186,10 @@ func _wall_state() -> void:
 
 
 func _send_attacks() -> void:
-	for potential_opp: Node2D in attack_hitbox.get_overlapping_bodies():
+	for body: Node2D in attack_hitbox.get_overlapping_bodies():
 		# TODO: Change to use new Enemy class
-		if potential_opp is BasicEnemy:
-			print("Enemy Attacked")
+		if body is Enemy:
+			body.receive_attack(attack_damage)
 
 
 func _get_jump() -> bool:
