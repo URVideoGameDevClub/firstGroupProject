@@ -5,3 +5,4 @@ extends Node
 signal door_entered(door: NewDoor)
 signal enemy_death(enemy: Enemy)
 signal player_health_updated(health: int)
+signal player_death

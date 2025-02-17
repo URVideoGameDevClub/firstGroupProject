@@ -509,9 +509,7 @@ shape = SubResource("RectangleShape2D_u4jn6")
 material = SubResource("ShaderMaterial_8a23o")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_754dc")
-animation = &"death"
-frame = 14
-frame_progress = 1.0
+animation = &"idle"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

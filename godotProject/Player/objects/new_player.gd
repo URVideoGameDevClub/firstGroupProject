@@ -209,6 +209,7 @@ func receive_attack(damage: int) -> void:
 	
 	if health == 0:
 		set_state.call_deferred(State.DEATH)
+		Global.player_death.emit()
 	else:
 		shader_material.set_shader_parameter(&"is_damage_state", true)
 		await get_tree().create_timer(DAMAGE_ANIM_TIME).timeout
