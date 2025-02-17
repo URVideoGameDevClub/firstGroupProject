@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://byjkctoh0ya5w"]
+
+[ext_resource type="Texture2D" uid="uid://b0gr8obt534pl" path="res://World/Tilemap/Crystal.png" id="1_sxh4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om7ps"]
+size = Vector2(16, 32)
+
+[node name="CrystalSpike" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_om7ps")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_sxh4j")
