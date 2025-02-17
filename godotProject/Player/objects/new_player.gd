@@ -77,6 +77,10 @@ static func state_to_string(s: State) -> String:
 			return "INVALID STATE '%s'" % s
 
 
+func _ready() -> void:
+	Global.player_health_updated.emit(health)
+
+
 func _physics_process(delta: float) -> void:
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	wall_cast.target_position.x = sign(input_vector.x) * wall_cast_length
@@ -203,7 +207,8 @@ func _get_jump() -> bool:
 
 func receive_attack(damage: int) -> void:
 	print("Player health: %d -> %d" % [health, health - damage])
-	health -= damage
+	health = maxi(health - damage, 0)
+	Global.player_health_updated.emit(health)
 
 
 # Signal callbacks
