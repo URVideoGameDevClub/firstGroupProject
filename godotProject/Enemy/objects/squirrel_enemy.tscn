@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bu1yva487v1u5"]
+[gd_scene load_steps=47 format=3 uid="uid://bu1yva487v1u5"]
 
 [ext_resource type="Script" path="res://Enemy/objects/squirrel_enemy.gd" id="1_6a6c2"]
 [ext_resource type="Texture2D" uid="uid://dku1qkdlx0ffy" path="res://Enemy/assets/enemy attack.png" id="1_8mg8b"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://csf38krfju06c" path="res://Enemy/assets/enemy walk.png" id="3_vf2ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aryqg"]
-size = Vector2(29, 17)
+size = Vector2(25, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acedg"]
 atlas = ExtResource("1_8mg8b")
@@ -196,7 +196,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -299,27 +299,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_keg15"]
+radius = 14.0
+
 [node name="SquirrelEnemy" type="CharacterBody2D"]
 script = ExtResource("1_6a6c2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -8.5)
+position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_aryqg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_50ehc")
 animation = &"attack"
+frame = 8
+frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="GroundCastL" type="RayCast2D" parent="."]
 position = Vector2(-15, 0)
 target_position = Vector2(0, 8)
+hit_from_inside = true
 
 [node name="GroundCastR" type="RayCast2D" parent="."]
 position = Vector2(14, 0)
 target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="VisionCast" type="RayCast2D" parent="."]
+target_position = Vector2(-45, -14)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-23, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_keg15")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
