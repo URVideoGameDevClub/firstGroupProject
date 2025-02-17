@@ -13,7 +13,7 @@ func _ready():
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if true: #body is Player:
 		await get_tree().create_timer(delay).timeout
 		Global.player.set_position(new_spawn_position)
 		Global.player.set_velocity(Vector2(0, 0))

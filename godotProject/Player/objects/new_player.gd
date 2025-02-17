@@ -201,6 +201,11 @@ func _get_jump() -> bool:
 		return Input.is_action_pressed(&"jump") and can_jump
 
 
+func receive_attack(damage: int) -> void:
+	print("Player health: %d -> %d" % [health, health - damage])
+	health -= damage
+
+
 # Signal callbacks
 func _on_sprite_animation_finished() -> void:
 	# TODO: Change this to a match statement?
