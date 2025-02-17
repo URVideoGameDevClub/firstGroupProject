@@ -2,7 +2,7 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR, ATTACK }
+enum State { IDLE, RUN, AIR, ATTACK, DEATH }
 
 
 const DAMAGE_ANIM_TIME := 0.2
@@ -25,6 +25,7 @@ const DAMAGE_ANIM_TIME := 0.2
 @onready var wall_cast: RayCast2D = $WallCast
 @onready var wall_cast_length: float = wall_cast.target_position.length()
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
 var state := State.IDLE
@@ -57,8 +58,11 @@ func set_state(value: State, opts := {}) -> void:
 	elif value == State.ATTACK:
 		sprite.play(&"attack")
 		_send_attacks()
-	elif state == State.IDLE or state == State.RUN:
+	elif value == State.IDLE or value == State.RUN:
 		can_jump = true
+	elif value == State.DEATH:
+		sprite.play(&"death")
+		collision_shape.disabled = true
 	
 	state = value
 
@@ -73,6 +77,8 @@ static func state_to_string(s: State) -> String:
 			return "AIR"
 		State.ATTACK:
 			return "ATTACK"
+		State.DEATH:
+			return "DEATH"
 		_:
 			return "INVALID STATE '%s'" % s
 
@@ -105,6 +111,8 @@ func _physics_process(delta: float) -> void:
 			_air_state()
 		State.ATTACK:
 			_attack_state()
+		State.DEATH:
+			_death_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
@@ -183,6 +191,10 @@ func _send_attacks() -> void:
 			body.receive_attack(attack_damage)
 
 
+func _death_state() -> void:
+	pass
+
+
 func _get_jump() -> bool:
 	if is_on_floor():
 		return Input.is_action_just_pressed(&"jump") and can_jump
@@ -195,9 +207,12 @@ func receive_attack(damage: int) -> void:
 	health = maxi(health - damage, 0)
 	Global.player_health_updated.emit(health)
 	
-	shader_material.set_shader_parameter(&"is_damage_state", true)
-	await get_tree().create_timer(DAMAGE_ANIM_TIME).timeout
-	shader_material.set_shader_parameter(&"is_damage_state", false)
+	if health == 0:
+		set_state.call_deferred(State.DEATH)
+	else:
+		shader_material.set_shader_parameter(&"is_damage_state", true)
+		await get_tree().create_timer(DAMAGE_ANIM_TIME).timeout
+		shader_material.set_shader_parameter(&"is_damage_state", false)
 
 
 # Signal callbacks
