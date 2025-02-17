@@ -26,6 +26,7 @@ const DAMAGE_ANIM_TIME := 0.2
 @onready var wall_cast_length: float = wall_cast.target_position.length()
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 
 var state := State.IDLE
@@ -36,6 +37,7 @@ var land_animation_in_progress := false
 var jump_held := false
 var last_wall_normal_x := 0.0
 var can_jump := true
+var invincible := false
 
 
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
@@ -203,9 +205,16 @@ func _get_jump() -> bool:
 
 
 func receive_attack(damage: int) -> void:
-	print("Player health: %d -> %d" % [health, health - damage])
+	if invincible:
+		return
+	
+	if debug_log:
+		print("Player health: %d -> %d" % [health, health - damage])
+	
 	health = maxi(health - damage, 0)
 	Global.player_health_updated.emit(health)
+	invincible = true
+	invincibility_timer.start()
 	
 	if health == 0:
 		set_state.call_deferred(State.DEATH)
@@ -229,3 +238,7 @@ func _on_sprite_animation_finished() -> void:
 
 func _on_coyote_timer_timeout() -> void:
 	can_jump = false
+
+
+func _on_invincibility_timer_timeout() -> void:
+	invincible = false
