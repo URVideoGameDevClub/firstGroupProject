@@ -2,7 +2,10 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR, ATTACK, WALL }
+enum State { IDLE, RUN, AIR, ATTACK, DEATH }
+
+
+const DAMAGE_ANIM_TIME := 0.2
 
 
 @export var move_speed: float
@@ -17,10 +20,12 @@ enum State { IDLE, RUN, AIR, ATTACK, WALL }
 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shader_material: ShaderMaterial = sprite.material
 @onready var attack_hitbox: Area2D = $AttackHitbox
 @onready var wall_cast: RayCast2D = $WallCast
 @onready var wall_cast_length: float = wall_cast.target_position.length()
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
 var state := State.IDLE
@@ -53,10 +58,11 @@ func set_state(value: State, opts := {}) -> void:
 	elif value == State.ATTACK:
 		sprite.play(&"attack")
 		_send_attacks()
-	elif value == State.WALL:
-		last_wall_normal_x = get_last_slide_collision().get_normal().x
-	elif state == State.IDLE or state == State.RUN:
+	elif value == State.IDLE or value == State.RUN:
 		can_jump = true
+	elif value == State.DEATH:
+		sprite.play(&"death")
+		collision_shape.disabled = true
 	
 	state = value
 
@@ -71,10 +77,14 @@ static func state_to_string(s: State) -> String:
 			return "AIR"
 		State.ATTACK:
 			return "ATTACK"
-		State.WALL:
-			return "WALL"
+		State.DEATH:
+			return "DEATH"
 		_:
 			return "INVALID STATE '%s'" % s
+
+
+func _ready() -> void:
+	Global.player_health_updated.emit(health)
 
 
 func _physics_process(delta: float) -> void:
@@ -101,8 +111,8 @@ func _physics_process(delta: float) -> void:
 			_air_state()
 		State.ATTACK:
 			_attack_state()
-		State.WALL:
-			_wall_state()
+		State.DEATH:
+			_death_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
@@ -166,9 +176,7 @@ func _air_state() -> void:
 		else:
 			sprite.play(&"air_descending")
 	
-	if is_on_wall() and abs(last_wall_normal_x + input_vector.x) < 0.5:
-		set_state(State.WALL)
-	elif is_on_floor() and velocity.y >= 0.0:
+	if is_on_floor() and velocity.y >= 0.0:
 		set_state(State.IDLE, {"land": true})
 
 
@@ -176,22 +184,15 @@ func _attack_state() -> void:
 	pass
 
 
-func _wall_state() -> void:
-	velocity.y += gravity * this_delta
-	velocity.y = minf(velocity.y, wall_max_fall_speed)
-	move_and_slide()
-
-	if is_on_floor():
-		set_state(State.IDLE)
-	elif not wall_cast.is_colliding():
-		set_state(State.AIR)
-
-
 func _send_attacks() -> void:
 	for body: Node2D in attack_hitbox.get_overlapping_bodies():
 		# TODO: Change to use new Enemy class
 		if body is Enemy:
 			body.receive_attack(attack_damage)
+
+
+func _death_state() -> void:
+	pass
 
 
 func _get_jump() -> bool:
@@ -203,7 +204,16 @@ func _get_jump() -> bool:
 
 func receive_attack(damage: int) -> void:
 	print("Player health: %d -> %d" % [health, health - damage])
-	health -= damage
+	health = maxi(health - damage, 0)
+	Global.player_health_updated.emit(health)
+	
+	if health == 0:
+		set_state.call_deferred(State.DEATH)
+		Global.player_death.emit()
+	else:
+		shader_material.set_shader_parameter(&"is_damage_state", true)
+		await get_tree().create_timer(DAMAGE_ANIM_TIME).timeout
+		shader_material.set_shader_parameter(&"is_damage_state", false)
 
 
 # Signal callbacks
