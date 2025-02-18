@@ -2,7 +2,7 @@ class_name NewPlayer
 extends CharacterBody2D
 
 
-enum State { IDLE, RUN, AIR, ATTACK, DEATH }
+enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
 
 const DAMAGE_ANIM_TIME := 0.2
@@ -11,6 +11,8 @@ const DAMAGE_ANIM_TIME := 0.2
 @export var move_speed: float
 @export var jump_velocity: float
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+@export var glide_gravity := 500.0
+@export var glide_max_fall_speed := 50.0
 @export var low_gravity_multiplier := 0.75
 @export var wall_max_fall_speed := 64.0
 @export var health := 3
@@ -65,6 +67,11 @@ func set_state(value: State, opts := {}) -> void:
 	elif value == State.DEATH:
 		sprite.play(&"death")
 		collision_shape.disabled = true
+	elif value == State.GLIDE:
+		sprite.play(&"glide_start")
+	if value == State.IDLE and state == State.GLIDE:
+		sprite.play(&"glide_end")
+		land_animation_in_progress = true
 	
 	state = value
 
@@ -81,6 +88,8 @@ static func state_to_string(s: State) -> String:
 			return "ATTACK"
 		State.DEATH:
 			return "DEATH"
+		State.GLIDE:
+			return "GLIDE"
 		_:
 			return "INVALID STATE '%s'" % s
 
@@ -115,6 +124,8 @@ func _physics_process(delta: float) -> void:
 			_attack_state()
 		State.DEATH:
 			_death_state()
+		State.GLIDE:
+			_glide_state()
 		_:
 			push_error("Invalid player state %d" % state)
 
@@ -161,8 +172,13 @@ func _air_state() -> void:
 	if _get_jump():
 		can_jump = false
 		set_state(State.AIR, {"jump": true})
+		return
+	elif Input.is_action_just_pressed(&"glide"):
+		set_state(State.GLIDE)
+		return
 	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
+
 	
 	var local_gravity := gravity
 	if jump_held == true:
@@ -197,6 +213,17 @@ func _death_state() -> void:
 	pass
 
 
+func _glide_state() -> void:
+	velocity.x = input_vector.x * move_speed
+	velocity.y = minf(velocity.y + glide_gravity * this_delta, glide_max_fall_speed)
+	move_and_slide()
+	
+	if is_on_floor():
+		set_state(State.IDLE)
+	elif not Input.is_action_pressed(&"glide"):
+		set_state(State.AIR)
+
+
 func _get_jump() -> bool:
 	if is_on_floor():
 		return Input.is_action_just_pressed(&"jump") and can_jump
@@ -228,12 +255,16 @@ func receive_attack(damage: int) -> void:
 # Signal callbacks
 func _on_sprite_animation_finished() -> void:
 	# TODO: Change this to a match statement?
-	if sprite.animation == &"air_start":
-		jump_animation_in_progress = false
-	elif sprite.animation == &"air_finish":
-		land_animation_in_progress = false
-	elif sprite.animation == &"attack":
-		set_state(State.IDLE)
+	match sprite.animation:
+		&"air_start":
+			jump_animation_in_progress = false
+		&"air_finish", &"glide_finish":
+			land_animation_in_progress = false
+		&"attack":
+			set_state(State.IDLE)
+		&"glide_start":
+			if state == State.GLIDE:
+				sprite.play(&"glide_middle")
 
 
 func _on_coyote_timer_timeout() -> void:
