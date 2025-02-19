@@ -172,7 +172,7 @@ func _air_state() -> void:
 		can_jump = false
 		set_state(State.AIR, {"jump": true})
 		return
-	elif Input.is_action_just_pressed(&"glide"):
+	elif Input.is_action_just_pressed(&"glide") and "glider" in Global.inventory:
 		set_state(State.GLIDE)
 		return
 	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
