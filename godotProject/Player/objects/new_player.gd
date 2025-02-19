@@ -61,7 +61,6 @@ func set_state(value: State, opts := {}) -> void:
 		sprite.play(&"air_finish")
 	elif value == State.ATTACK:
 		sprite.play(&"attack")
-		_send_attacks()
 	elif value == State.IDLE or value == State.RUN:
 		can_jump = true
 	elif value == State.DEATH:
@@ -273,3 +272,9 @@ func _on_coyote_timer_timeout() -> void:
 
 func _on_invincibility_timer_timeout() -> void:
 	invincible = false
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if state == State.ATTACK:
+		if sprite.frame == 2:
+			_send_attacks()

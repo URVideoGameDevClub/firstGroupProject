@@ -16,6 +16,7 @@ const ATTACK_DAMAGE := 1
 @onready var ground_cast_r: RayCast2D = $GroundCastR
 @onready var vision_cast: RayCast2D = $VisionCast
 @onready var hitbox: Area2D = $Hitbox
+@onready var shader_material: ShaderMaterial = sprite.material
 
 @onready var facing_right := sprite.flip_h
 
@@ -73,6 +74,20 @@ func set_state(value: State) -> void:
 	state = value
 
 
+func receive_attack(damage: int) -> void:
+	health -= damage
+	
+	if health <= 0:
+		set_state(State.IDLE)
+	
+	shader_material.set_shader_parameter(&"is_damage_state", true)
+	await get_tree().create_timer(0.2).timeout
+	shader_material.set_shader_parameter(&"is_damage_state", false)
+	
+	if health <= 0:
+		queue_free()
+
+
 func _on_timer_timeout() -> void:
 	match state:
 		State.IDLE:
@@ -96,7 +111,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.animation == &"attack":
 		var frame := sprite.frame
-		if frame == 3:
+		if frame == 4:
 			hitbox.monitoring = true
 		elif frame == 7:
 			hitbox.monitoring = false
