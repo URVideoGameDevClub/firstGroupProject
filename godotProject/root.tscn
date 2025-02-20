@@ -15,7 +15,9 @@ player = NodePath("NewPlayer")
 
 [node name="SpawnLevel" parent="." instance=ExtResource("3_h6t74")]
 
+[node name="Checkpoint" parent="SpawnLevel" index="7"]
+position = Vector2(55, -42)
+
 [node name="NewPlayer" parent="." instance=ExtResource("4_aen4m")]
-position = Vector2(797, 592)
 
 [editable path="SpawnLevel"]

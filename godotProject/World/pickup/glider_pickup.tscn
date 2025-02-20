@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdwad"]
 
 [node name="GliderPickup" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_oxm1a")
 item_name = "glider"
 

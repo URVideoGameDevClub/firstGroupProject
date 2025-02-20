@@ -50,6 +50,7 @@ func set_state(value: State, opts := {}) -> void:
 	jump_animation_in_progress = false
 	land_animation_in_progress = false
 	jump_held = false
+	collision_shape.disabled = false
 	
 	if value == State.AIR and "jump" in opts and opts["jump"] == true:
 		velocity.y = -jump_velocity
