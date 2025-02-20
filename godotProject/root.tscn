@@ -1,20 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl4unk7yiblu0"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_xwu3t"]
-[ext_resource type="PackedScene" uid="uid://dcb3cx0bo07it" path="res://Levels/real/left_level.tscn" id="3_pyt5e"]
+[ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://Levels/real/spawn_level.tscn" id="3_h6t74"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/new_player.tscn" id="4_aen4m"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://Gui/gui.tscn" id="4_yot6p"]
 
-[node name="Root" type="Node" node_paths=PackedStringArray("current_level", "last_door", "player")]
+[node name="Root" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
 script = ExtResource("1_xwu3t")
-current_level = NodePath("RealLevel1")
-last_door = NodePath("RealLevel1/DoorUno")
+current_level = NodePath("SpawnLevel")
+last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
 player = NodePath("NewPlayer")
 
 [node name="Gui" parent="." instance=ExtResource("4_yot6p")]
 
-[node name="RealLevel1" parent="." instance=ExtResource("3_pyt5e")]
+[node name="SpawnLevel" parent="." instance=ExtResource("3_h6t74")]
 
 [node name="NewPlayer" parent="." instance=ExtResource("4_aen4m")]
+position = Vector2(797, 592)
 
-[editable path="RealLevel1"]
+[editable path="SpawnLevel"]

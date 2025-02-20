@@ -98,6 +98,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Global.paused:
+		return
+	
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
 	wall_cast.target_position.x = sign(input_vector.x) * wall_cast_length
 	this_delta = delta

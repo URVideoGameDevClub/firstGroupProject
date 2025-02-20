@@ -4,7 +4,7 @@ extends Node2D
 
 
 ## PackedScene of the room this door leads to.
-@export var target_room: PackedScene = null
+@export var target_room := Route.Level.NONE
 
 ## Area2D to detect player entering the door.
 @export var area: Area2D = null
@@ -21,12 +21,14 @@ extends Node2D
 ## Default value of -1 will give an error, so don't forget to change it to the value you want.
 @export var target_id := -1
 
+@export var actual_pos := Vector2.ZERO
+
 
 func _ready() -> void:
 	if area == null:
 		push_warning("area is null")
-	if target_room == null:
-		push_warning("target_room is null")
+	if target_room == Route.Level.NONE:
+		push_warning("target_room is NONE")
 	if spawn_marker == null:
 		push_warning("spawn_marker is null")
 	if id < 0:
@@ -47,4 +49,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _to_string() -> String:
-	return "NewDoor { target_room: %s, id: %d, target_id: %d }" % [target_room, id, target_id]
+	return "NewDoor { target_room: %s, id: %d, target_id: %d, spawn_marker_pos: %s }" % [target_room, id, target_id, spawn_marker.global_position]

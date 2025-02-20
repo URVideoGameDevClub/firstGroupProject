@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdxsu8lg07h0y"]
+
+[ext_resource type="Script" path="res://World/pickup/pickup.gd" id="1_pgafa"]
+[ext_resource type="Texture2D" uid="uid://duv2tsgdgourb" path="res://World/pickup/Crown piece center.png" id="2_i4fdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i755o"]
+
+[node name="LeftCrownPickup" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_pgafa")
+item_name = "center_crown_piece"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i755o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i4fdu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

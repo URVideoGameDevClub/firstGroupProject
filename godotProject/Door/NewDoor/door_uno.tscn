@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4mai"]
 size = Vector2(16, 60)
 
-[node name="DoorUno" type="Node2D" node_paths=PackedStringArray("area", "spawn_marker")]
+[node name="DoorUno" type="Node2D" node_paths=PackedStringArray("area", "spawn_marker") groups=["door"]]
 script = ExtResource("1_abd74")
 area = NodePath("Area2D")
 spawn_marker = NodePath("Marker2D")

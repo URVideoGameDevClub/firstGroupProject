@@ -8,9 +8,12 @@ signal player_health_updated(health: int)
 signal player_death
 signal item_added(item_name: String)
 signal spike_hit
+signal checkpoint_entered(pos: Marker2D)
+signal show_crown_anim
 
 
 var inventory: Array[String] = []
+var paused := false
 
 
 func add_to_inventory(item_name: String) -> void:

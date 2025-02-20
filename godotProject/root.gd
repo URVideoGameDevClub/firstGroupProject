@@ -1,11 +1,22 @@
+class_name Route
 extends Node
 
 
+enum Level { NONE, SPAWN, LEFT, RIGHT }
+
+
 const PLAYER_SCENE := preload("res://Player/objects/new_player.gd")
+const CROWN_ANIM_SCENE := preload("res://crown_anim.tscn")
+const THANK_YOU_SCENE := preload("res://thank_you_anim.tscn")
+const LEVELS := {
+	Level.NONE: null,
+	Level.SPAWN: preload("res://Levels/real/spawn_level.tscn"),
+	Level.LEFT: preload("res://Levels/real/left_level.tscn"),
+}
 
 
 @export var current_level: Node2D
-@export var last_door: NewDoor
+@export var last_spawn_marker: Marker2D
 @export var player: NewPlayer
 @export var dbg_starting_items: Array[String]
 
@@ -13,6 +24,8 @@ const PLAYER_SCENE := preload("res://Player/objects/new_player.gd")
 func _ready() -> void:
 	Global.door_entered.connect(_on_door_entered)
 	Global.spike_hit.connect(_on_spike_hit)
+	Global.checkpoint_entered.connect(_on_checkpoint_entered)
+	Global.show_crown_anim.connect(_on_show_crown_anim)
 	
 	for item: String in dbg_starting_items:
 		Global.add_to_inventory(item)
@@ -27,17 +40,39 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_door_entered(door: NewDoor) -> void:
-	# Debug
-	print(door)
+	if door.id == 2:
+		Global.paused = true
+		player.visible = false
+		var thank_you := THANK_YOU_SCENE.instantiate()
+		add_child(thank_you)
+		thank_you.get_node("AnimationPlayer").play(&"new_animation")
+		return
 	
 	current_level.queue_free()
-	current_level = door.target_room.instantiate()
-	add_child(current_level)
-	
-	print("WIP - Spawn new player in level")
-	# instantiate new player, set player.global_position = door.spawn_marker.global_position
-	# add player as child of level probably
+	print(door.target_room)
+	current_level = LEVELS[door.target_room].instantiate()
+	add_child.call_deferred(current_level)
+	var target_id := door.target_id
+	await get_tree().process_frame
+	for i_door: NewDoor in get_tree().get_nodes_in_group(&"door"):
+		if i_door.id == target_id:
+			last_spawn_marker = i_door.spawn_marker
+			player.global_position = last_spawn_marker.global_position
 
 
 func _on_spike_hit() -> void:
-	player.global_position = last_door.spawn_marker.global_position
+	player.global_position = last_spawn_marker.global_position
+
+
+func _on_checkpoint_entered(marker: Marker2D) -> void:
+	last_spawn_marker = marker
+
+
+func _on_show_crown_anim() -> void:
+	Global.paused = true
+	var crown_anim := CROWN_ANIM_SCENE.instantiate()
+	add_child(crown_anim)
+	crown_anim.get_node("AnimationPlayer").play(&"the_anim")
+	await crown_anim.get_node("AnimationPlayer").animation_finished
+	Global.paused = false
+	crown_anim.queue_free()
