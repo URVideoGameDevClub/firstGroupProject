@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://3aykqq2lsaxt"]
+
+[ext_resource type="Script" path="res://Door/NewDoor/new_door.gd" id="1_abd74"]
+[ext_resource type="Texture2D" uid="uid://bqly3evih4m3" path="res://Door/NewDoor/LargeDoor var 2 crystals.png" id="2_46vy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4mai"]
+size = Vector2(16, 60)
+
+[node name="DoorUno" type="Node2D" node_paths=PackedStringArray("area", "spawn_marker")]
+script = ExtResource("1_abd74")
+area = NodePath("Area2D")
+spawn_marker = NodePath("Marker2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 2)
+shape = SubResource("RectangleShape2D_a4mai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_46vy0")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-24, 0)

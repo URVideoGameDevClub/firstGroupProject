@@ -337,7 +337,7 @@ hit_from_inside = true
 target_position = Vector2(-45, -14)
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(-23, -7)
+position = Vector2(-28, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_keg15")

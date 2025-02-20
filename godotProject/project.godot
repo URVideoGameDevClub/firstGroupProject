@@ -45,6 +45,10 @@ project/assembly_name="GodotProject"
 player=""
 door="this is for all the doors"
 
+[gui]
+
+theme/custom_font="res://font/PixelatedEleganceRegular-ovyAA.ttf"
+
 [input]
 
 move_left={

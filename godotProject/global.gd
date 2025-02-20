@@ -7,6 +7,7 @@ signal enemy_death(enemy: Enemy)
 signal player_health_updated(health: int)
 signal player_death
 signal item_added(item_name: String)
+signal spike_hit
 
 
 var inventory: Array[String] = []

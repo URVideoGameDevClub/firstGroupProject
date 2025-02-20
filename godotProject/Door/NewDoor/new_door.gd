@@ -24,15 +24,15 @@ extends Node2D
 
 func _ready() -> void:
 	if area == null:
-		push_error("area is null")
+		push_warning("area is null")
 	if target_room == null:
-		push_error("target_room is null")
+		push_warning("target_room is null")
 	if spawn_marker == null:
-		push_error("spawn_marker is null")
+		push_warning("spawn_marker is null")
 	if id < 0:
-		push_error("id == %d < 0, please change from default" % id)
+		push_warning("id == %d < 0, please change from default" % id)
 	if target_id < 0:
-		push_error("target_id == %d < 0, please change from default" % target_id)
+		push_warning("target_id == %d < 0, please change from default" % target_id)
 	
 	if not area.body_entered.is_connected(_on_area_2d_body_entered):
 		area.body_entered.connect(_on_area_2d_body_entered)
@@ -40,9 +40,10 @@ func _ready() -> void:
 
 ## Connect body_entered signals here.
 ## Will emit Global.door_entered if body is a NewPlayer.
-func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is NewPlayer:
 		Global.door_entered.emit(self)
+		print(self)
 
 
 func _to_string() -> String:

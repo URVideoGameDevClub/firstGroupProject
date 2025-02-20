@@ -4,11 +4,14 @@ extends Node
 const PLAYER_SCENE := preload("res://Player/objects/new_player.gd")
 
 
-@export var current_level: Node2D = null
+@export var current_level: Node2D
+@export var last_door: NewDoor
+@export var player: NewPlayer
 
 
 func _ready() -> void:
 	Global.door_entered.connect(_on_door_entered)
+	Global.spike_hit.connect(_on_spike_hit)
 	
 	if current_level == null:
 		push_error("Root.current_level is null")
@@ -30,3 +33,7 @@ func _on_door_entered(door: NewDoor) -> void:
 	print("WIP - Spawn new player in level")
 	# instantiate new player, set player.global_position = door.spawn_marker.global_position
 	# add player as child of level probably
+
+
+func _on_spike_hit() -> void:
+	player.global_position = last_door.spawn_marker.global_position

@@ -9,34 +9,34 @@
 [ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://World/TILE_CaveBG_Vines2.png" id="7_fj6rj"]
 [ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://World/TILE_CaveBG_Vines3.png" id="8_pnywe"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3e5n0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wbjmx"]
 texture = ExtResource("5_40x1l")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_2ylsq"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_3e5n0")
+sources/1 = SubResource("TileSetAtlasSource_wbjmx")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c04ih"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb21r"]
 texture = ExtResource("6_i3snr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mmbu8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jp3yc"]
 texture = ExtResource("7_fj6rj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sep1v"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yum20"]
 texture = ExtResource("8_pnywe")
 texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_6fkv4"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_c04ih")
-sources/1 = SubResource("TileSetAtlasSource_mmbu8")
-sources/2 = SubResource("TileSetAtlasSource_sep1v")
+sources/0 = SubResource("TileSetAtlasSource_sb21r")
+sources/1 = SubResource("TileSetAtlasSource_jp3yc")
+sources/2 = SubResource("TileSetAtlasSource_yum20")
 
 [node name="TestLevel" type="Node2D"]
 
@@ -46,10 +46,6 @@ tile_map_data = PackedByteArray("AAD8/wgAAQACAAIAAAD8/wcAAQACAAEAAAD8/wYAAQACAAE
 
 [node name="NewPlayer" parent="." instance=ExtResource("6_b1doi")]
 position = Vector2(10, 96)
-move_speed = 180.0
-jump_velocity = 400.0
-gravity = 1400.0
-low_gravity_multiplier = 0.7
 
 [node name="SquirrelEnemy" parent="." instance=ExtResource("3_np8g5")]
 position = Vector2(-222, 128)

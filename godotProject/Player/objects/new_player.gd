@@ -177,7 +177,7 @@ func _air_state() -> void:
 		return
 	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
 		jump_held = false
-
+	
 	
 	var local_gravity := gravity
 	if jump_held == true:
