@@ -84,8 +84,6 @@ func _on_show_crown_anim() -> void:
 
 
 func _on_player_death() -> void:
-	return
-	
 	await get_tree().create_timer(2.0).timeout
 	player.health = 3
 	Global.player_health_updated.emit(player.health)
