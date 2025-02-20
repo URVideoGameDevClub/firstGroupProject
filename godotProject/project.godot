@@ -47,7 +47,7 @@ door="this is for all the doors"
 
 [gui]
 
-theme/custom_font="res://font/PixelatedEleganceRegular-ovyAA.ttf"
+theme/custom="res://font/new_theme.tres"
 
 [input]
 

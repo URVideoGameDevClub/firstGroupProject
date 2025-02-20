@@ -7,11 +7,15 @@ const PLAYER_SCENE := preload("res://Player/objects/new_player.gd")
 @export var current_level: Node2D
 @export var last_door: NewDoor
 @export var player: NewPlayer
+@export var dbg_starting_items: Array[String]
 
 
 func _ready() -> void:
 	Global.door_entered.connect(_on_door_entered)
 	Global.spike_hit.connect(_on_spike_hit)
+	
+	for item: String in dbg_starting_items:
+		Global.add_to_inventory(item)
 	
 	if current_level == null:
 		push_error("Root.current_level is null")

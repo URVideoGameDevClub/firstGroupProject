@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c2j2rk77vl5tx"]
+
+[ext_resource type="FontFile" uid="uid://bpedqi6cbwma0" path="res://font/PixelatedEleganceRegular-ovyAA.ttf" id="1_eq6gk"]
+
+[resource]
+default_font = ExtResource("1_eq6gk")
+default_font_size = 18

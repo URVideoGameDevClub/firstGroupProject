@@ -309,7 +309,6 @@ radius = 14.0
 
 [node name="SquirrelEnemy" type="CharacterBody2D"]
 script = ExtResource("1_6a6c2")
-health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -7.5)
