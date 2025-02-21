@@ -1,12 +1,6 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dosrv4evqxp34"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dosrv4evqxp34"]
 
-[ext_resource type="Texture2D" uid="uid://jia6m7mp2o1" path="res://World/Tilemap/really_cool_dirt_tile.png" id="1_35red"]
 [ext_resource type="Texture2D" uid="uid://bmgyrcljvkanl" path="res://World/Tilemap/Walls-v11.png" id="2_vdmxx"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qk0ac"]
-texture = ExtResource("1_35red")
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1d2p"]
 texture = ExtResource("2_vdmxx")
@@ -87,6 +81,35 @@ texture_region_size = Vector2i(32, 32)
 2:2/0/terrains_peering_bit/left_side = 0
 2:2/0/terrains_peering_bit/top_left_corner = 0
 2:2/0/terrains_peering_bit/top_side = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/top_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/terrains_peering_bit/left_side = 0
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/right_side = 0
+1:3/0/terrains_peering_bit/left_side = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -95,5 +118,4 @@ physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Stone"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_qk0ac")
 sources/1 = SubResource("TileSetAtlasSource_j1d2p")

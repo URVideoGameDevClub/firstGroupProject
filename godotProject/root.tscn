@@ -10,7 +10,6 @@ script = ExtResource("1_xwu3t")
 current_level = NodePath("SpawnLevel")
 last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
 player = NodePath("NewPlayer")
-dbg_starting_items = Array[String](["glider"])
 
 [node name="Gui" parent="." instance=ExtResource("4_yot6p")]
 
