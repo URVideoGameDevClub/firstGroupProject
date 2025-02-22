@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cfv812166slu5" path="res://Player/player gliding animation 1.png" id="9_qv2ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4jn6"]
-size = Vector2(20, 27)
+size = Vector2(12, 27)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8a23o"]
 shader = ExtResource("2_1i288")
@@ -639,7 +639,7 @@ flip_h = true
 offset = Vector2(0, -30)
 process_callback = 0
 position_smoothing_enabled = true
-position_smoothing_speed = 16.0
+position_smoothing_speed = 6.0
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 position = Vector2(24, -14)
