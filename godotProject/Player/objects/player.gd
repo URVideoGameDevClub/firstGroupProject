@@ -7,11 +7,10 @@ const MOVE_SPEED := 200.0
 const GROUND_ACCEL := 3000.0
 const AIR_ACCEL := 2000.0
 const JUMP_VELOCITY := 400.0
-const GRAVITY := 1000.0
-const STRONG_GRAVITY := 2000.0
-const FALL_GRAVITY := 1500.0
-const GLIDE_GRAVITY := 500.0
-const FALL_GRAVITY_VELOCITY_THRESHOLD := 50.0
+const GRAVITY := 1100.0
+const JUMP_CUTOFF := 0.5
+const MAX_FALL_SPEED := 70.0
+const GLIDE_GRAVITY := 600.0
 const GLIDE_MAX_FALL_SPEED := 50.0
 const LOW_GRAVITY_MULTIPLIER := 0.75
 const ATTACK_DAMAGE := 1
@@ -31,7 +30,7 @@ var land_animation_in_progress := false
 var jump_held := false
 var can_jump := true
 var invincible := false
-var use_strong_gravity := false
+var gravity := GRAVITY
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shader_material: ShaderMaterial = sprite.material
@@ -52,15 +51,15 @@ func set_state(value: State, opts := {}) -> void:
 	land_animation_in_progress = false
 	jump_held = false
 	collision_shape.disabled = false
-	use_strong_gravity = false
+	gravity = GRAVITY
 	
-	if value == State.AIR and "jump" in opts and opts["jump"] == true:
+	if value == State.AIR and opts.get("jump"):
 		velocity.y = -JUMP_VELOCITY
 		jump_animation_in_progress = true
 		jump_held = true
 		sprite.play(&"air_start")
 		jump_hold_timer.start()
-	elif "land" in opts and opts["land"] == true:
+	elif opts.get("land"):
 		land_animation_in_progress = true
 		sprite.play(&"air_finish")
 	elif value == State.ATTACK:
@@ -179,12 +178,10 @@ func _air_state() -> void:
 		set_state(State.GLIDE)
 		return
 	
-	var l_gravity := STRONG_GRAVITY if use_strong_gravity else GRAVITY
-	if velocity.y > FALL_GRAVITY_VELOCITY_THRESHOLD:
-		l_gravity = FALL_GRAVITY
-	
 	velocity.x = move_toward(velocity.x, input_vector.x * MOVE_SPEED, AIR_ACCEL * phys_delta)
-	velocity.y += l_gravity * phys_delta
+	if Input.is_action_just_released(&"jump") and velocity.y < 0.0:
+		velocity.y *= JUMP_CUTOFF
+	velocity.y += gravity * phys_delta
 	move_and_slide()
 	
 	if not jump_animation_in_progress:
@@ -234,6 +231,7 @@ func _ground_transition() -> State:
 		return State.IDLE
 	else:
 		return State.RUN
+
 
 func receive_attack(damage: int) -> void:
 	if invincible:
@@ -286,6 +284,4 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 
 func _on_jump_hold_timer_timeout() -> void:
-	if not Input.is_action_pressed(&"jump"):
-		if velocity.y < 0.0:
-			use_strong_gravity = true
+	pass

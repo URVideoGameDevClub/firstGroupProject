@@ -536,7 +536,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"glide_middle",
-"speed": 12.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -628,11 +628,12 @@ shape = SubResource("RectangleShape2D_u4jn6")
 material = SubResource("ShaderMaterial_8a23o")
 position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_754dc")
-animation = &"attack"
+animation = &"idle"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -32)
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
@@ -652,7 +653,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="JumpHoldTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.15
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
