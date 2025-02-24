@@ -43,7 +43,7 @@ func _ready() -> void:
 ## Connect body_entered signals here.
 ## Will emit Global.door_entered if body is a NewPlayer.
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is NewPlayer:
+	if body is Player:
 		Global.door_entered.emit(self)
 		print(self)
 

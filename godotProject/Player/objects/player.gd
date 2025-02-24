@@ -1,4 +1,4 @@
-class_name NewPlayer
+class_name Player
 extends CharacterBody2D
 
 enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }

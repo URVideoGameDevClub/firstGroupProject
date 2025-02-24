@@ -10,6 +10,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is NewPlayer:
+	if body is Player:
 		body.receive_attack(damage)
 		Global.spike_hit.emit()

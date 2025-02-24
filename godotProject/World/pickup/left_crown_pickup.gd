@@ -6,5 +6,5 @@ func _ready() -> void:
 
 
 func lol(body: Node2D) -> void:
-	if body is NewPlayer:
+	if body is Player:
 		Global.show_crown_anim.emit()

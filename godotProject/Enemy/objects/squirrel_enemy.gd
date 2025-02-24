@@ -32,11 +32,11 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.IDLE:
 			var collider := vision_cast.get_collider()
-			if collider and collider is NewPlayer:
+			if collider and collider is Player:
 				set_state(State.ATTACK)
 		State.WALK:
 			var collider := vision_cast.get_collider()
-			if collider and collider is NewPlayer:
+			if collider and collider is Player:
 				set_state(State.ATTACK)
 				return
 			
@@ -104,7 +104,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is NewPlayer:
+	if body is Player:
 		body.receive_attack(ATTACK_DAMAGE)
 
 

@@ -5,7 +5,7 @@ extends Node
 enum Level { NONE, SPAWN, LEFT, RIGHT }
 
 
-const PLAYER_SCENE := preload("res://Player/objects/new_player.gd")
+const PLAYER_SCENE := preload("res://Player/objects/player.gd")
 const CROWN_ANIM_SCENE := preload("res://crown_anim.tscn")
 const THANK_YOU_SCENE := preload("res://thank_you_anim.tscn")
 const LEVELS := {
@@ -17,7 +17,7 @@ const LEVELS := {
 
 @export var current_level: Node2D
 @export var last_spawn_marker: Marker2D
-@export var player: NewPlayer
+@export var player: Player
 @export var dbg_starting_items: Array[String]
 
 
@@ -71,8 +71,8 @@ func _on_checkpoint_entered(marker: Marker2D) -> void:
 
 func _on_show_crown_anim() -> void:
 	Global.paused = true
-	if player.state == NewPlayer.State.RUN:
-		player.set_state(NewPlayer.State.IDLE)
+	if player.state == Player.State.RUN:
+		player.set_state(Player.State.IDLE)
 	player.sprite.pause()
 	var crown_anim := CROWN_ANIM_SCENE.instantiate()
 	add_child(crown_anim)
@@ -91,4 +91,4 @@ func _on_player_death() -> void:
 	player.velocity.y = 0.0
 	print(player.global_position)
 	print(last_spawn_marker.global_position)
-	player.set_state(NewPlayer.State.IDLE)
+	player.set_state(Player.State.IDLE)
