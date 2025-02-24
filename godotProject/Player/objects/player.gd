@@ -3,18 +3,24 @@ extends CharacterBody2D
 
 enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
-const MOVE_SPEED := 220.0
+const MOVE_SPEED := 200.0
 const GROUND_ACCEL := 3000.0
 const AIR_ACCEL := 2000.0
 const JUMP_VELOCITY := 400.0
-const GRAVITY := 1400.0
+const GRAVITY := 1000.0
+const STRONG_GRAVITY := 2000.0
+const FALL_GRAVITY := 1500.0
 const GLIDE_GRAVITY := 500.0
+const FALL_GRAVITY_VELOCITY_THRESHOLD := 50.0
 const GLIDE_MAX_FALL_SPEED := 50.0
 const LOW_GRAVITY_MULTIPLIER := 0.75
 const ATTACK_DAMAGE := 1
 const DAMAGE_ANIM_TIME := 0.2
 
-@export var health := 3
+@export var health := 3:
+	set(value):
+		health = value
+		Global.player_health_updated.emit(value)
 @export var debug_log := false
 
 var state := State.IDLE
@@ -25,6 +31,7 @@ var land_animation_in_progress := false
 var jump_held := false
 var can_jump := true
 var invincible := false
+var use_strong_gravity := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shader_material: ShaderMaterial = sprite.material
@@ -32,6 +39,7 @@ var invincible := false
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
+@onready var jump_hold_timer: Timer = $JumpHoldTimer
 
 
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
@@ -39,16 +47,19 @@ func set_state(value: State, opts := {}) -> void:
 	if debug_log:
 		print("Player state: %s -> %s" % [state_to_string(state), state_to_string(value)])
 	
+	jump_hold_timer.stop()
 	jump_animation_in_progress = false
 	land_animation_in_progress = false
 	jump_held = false
 	collision_shape.disabled = false
+	use_strong_gravity = false
 	
 	if value == State.AIR and "jump" in opts and opts["jump"] == true:
 		velocity.y = -JUMP_VELOCITY
 		jump_animation_in_progress = true
 		jump_held = true
 		sprite.play(&"air_start")
+		jump_hold_timer.start()
 	elif "land" in opts and opts["land"] == true:
 		land_animation_in_progress = true
 		sprite.play(&"air_finish")
@@ -167,16 +178,13 @@ func _air_state() -> void:
 	elif Input.is_action_just_pressed(&"glide") and "glider" in Global.inventory:
 		set_state(State.GLIDE)
 		return
-	elif Input.is_action_just_released(&"jump") or velocity.y >= 0.0:
-		jump_held = false
 	
-	
-	var local_GRAVITY := GRAVITY
-	if jump_held == true:
-		local_GRAVITY *= LOW_GRAVITY_MULTIPLIER
+	var l_gravity := STRONG_GRAVITY if use_strong_gravity else GRAVITY
+	if velocity.y > FALL_GRAVITY_VELOCITY_THRESHOLD:
+		l_gravity = FALL_GRAVITY
 	
 	velocity.x = move_toward(velocity.x, input_vector.x * MOVE_SPEED, AIR_ACCEL * phys_delta)
-	velocity.y += local_GRAVITY * phys_delta
+	velocity.y += l_gravity * phys_delta
 	move_and_slide()
 	
 	if not jump_animation_in_progress:
@@ -275,3 +283,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if state == State.ATTACK:
 		if sprite.frame == 2:
 			_send_attacks()
+
+
+func _on_jump_hold_timer_timeout() -> void:
+	if not Input.is_action_pressed(&"jump"):
+		if velocity.y < 0.0:
+			use_strong_gravity = true
