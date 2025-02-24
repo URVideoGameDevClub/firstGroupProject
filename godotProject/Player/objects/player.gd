@@ -31,6 +31,7 @@ var jump_held := false
 var can_jump := true
 var invincible := false
 var gravity := GRAVITY
+var double_attack_queued := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shader_material: ShaderMaterial = sprite.material
@@ -52,6 +53,7 @@ func set_state(value: State, opts := {}) -> void:
 	jump_held = false
 	collision_shape.disabled = false
 	gravity = GRAVITY
+	double_attack_queued = false
 	
 	if value == State.AIR and opts.get("jump"):
 		velocity.y = -JUMP_VELOCITY
@@ -195,7 +197,8 @@ func _air_state() -> void:
 
 
 func _attack_state() -> void:
-	pass
+	if Input.is_action_just_pressed(&"attack") and sprite.frame > 0:
+		double_attack_queued = true
 
 
 func _send_attacks() -> void:
@@ -263,6 +266,13 @@ func _on_sprite_animation_finished() -> void:
 		&"air_finish", &"glide_finish":
 			land_animation_in_progress = false
 		&"attack":
+			# temp disable
+			if double_attack_queued and false:
+				sprite.play(&"double_attack")
+				double_attack_queued = false
+			else:
+				set_state(State.IDLE)
+		&"double_attack":
 			set_state(State.IDLE)
 		&"glide_start":
 			if state == State.GLIDE:
