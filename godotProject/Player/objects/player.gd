@@ -4,7 +4,7 @@ extends CharacterBody2D
 enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
 const MOVE_SPEED := 220.0
-const GROUND_ACCEL := 3500.0
+const GROUND_ACCEL := 3000.0
 const AIR_ACCEL := 2000.0
 const JUMP_VELOCITY := 400.0
 const GRAVITY := 1400.0
@@ -23,7 +23,6 @@ var phys_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
-var last_wall_normal_x := 0.0
 var can_jump := true
 var invincible := false
 
@@ -104,9 +103,6 @@ func _physics_process(delta: float) -> void:
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
 		attack_hitbox.position.x = -absf(attack_hitbox.position.x)
-	
-	if is_on_wall():
-		last_wall_normal_x = get_last_slide_collision().get_normal().x
 	
 	match state:
 		State.IDLE:
