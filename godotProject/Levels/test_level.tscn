@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://Enemy/objects/squirrel_enemy.tscn" id="3_np8g5"]
 [ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://World/pickup/glider_pickup.tscn" id="4_ruhcm"]
 [ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://World/TILE_CaveBG_Base.png" id="5_40x1l"]
-[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/new_player.tscn" id="6_b1doi"]
+[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/player.tscn" id="6_b1doi"]
 [ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://World/TILE_CaveBG_Vines1.png" id="6_i3snr"]
 [ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://World/TILE_CaveBG_Vines2.png" id="7_fj6rj"]
 [ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://World/TILE_CaveBG_Vines3.png" id="8_pnywe"]

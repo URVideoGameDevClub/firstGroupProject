@@ -1,6 +1,6 @@
 [gd_scene load_steps=92 format=3 uid="uid://bo7ruckc5q446"]
 
-[ext_resource type="Script" path="res://Player/objects/new_player.gd" id="1_7lba1"]
+[ext_resource type="Script" path="res://Player/objects/player.gd" id="1_7lba1"]
 [ext_resource type="Texture2D" uid="uid://b0p4ckqar88ym" path="res://Player/Player idle animation.png" id="1_il7cg"]
 [ext_resource type="Shader" path="res://Player/objects/new_player.gdshader" id="2_1i288"]
 [ext_resource type="Texture2D" uid="uid://he58gl6ojycv" path="res://Player/Player double attack animation.png" id="3_fuddv"]
@@ -619,10 +619,6 @@ radius = 16.0
 
 [node name="NewPlayer" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_7lba1")
-move_speed = 180.0
-jump_velocity = 400.0
-gravity = 1400.0
-low_gravity_multiplier = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13.5)
@@ -647,10 +643,6 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
 shape = SubResource("CircleShape2D_wgawy")
-
-[node name="WallCast" type="RayCast2D" parent="."]
-position = Vector2(0, -14)
-target_position = Vector2(25, 0)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.05

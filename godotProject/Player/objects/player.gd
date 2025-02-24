@@ -1,45 +1,37 @@
 class_name NewPlayer
 extends CharacterBody2D
 
-
 enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
-
+const MOVE_SPEED := 220.0
+const GROUND_ACCEL := 3500.0
+const JUMP_VELOCITY := 400.0
+const GRAVITY := 1400.0
+const GLIDE_GRAVITY := 500.0
+const GLIDE_MAX_FALL_SPEED := 50.0
+const LOW_GRAVITY_MULTIPLIER := 0.75
+const ATTACK_DAMAGE := 1
 const DAMAGE_ANIM_TIME := 0.2
 
-
-@export var move_speed: float
-@export var jump_velocity: float
-@export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var glide_gravity := 500.0
-@export var glide_max_fall_speed := 50.0
-@export var low_gravity_multiplier := 0.75
-@export var wall_max_fall_speed := 64.0
 @export var health := 3
-@export var max_health := 3
-@export var attack_damage := 1
 @export var debug_log := false
-
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shader_material: ShaderMaterial = sprite.material
-@onready var attack_hitbox: Area2D = $AttackHitbox
-@onready var wall_cast: RayCast2D = $WallCast
-@onready var wall_cast_length: float = wall_cast.target_position.length()
-@onready var coyote_timer: Timer = $CoyoteTimer
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var invincibility_timer: Timer = $InvincibilityTimer
-
 
 var state := State.IDLE
 var input_vector := Vector2.ZERO
-var this_delta := 0.0
+var phys_delta := 0.0
 var jump_animation_in_progress := false
 var land_animation_in_progress := false
 var jump_held := false
 var last_wall_normal_x := 0.0
 var can_jump := true
 var invincible := false
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shader_material: ShaderMaterial = sprite.material
+@onready var attack_hitbox: Area2D = $AttackHitbox
+@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
@@ -53,7 +45,7 @@ func set_state(value: State, opts := {}) -> void:
 	collision_shape.disabled = false
 	
 	if value == State.AIR and "jump" in opts and opts["jump"] == true:
-		velocity.y = -jump_velocity
+		velocity.y = -JUMP_VELOCITY
 		jump_animation_in_progress = true
 		jump_held = true
 		sprite.play(&"air_start")
@@ -103,15 +95,14 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	input_vector = Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
-	wall_cast.target_position.x = sign(input_vector.x) * wall_cast_length
-	this_delta = delta
+	phys_delta = delta
 	
 	if input_vector.x > 0.0:
 		sprite.flip_h = true
-		attack_hitbox.position.x = abs(attack_hitbox.position.x)
+		attack_hitbox.position.x = absf(attack_hitbox.position.x)
 	elif input_vector.x < 0.0:
 		sprite.flip_h = false
-		attack_hitbox.position.x = -abs(attack_hitbox.position.x)
+		attack_hitbox.position.x = -absf(attack_hitbox.position.x)
 	
 	if is_on_wall():
 		last_wall_normal_x = get_last_slide_collision().get_normal().x
@@ -154,7 +145,7 @@ func _idle_state() -> void:
 
 func _run_state() -> void:
 	can_jump = true
-	velocity.x = input_vector.x * move_speed
+	velocity.x = move_toward(velocity.x, input_vector.x * MOVE_SPEED, GROUND_ACCEL * phys_delta)
 	move_and_slide()
 	
 	sprite.play(&"run")
@@ -183,12 +174,12 @@ func _air_state() -> void:
 		jump_held = false
 	
 	
-	var local_gravity := gravity
+	var local_GRAVITY := GRAVITY
 	if jump_held == true:
-		local_gravity *= low_gravity_multiplier
+		local_GRAVITY *= LOW_GRAVITY_MULTIPLIER
 	
-	velocity.x = input_vector.x * move_speed
-	velocity.y += local_gravity * this_delta
+	velocity.x = input_vector.x * MOVE_SPEED
+	velocity.y += local_GRAVITY * phys_delta
 	move_and_slide()
 	
 	if not jump_animation_in_progress:
@@ -198,7 +189,7 @@ func _air_state() -> void:
 			sprite.play(&"air_descending")
 	
 	if is_on_floor() and velocity.y >= 0.0:
-		set_state(State.IDLE, {"land": true})
+		set_state(_ground_transition(), {"land": true})
 
 
 func _attack_state() -> void:
@@ -207,9 +198,8 @@ func _attack_state() -> void:
 
 func _send_attacks() -> void:
 	for body: Node2D in attack_hitbox.get_overlapping_bodies():
-		# TODO: Change to use new Enemy class
 		if body is Enemy:
-			body.receive_attack(attack_damage)
+			body.receive_attack(ATTACK_DAMAGE)
 
 
 func _death_state() -> void:
@@ -217,8 +207,8 @@ func _death_state() -> void:
 
 
 func _glide_state() -> void:
-	velocity.x = input_vector.x * move_speed
-	velocity.y = minf(velocity.y + glide_gravity * this_delta, glide_max_fall_speed)
+	velocity.x = input_vector.x * MOVE_SPEED
+	velocity.y = minf(velocity.y + GLIDE_GRAVITY * phys_delta, GLIDE_MAX_FALL_SPEED)
 	move_and_slide()
 	
 	if is_on_floor():
@@ -233,6 +223,12 @@ func _get_jump() -> bool:
 	else:
 		return Input.is_action_pressed(&"jump") and can_jump
 
+
+func _ground_transition() -> State:
+	if velocity.x == 0.0:
+		return State.IDLE
+	else:
+		return State.RUN
 
 func receive_attack(damage: int) -> void:
 	if invincible:
