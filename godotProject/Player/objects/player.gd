@@ -5,6 +5,7 @@ enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
 const MOVE_SPEED := 220.0
 const GROUND_ACCEL := 3500.0
+const AIR_ACCEL := 2000.0
 const JUMP_VELOCITY := 400.0
 const GRAVITY := 1400.0
 const GLIDE_GRAVITY := 500.0
@@ -178,7 +179,7 @@ func _air_state() -> void:
 	if jump_held == true:
 		local_GRAVITY *= LOW_GRAVITY_MULTIPLIER
 	
-	velocity.x = input_vector.x * MOVE_SPEED
+	velocity.x = move_toward(velocity.x, input_vector.x * MOVE_SPEED, AIR_ACCEL * phys_delta)
 	velocity.y += local_GRAVITY * phys_delta
 	move_and_slide()
 	

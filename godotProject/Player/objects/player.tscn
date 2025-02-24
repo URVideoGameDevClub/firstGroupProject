@@ -632,10 +632,10 @@ animation = &"attack"
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -30)
+position = Vector2(0, -32)
 process_callback = 0
 position_smoothing_enabled = true
-position_smoothing_speed = 6.0
+position_smoothing_speed = 8.0
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 position = Vector2(24, -14)
