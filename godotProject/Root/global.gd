@@ -1,5 +1,5 @@
-## Global singleton class, mainly for signals right now
 extends Node
+## Global signals and a reference to root. Should not hold any other state.
 
 
 signal door_entered(door: Door)
@@ -13,4 +13,5 @@ signal show_crown_anim
 
 
 var root: Route
+# TODO: move to root
 var paused := false

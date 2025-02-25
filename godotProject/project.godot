@@ -11,13 +11,12 @@ config_version=5
 [application]
 
 config/name="Bunny Game"
-run/main_scene="res://root.tscn"
+run/main_scene="res://Root/root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Root/global.gd"
 
 [debug]
 

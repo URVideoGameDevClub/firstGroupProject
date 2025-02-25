@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cg2mgdxyjp5sy" path="res://World/bg/spawn_background.tscn" id="1_7rrul"]
 [ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/Objects/door_uno.tscn" id="6_svg6m"]
 [ext_resource type="Script" path="res://Levels/real/stupid_label.gd" id="7_gktv8"]
-[ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://checkpoint.tscn" id="7_vxjlm"]
+[ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://World/checkpoint.tscn" id="7_vxjlm"]
 [ext_resource type="PackedScene" uid="uid://cdxsu8lg07h0y" path="res://World/pickup/left_crown_pickup.tscn" id="8_08fn4"]
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://World/Tilemap/basic_tiles.tres" id="8_50q6f"]
 [ext_resource type="Texture2D" uid="uid://bj1tceg31spxy" path="res://World/sign.png" id="9_rjxav"]

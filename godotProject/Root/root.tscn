@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl4unk7yiblu0"]
 
-[ext_resource type="Script" path="res://root.gd" id="1_xwu3t"]
+[ext_resource type="Script" path="res://Root/root.gd" id="1_xwu3t"]
 [ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://Levels/real/spawn_level.tscn" id="3_h6t74"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Player/objects/player.tscn" id="4_aen4m"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://Gui/gui.tscn" id="4_yot6p"]
