@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 
-func _on_door_entered(door: NewDoor) -> void:
+func _on_door_entered(door: Door) -> void:
 	if door.id == 2:
 		Global.paused = true
 		player.visible = false
@@ -55,7 +55,7 @@ func _on_door_entered(door: NewDoor) -> void:
 	add_child.call_deferred(current_level)
 	var target_id := door.target_id
 	await get_tree().process_frame
-	for i_door: NewDoor in get_tree().get_nodes_in_group(&"door"):
+	for i_door: Door in get_tree().get_nodes_in_group(&"door"):
 		if i_door.id == target_id:
 			last_spawn_marker = i_door.spawn_marker
 			player.global_position = last_spawn_marker.global_position

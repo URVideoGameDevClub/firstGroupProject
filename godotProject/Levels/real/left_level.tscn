@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://dcb3cx0bo07it"]
 
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://World/Tilemap/basic_tiles.tres" id="1_wpe4n"]
-[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/NewDoor/door_uno.tscn" id="2_qd0l7"]
+[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/Objects/door_uno.tscn" id="2_qd0l7"]
 [ext_resource type="PackedScene" uid="uid://byjkctoh0ya5w" path="res://World/crystal_spike.tscn" id="3_5okon"]
 [ext_resource type="PackedScene" uid="uid://dsijmt0hqu5fm" path="res://World/bg/background.tscn" id="7_tcx1h"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://checkpoint.tscn" id="8_ocl31"]
@@ -21,6 +21,7 @@ position = Vector2(53, 0)
 target_room = 1
 id = 1
 target_id = 0
+actual_pos = null
 
 [node name="Label" type="Label" parent="DoorUno"]
 offset_left = -448.0

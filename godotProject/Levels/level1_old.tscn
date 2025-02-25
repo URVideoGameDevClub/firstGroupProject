@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://c04k3f8ducxsx"]
 
 [ext_resource type="PackedScene" uid="uid://dqssstyn00fcf" path="res://Goal/objects/goal.tscn" id="1_nupno"]
-[ext_resource type="PackedScene" uid="uid://ddeny46anrd7u" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
+[ext_resource type="PackedScene" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
 [ext_resource type="PackedScene" uid="uid://cg8ecxdyul3i3" path="res://Wall/objects/wall.tscn" id="4_idaer"]
-[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://Door/doorR.tscn" id="4_pt1x3"]
+[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://Door/Old/door_right_old.tscn" id="4_pt1x3"]
+
 
 [node name="Level" type="Node2D"]
 

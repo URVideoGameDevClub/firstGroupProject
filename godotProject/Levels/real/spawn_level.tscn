@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://bnjo3ngrhgibp"]
 
 [ext_resource type="PackedScene" uid="uid://cg2mgdxyjp5sy" path="res://World/bg/spawn_background.tscn" id="1_7rrul"]
-[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/NewDoor/door_uno.tscn" id="6_svg6m"]
+[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/Objects/door_uno.tscn" id="6_svg6m"]
 [ext_resource type="Script" path="res://Levels/real/stupid_label.gd" id="7_gktv8"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://checkpoint.tscn" id="7_vxjlm"]
 [ext_resource type="PackedScene" uid="uid://cdxsu8lg07h0y" path="res://World/pickup/left_crown_pickup.tscn" id="8_08fn4"]
@@ -128,6 +128,7 @@ scale = Vector2(-1, 1)
 target_room = 2
 id = 0
 target_id = 1
+actual_pos = null
 
 [node name="Label" type="Label" parent="."]
 offset_left = -283.0
@@ -149,5 +150,7 @@ script = ExtResource("9_x0nol")
 [node name="DoorUno2" parent="." instance=ExtResource("6_svg6m")]
 z_index = -9
 position = Vector2(1205, 640)
+target_room = null
 id = 2
 target_id = 3
+actual_pos = null

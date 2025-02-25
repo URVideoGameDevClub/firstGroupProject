@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt37spchrfd6p"
-path="res://.godot/imported/CONCEPT_-_Player (2).png-695ed3b0f8e6351d0bf62f633d572ee0.ctex"
+uid="uid://cfl0y0ove4u1l"
+path="res://.godot/imported/LargeDoor_Side.png-00ca8c7bf81e73c0b33108ca0a359de3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Door/CONCEPT_-_Player (2).png"
-dest_files=["res://.godot/imported/CONCEPT_-_Player (2).png-695ed3b0f8e6351d0bf62f633d572ee0.ctex"]
+source_file="res://Door/Assets/LargeDoor_Side.png"
+dest_files=["res://.godot/imported/LargeDoor_Side.png-00ca8c7bf81e73c0b33108ca0a359de3.ctex"]
 
 [params]
 

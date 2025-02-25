@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfl0y0ove4u1l"
-path="res://.godot/imported/LargeDoor_Side.png-93ca0c239d151180e8705e69842d0ac3.ctex"
+uid="uid://bqly3evih4m3"
+path="res://.godot/imported/LargeDoor var 2 crystals.png-2351f709b24c78e799e00666db2f6c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Door/NewDoor/LargeDoor_Side.png"
-dest_files=["res://.godot/imported/LargeDoor_Side.png-93ca0c239d151180e8705e69842d0ac3.ctex"]
+source_file="res://Door/Assets/LargeDoor var 2 crystals.png"
+dest_files=["res://.godot/imported/LargeDoor var 2 crystals.png-2351f709b24c78e799e00666db2f6c78.ctex"]
 
 [params]
 
