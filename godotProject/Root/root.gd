@@ -5,13 +5,13 @@ extends Node
 enum Level { NONE, SPAWN, LEFT, RIGHT }
 
 
-const PLAYER_SCENE := preload("res://Player/objects/player.gd")
-const CROWN_ANIM_SCENE := preload("res://crown_anim.tscn")
-const THANK_YOU_SCENE := preload("res://thank_you_anim.tscn")
+const PLAYER_SCENE := preload("uid://bo7ruckc5q446")
+const CROWN_ANIM_SCENE := preload("uid://fb5owoxxidir")
+const THANK_YOU_SCENE := preload("uid://cqay4eu5nq4kd")
 const LEVELS := {
 	Level.NONE: null,
-	Level.SPAWN: preload("res://Levels/real/spawn_level.tscn"),
-	Level.LEFT: preload("res://Levels/real/left_level.tscn"),
+	Level.SPAWN: preload("uid://bnjo3ngrhgibp"),
+	Level.LEFT: preload("uid://dcb3cx0bo07it"),
 }
 
 
