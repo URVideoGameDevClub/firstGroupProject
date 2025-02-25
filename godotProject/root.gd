@@ -18,26 +18,37 @@ const LEVELS := {
 @export var current_level: Node2D
 @export var last_spawn_marker: Marker2D
 @export var player: Player
-@export var dbg_starting_items: Array[String]
+@export var _inventory: Array[String]
+
+
+func _enter_tree() -> void:
+	Global.root = self
 
 
 func _ready() -> void:
+	Global.root = self
 	Global.door_entered.connect(_on_door_entered)
 	Global.spike_hit.connect(_on_spike_hit)
 	Global.checkpoint_entered.connect(_on_checkpoint_entered)
 	Global.show_crown_anim.connect(_on_show_crown_anim)
 	Global.player_death.connect(_on_player_death)
 	
-	for item: String in dbg_starting_items:
-		Global.add_to_inventory(item)
-	
 	if current_level == null:
 		push_error("Root.current_level is null")
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reload_scene"):
-		get_tree().reload_current_scene()
+func add_to_inventory(item_name: String) -> bool:
+	if item_name in _inventory:
+		push_warning("%s already present in inventory" % item_name)
+		return false
+	
+	_inventory.push_back(item_name)
+	Global.item_added.emit(item_name)
+	return true
+
+
+func has_item(item_name: String) -> bool:
+	return item_name in _inventory
 
 
 func _on_door_entered(door: Door) -> void:

@@ -11,5 +11,5 @@ func _ready() -> void:
 
 func _on_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
-		Global.add_to_inventory(item_name)
+		Global.root.add_to_inventory(item_name)
 		queue_free()

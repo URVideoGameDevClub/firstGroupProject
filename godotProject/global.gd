@@ -12,14 +12,5 @@ signal checkpoint_entered(pos: Marker2D)
 signal show_crown_anim
 
 
-var inventory: Array[String] = []
+var root: Route
 var paused := false
-
-
-func add_to_inventory(item_name: String) -> void:
-	if item_name in inventory:
-		push_warning("%s already in inventory" % item_name)
-		return
-	
-	inventory.push_back(item_name)
-	item_added.emit(item_name)
