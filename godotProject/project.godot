@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Bunny Game"
-run/main_scene="res://Objects/Root/root.tscn"
+run/main_scene="res://objects/root/root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [autoload]
 
-Global="*res://Objects/Root/global.gd"
+Global="*res://objects/root/global.gd"
 
 [debug]
 
@@ -46,7 +46,7 @@ door="this is for all the doors"
 
 [gui]
 
-theme/custom="res://Fonts/new_theme.tres"
+theme/custom="res://fonts/new_theme.tres"
 
 [input]
 

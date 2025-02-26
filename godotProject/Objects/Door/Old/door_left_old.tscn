@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4fmtfarl5eqt"]
 
-[ext_resource type="Script" path="res://Objects/Door/Old/door_old.gd" id="1_sel7e"]
-[ext_resource type="Texture2D" uid="uid://v3alkrluom76" path="res://Objects/Door/Old/CONCEPT_-_Player (2) (1).png" id="2_au3nd"]
+[ext_resource type="Script" path="res://objects/door/Old/door_old.gd" id="1_sel7e"]
+[ext_resource type="Texture2D" uid="uid://v3alkrluom76" path="res://objects/door/Old/CONCEPT_-_Player (2) (1).png" id="2_au3nd"]
 
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_47uwt"]

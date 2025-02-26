@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cer165vmg6ljf"
-path="res://.godot/imported/TILE_CaveBG_Vines3.png-4637e6898a94da459ce8b24d6f810989.ctex"
+path="res://.godot/imported/TILE_CaveBG_Vines3.png-fb178f779a637863766cec2d9cfd1482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/World/TILE_CaveBG_Vines3.png"
-dest_files=["res://.godot/imported/TILE_CaveBG_Vines3.png-4637e6898a94da459ce8b24d6f810989.ctex"]
+source_file="res://objects/world/TILE_CaveBG_Vines3.png"
+dest_files=["res://.godot/imported/TILE_CaveBG_Vines3.png-fb178f779a637863766cec2d9cfd1482.ctex"]
 
 [params]
 

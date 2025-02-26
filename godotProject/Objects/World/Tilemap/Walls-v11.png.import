@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmgyrcljvkanl"
-path="res://.godot/imported/Walls-v11.png-584a612c29621952211704e50566d666.ctex"
+path="res://.godot/imported/Walls-v11.png-991e3027d3c169557e3245a5d83b2c5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/World/Tilemap/Walls-v11.png"
-dest_files=["res://.godot/imported/Walls-v11.png-584a612c29621952211704e50566d666.ctex"]
+source_file="res://objects/world/Tilemap/Walls-v11.png"
+dest_files=["res://.godot/imported/Walls-v11.png-991e3027d3c169557e3245a5d83b2c5e.ctex"]
 
 [params]
 

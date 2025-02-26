@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://he58gl6ojycv"
-path="res://.godot/imported/Player double attack animation.png-406172030c7e304f343408e4b3dfe702.ctex"
+path="res://.godot/imported/Player double attack animation.png-43c0f35dc43cbbb221e48b14b078c9df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Player/Player double attack animation.png"
-dest_files=["res://.godot/imported/Player double attack animation.png-406172030c7e304f343408e4b3dfe702.ctex"]
+source_file="res://objects/player/Player double attack animation.png"
+dest_files=["res://.godot/imported/Player double attack animation.png-43c0f35dc43cbbb221e48b14b078c9df.ctex"]
 
 [params]
 

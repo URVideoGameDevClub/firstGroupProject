@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=4 uid="uid://cg2mgdxyjp5sy"]
 
-[ext_resource type="Texture2D" uid="uid://c7pwn1kjsh62k" path="res://Objects/World/bg/spawn bg roots 1.png" id="1_xroh8"]
-[ext_resource type="Texture2D" uid="uid://dx0njnrwwcqda" path="res://Objects/World/bg/spawn bg roots 2.png" id="2_heaqc"]
-[ext_resource type="Texture2D" uid="uid://dba3auialxh28" path="res://Objects/World/bg/spawn bg roots 3.png" id="3_6v8ma"]
-[ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://Objects/World/TILE_CaveBG_Base.png" id="4_t3stj"]
-[ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://Objects/World/TILE_CaveBG_Vines1.png" id="5_djkog"]
-[ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://Objects/World/TILE_CaveBG_Vines2.png" id="6_vtgwu"]
-[ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://Objects/World/TILE_CaveBG_Vines3.png" id="7_mnkyw"]
+[ext_resource type="Texture2D" uid="uid://c7pwn1kjsh62k" path="res://objects/world/bg/spawn bg roots 1.png" id="1_xroh8"]
+[ext_resource type="Texture2D" uid="uid://dx0njnrwwcqda" path="res://objects/world/bg/spawn bg roots 2.png" id="2_heaqc"]
+[ext_resource type="Texture2D" uid="uid://dba3auialxh28" path="res://objects/world/bg/spawn bg roots 3.png" id="3_6v8ma"]
+[ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://objects/world/TILE_CaveBG_Base.png" id="4_t3stj"]
+[ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://objects/world/TILE_CaveBG_Vines1.png" id="5_djkog"]
+[ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://objects/world/TILE_CaveBG_Vines2.png" id="6_vtgwu"]
+[ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://objects/world/TILE_CaveBG_Vines3.png" id="7_mnkyw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hm42h"]
 texture = ExtResource("4_t3stj")

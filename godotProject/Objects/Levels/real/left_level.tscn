@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=4 uid="uid://dcb3cx0bo07it"]
 
-[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://Objects/World/Tilemap/basic_tiles.tres" id="1_wpe4n"]
-[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Objects/Door/Objects/door_uno.tscn" id="2_qd0l7"]
-[ext_resource type="PackedScene" uid="uid://byjkctoh0ya5w" path="res://Objects/World/crystal_spike.tscn" id="3_5okon"]
-[ext_resource type="PackedScene" uid="uid://dsijmt0hqu5fm" path="res://Objects/World/bg/background.tscn" id="7_tcx1h"]
-[ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://Objects/World/checkpoint.tscn" id="8_ocl31"]
-[ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://Objects/Pickup/glider_pickup.tscn" id="10_xshdo"]
-[ext_resource type="Script" path="res://Objects/Levels/real/glide_label.gd" id="11_bx8va"]
-[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://Objects/Enemy/objects/squirrel_enemy.tscn" id="12_bsrn5"]
+[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="1_wpe4n"]
+[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://objects/door/Objects/door_uno.tscn" id="2_qd0l7"]
+[ext_resource type="PackedScene" uid="uid://byjkctoh0ya5w" path="res://objects/world/crystal_spike.tscn" id="3_5okon"]
+[ext_resource type="PackedScene" uid="uid://dsijmt0hqu5fm" path="res://objects/world/bg/background.tscn" id="7_tcx1h"]
+[ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://objects/world/checkpoint.tscn" id="8_ocl31"]
+[ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://objects/pickup/glider_pickup.tscn" id="10_xshdo"]
+[ext_resource type="Script" path="res://objects/levels/real/glide_label.gd" id="11_bx8va"]
+[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="12_bsrn5"]
 
 [node name="LeftLevel" type="Node2D"]
 

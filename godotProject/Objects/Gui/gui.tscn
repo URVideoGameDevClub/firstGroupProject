@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://byjccdh5legpc"]
 
-[ext_resource type="Texture2D" uid="uid://crjnp72gs05rr" path="res://Objects/Gui/assets/healthbar empty.png" id="1_bedkv"]
-[ext_resource type="Script" path="res://Objects/Gui/health_bar.gd" id="2_alww7"]
-[ext_resource type="Texture2D" uid="uid://4ksvbkm274w3" path="res://Objects/Gui/assets/health diamond shatter.png" id="3_lds3r"]
+[ext_resource type="Texture2D" uid="uid://crjnp72gs05rr" path="res://objects/gui/assets/healthbar empty.png" id="1_bedkv"]
+[ext_resource type="Script" path="res://objects/gui/health_bar.gd" id="2_alww7"]
+[ext_resource type="Texture2D" uid="uid://4ksvbkm274w3" path="res://objects/gui/assets/health diamond shatter.png" id="3_lds3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q25d"]
 atlas = ExtResource("3_lds3r")

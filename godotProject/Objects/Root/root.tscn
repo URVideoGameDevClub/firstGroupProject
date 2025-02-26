@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl4unk7yiblu0"]
 
-[ext_resource type="Script" path="res://Objects/Root/root.gd" id="1_xwu3t"]
-[ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://Objects/Levels/real/spawn_level.tscn" id="3_h6t74"]
-[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://Objects/Player/objects/player.tscn" id="4_aen4m"]
-[ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://Objects/Gui/gui.tscn" id="4_yot6p"]
+[ext_resource type="Script" path="res://objects/root/root.gd" id="1_xwu3t"]
+[ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://objects/levels/real/spawn_level.tscn" id="3_h6t74"]
+[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/player.tscn" id="4_aen4m"]
+[ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://objects/gui/gui.tscn" id="4_yot6p"]
 
 [node name="Root" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
 script = ExtResource("1_xwu3t")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://Goal/objects/goal.tscn" id="1_nupno"]
 [ext_resource type="PackedScene" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
 [ext_resource type="PackedScene" path="res://Wall/objects/wall.tscn" id="4_idaer"]
-[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://Objects/Door/Old/door_right_old.tscn" id="4_pt1x3"]
+[ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://objects/door/Old/door_right_old.tscn" id="4_pt1x3"]
 
 
 [node name="Level" type="Node2D"]

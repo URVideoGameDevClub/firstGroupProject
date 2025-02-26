@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4ksvbkm274w3"
-path="res://.godot/imported/health diamond shatter.png-f81a6c04dca55e02111f022b32f222f5.ctex"
+path="res://.godot/imported/health diamond shatter.png-fc219deba831a4009f074b2407777050.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Gui/assets/health diamond shatter.png"
-dest_files=["res://.godot/imported/health diamond shatter.png-f81a6c04dca55e02111f022b32f222f5.ctex"]
+source_file="res://objects/gui/assets/health diamond shatter.png"
+dest_files=["res://.godot/imported/health diamond shatter.png-fc219deba831a4009f074b2407777050.ctex"]
 
 [params]
 
