@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=4 uid="uid://bnjo3ngrhgibp"]
+[gd_scene load_steps=17 format=4 uid="uid://bnjo3ngrhgibp"]
 
 [ext_resource type="PackedScene" uid="uid://cg2mgdxyjp5sy" path="res://World/bg/spawn_background.tscn" id="1_7rrul"]
 [ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Door/Objects/door_uno.tscn" id="6_svg6m"]
 [ext_resource type="Script" path="res://Levels/real/stupid_label.gd" id="7_gktv8"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://World/checkpoint.tscn" id="7_vxjlm"]
-[ext_resource type="PackedScene" uid="uid://cdxsu8lg07h0y" path="res://World/pickup/left_crown_pickup.tscn" id="8_08fn4"]
+[ext_resource type="PackedScene" uid="uid://cdxsu8lg07h0y" path="res://Pickup/left_crown_pickup.tscn" id="8_08fn4"]
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://World/Tilemap/basic_tiles.tres" id="8_50q6f"]
 [ext_resource type="Texture2D" uid="uid://bj1tceg31spxy" path="res://World/sign.png" id="9_rjxav"]
-[ext_resource type="Script" path="res://World/pickup/left_crown_pickup.gd" id="9_x0nol"]
+[ext_resource type="Script" path="res://Pickup/left_crown_pickup.gd" id="9_x0nol"]
 [ext_resource type="PackedScene" uid="uid://gqfxkccfm8mv" path="res://World/skeleton_spike.tscn" id="10_d2vks"]
 [ext_resource type="PackedScene" uid="uid://byjkctoh0ya5w" path="res://World/crystal_spike.tscn" id="11_ipnip"]
+[ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://Pickup/glider_pickup.tscn" id="11_jumpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03h4v"]
 atlas = ExtResource("9_rjxav")
@@ -154,3 +155,6 @@ target_room = null
 id = 2
 target_id = 3
 actual_pos = null
+
+[node name="GliderPickup" parent="." instance=ExtResource("11_jumpd")]
+position = Vector2(96, -87)

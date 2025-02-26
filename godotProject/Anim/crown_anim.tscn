@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fb5owoxxidir"]
 
-[ext_resource type="Texture2D" uid="uid://0hay0exh8tsr" path="res://World/pickup/Crown full.png" id="1_b5kbg"]
-[ext_resource type="Texture2D" uid="uid://duv2tsgdgourb" path="res://World/pickup/Crown piece center.png" id="2_e306p"]
+[ext_resource type="Texture2D" uid="uid://0hay0exh8tsr" path="res://Pickup/Crown full.png" id="1_b5kbg"]
+[ext_resource type="Texture2D" uid="uid://duv2tsgdgourb" path="res://Pickup/Crown piece center.png" id="2_e306p"]
 
 [sub_resource type="Animation" id="Animation_6738d"]
 resource_name = "the_anim"

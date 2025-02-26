@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 enum State { IDLE, RUN, AIR, ATTACK, DEATH, GLIDE }
 
+const AUDIO_STREAM_JUMP := preload("uid://ceuak547jhnxs")
+const AUDIO_STREAM_STEP := preload("uid://b06ku5r0d8rtb")
+
 const MOVE_SPEED := 200.0
 const GROUND_ACCEL := 3000.0
 const AIR_ACCEL := 2000.0
@@ -40,6 +43,7 @@ var double_attack_queued := false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var jump_hold_timer: Timer = $JumpHoldTimer
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 
 ## Set player state. Optional second argument is a dictionary used to configure the state transition.
@@ -56,6 +60,8 @@ func set_state(value: State, opts := {}) -> void:
 	double_attack_queued = false
 	
 	if value == State.AIR and opts.get("jump"):
+		audio.stream = AUDIO_STREAM_JUMP
+		audio.play()
 		velocity.y = -JUMP_VELOCITY
 		jump_animation_in_progress = true
 		jump_held = true

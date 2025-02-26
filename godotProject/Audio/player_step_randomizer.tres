@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://b06ku5r0d8rtb"]
+
+[ext_resource type="AudioStream" uid="uid://bco7gn28pnv78" path="res://Audio/player_step_1.wav" id="1_t4ym1"]
+[ext_resource type="AudioStream" uid="uid://dh5l8w18xpqbk" path="res://Audio/player_step_2.wav" id="2_vmh3a"]
+
+[resource]
+random_volume_offset_db = 5.0
+streams_count = 2
+stream_0/stream = ExtResource("1_t4ym1")
+stream_1/stream = ExtResource("2_vmh3a")

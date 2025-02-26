@@ -1,9 +1,7 @@
 class_name Route
 extends Node
 
-
 enum Level { NONE, SPAWN, LEFT, RIGHT }
-
 
 const PLAYER_SCENE := preload("uid://bo7ruckc5q446")
 const CROWN_ANIM_SCENE := preload("uid://fb5owoxxidir")
@@ -13,7 +11,6 @@ const LEVELS := {
 	Level.SPAWN: preload("uid://bnjo3ngrhgibp"),
 	Level.LEFT: preload("uid://dcb3cx0bo07it"),
 }
-
 
 @export var current_level: Node2D
 @export var last_spawn_marker: Marker2D
@@ -32,25 +29,24 @@ func _ready() -> void:
 	Global.checkpoint_entered.connect(_on_checkpoint_entered)
 	Global.show_crown_anim.connect(_on_show_crown_anim)
 	Global.player_death.connect(_on_player_death)
+	Global.item_picked_up.connect(add_to_inventory)
 	
 	if current_level == null:
 		push_error("Root.current_level is null")
 
 
-func add_to_inventory(item_name: String) -> bool:
+func add_to_inventory(item_name: String) -> void:
 	if item_name in _inventory:
 		push_warning("%s already present in inventory" % item_name)
-		return false
 	
 	_inventory.push_back(item_name)
-	Global.item_added.emit(item_name)
-	return true
 
 
 func has_item(item_name: String) -> bool:
 	return item_name in _inventory
 
 
+# TODO: CHANGE ALL OF THIS
 func _on_door_entered(door: Door) -> void:
 	if door.id == 2:
 		Global.paused = true
