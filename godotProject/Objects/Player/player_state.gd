@@ -9,7 +9,7 @@ func _init(p_player: Player) -> void:
 	player = p_player
 
 
-func enter(_args := {}) -> void:
+func enter() -> void:
 	pass
 
 

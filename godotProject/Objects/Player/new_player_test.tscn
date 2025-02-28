@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=4 uid="uid://rdibx54shjef"]
+
+[ext_resource type="PackedScene" uid="uid://b5qdasw04pvli" path="res://objects/player/player.tscn" id="1_4vbdd"]
+[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="2_cmhcq"]
+
+[node name="NewPlayerTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_4vbdd")]
+position = Vector2(339, 285)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAoAAQAAAAMAAAABAAoAAQABAAMAAAACAAoAAQABAAMAAAADAAoAAQABAAMAAAAEAAoAAQABAAMAAAAFAAoAAQABAAMAAAAGAAoAAQABAAMAAAAHAAoAAQABAAMAAAAIAAoAAQABAAMAAAAJAAoAAQABAAMAAAAKAAoAAQABAAMAAAALAAoAAQABAAMAAAAMAAoAAQABAAMAAAANAAoAAQABAAMAAAAOAAoAAQABAAMAAAAPAAoAAQABAAMAAAAQAAoAAQABAAMAAAARAAoAAQABAAMAAAASAAoAAQABAAMAAAATAAoAAQACAAMAAAA=")
+tile_set = ExtResource("2_cmhcq")
