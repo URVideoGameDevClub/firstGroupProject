@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://he58gl6ojycv"
-path="res://.godot/imported/Player double attack animation.png-43c0f35dc43cbbb221e48b14b078c9df.ctex"
+uid="uid://c0symqnjey2fd"
+path="res://.godot/imported/player gliding animation 2.png-4b13b81ec2388dd66b7a99304dde4f9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/Player double attack animation.png"
-dest_files=["res://.godot/imported/Player double attack animation.png-43c0f35dc43cbbb221e48b14b078c9df.ctex"]
+source_file="res://objects/player/assets/player gliding animation 2.png"
+dest_files=["res://.godot/imported/player gliding animation 2.png-4b13b81ec2388dd66b7a99304dde4f9b.ctex"]
 
 [params]
 

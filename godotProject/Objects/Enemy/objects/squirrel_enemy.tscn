@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://objects/enemy/objects/squirrel_enemy.gd" id="1_6a6c2"]
 [ext_resource type="Texture2D" uid="uid://dku1qkdlx0ffy" path="res://objects/enemy/assets/enemy attack.png" id="1_8mg8b"]
 [ext_resource type="Texture2D" uid="uid://bis6g6r5n55f7" path="res://objects/enemy/assets/Enemy idle animation.png" id="1_tchrb"]
-[ext_resource type="Shader" path="res://objects/player/objects/new_player.gdshader" id="2_kto7c"]
+[ext_resource type="Shader" path="res://objects/player/new_player.gdshader" id="2_kto7c"]
 [ext_resource type="Texture2D" uid="uid://csf38krfju06c" path="res://objects/enemy/assets/enemy walk.png" id="3_vf2ar"]
 
 

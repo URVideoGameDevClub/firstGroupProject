@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da7o2dbhwohd0"
-path="res://.godot/imported/player_death.png-6ab748baa1b5fe1fd8568e514d70c7c5.ctex"
+uid="uid://he58gl6ojycv"
+path="res://.godot/imported/Player double attack animation.png-507fb541ca9b4323ffd320c7bdcca04d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/player_death.png"
-dest_files=["res://.godot/imported/player_death.png-6ab748baa1b5fe1fd8568e514d70c7c5.ctex"]
+source_file="res://objects/player/assets/Player double attack animation.png"
+dest_files=["res://.godot/imported/Player double attack animation.png-507fb541ca9b4323ffd320c7bdcca04d.ctex"]
 
 [params]
 
