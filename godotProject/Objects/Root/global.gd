@@ -23,3 +23,7 @@ func has_item(item_name: String) -> bool:
 
 func is_paused() -> bool:
 	return _game and _game.paused
+
+
+func input_vector() -> Vector2:
+	return Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")

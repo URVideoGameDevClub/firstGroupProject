@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://objects/root/game.gd" id="1_i7nlg"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://objects/gui/gui.tscn" id="2_15dbo"]
 [ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://objects/levels/real/spawn_level.tscn" id="3_pe7yd"]
-[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/player.tscn" id="4_q6e4d"]
+[ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/old_player.tscn" id="4_q6e4d"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
 script = ExtResource("1_i7nlg")
 current_level = NodePath("SpawnLevel")
 last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
-player = NodePath("NewPlayer")
+player = NodePath("OldPlayer")
 
 [node name="Gui" parent="." instance=ExtResource("2_15dbo")]
 
@@ -18,6 +18,6 @@ player = NodePath("NewPlayer")
 [node name="Checkpoint" parent="SpawnLevel" index="7"]
 position = Vector2(55, -42)
 
-[node name="NewPlayer" parent="." instance=ExtResource("4_q6e4d")]
+[node name="OldPlayer" parent="." instance=ExtResource("4_q6e4d")]
 
 [editable path="SpawnLevel"]
