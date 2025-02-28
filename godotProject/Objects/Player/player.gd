@@ -6,6 +6,7 @@ const DAMAGE_FLASH_TIME := 0.2
 
 var ground_state := GroundPlayerState.new(self)
 var air_state := AirPlayerState.new(self)
+var death_state := DeathPlayerState.new(self)
 var state: PlayerState
 
 var facing_right := false
@@ -24,6 +25,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if state:
 		state.physics_update(delta)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"kill_player"):
+		transition(death_state)
 
 
 func transition(target: PlayerState) -> void:

@@ -14,6 +14,11 @@ signal show_crown_anim
 var _game: Game
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"reload_scene"):
+		get_tree().reload_current_scene()
+
+
 func has_item(item_name: String) -> bool:
 	if _game and item_name in _game.inventory:
 		return true

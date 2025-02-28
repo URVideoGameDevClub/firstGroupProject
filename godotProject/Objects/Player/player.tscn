@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b5qdasw04pvli"]
+[gd_scene load_steps=47 format=3 uid="uid://b5qdasw04pvli"]
 
 [ext_resource type="Script" path="res://objects/player/player.gd" id="1_6lnrh"]
 [ext_resource type="Shader" path="res://objects/player/new_player.gdshader" id="1_djtve"]
@@ -26,6 +26,58 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_7aq22"]
+resource_name = "glide_end"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [68, 69, 70, 71, 72, 73]
+}
+
+[sub_resource type="Animation" id="Animation_xf3ti"]
+resource_name = "glide_middle"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [66, 67]
+}
+
+[sub_resource type="Animation" id="Animation_xcglh"]
+resource_name = "glide_start"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [62, 63, 64, 65, 66, 67]
+}
+
 [sub_resource type="Animation" id="Animation_djft2"]
 resource_name = "idle"
 length = 1.2
@@ -46,8 +98,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_irrqs"]
 resource_name = "jump_end"
-length = 0.6
-step = 0.1
+length = 0.45
+step = 0.075
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -55,7 +107,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [50, 51, 52, 53, 54, 55]
@@ -81,7 +133,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ol07o"]
 resource_name = "jump_start"
-length = 0.4
+length = 0.35
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,10 +142,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [41, 42, 43, 44, 45, 46, 47]
+"values": [42, 43, 44, 45, 46, 47]
 }
 
 [sub_resource type="Animation" id="Animation_pagft"]
@@ -114,10 +166,10 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23, 24, 25, 26, 27]
 }
 
-[sub_resource type="Animation" id="Animation_xcglh"]
-resource_name = "glide_start"
-length = 0.4
-step = 0.05
+[sub_resource type="Animation" id="Animation_q564k"]
+resource_name = "death"
+length = 1.1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,50 +177,16 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [61, 62, 63, 64, 65, 66, 67]
-}
-
-[sub_resource type="Animation" id="Animation_xf3ti"]
-resource_name = "glide_middle"
-length = 0.4
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [66, 67]
-}
-
-[sub_resource type="Animation" id="Animation_7aq22"]
-resource_name = "glide_end"
-length = 0.5
-step = 0.075
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [68, 69, 70, 71, 72, 73, 74]
+"values": [120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 134]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1wmps"]
 _data = {
 "RESET": SubResource("Animation_pfodj"),
+"death": SubResource("Animation_q564k"),
 "glide_end": SubResource("Animation_7aq22"),
 "glide_middle": SubResource("Animation_xf3ti"),
 "glide_start": SubResource("Animation_xcglh"),
@@ -178,6 +196,9 @@ _data = {
 "jump_start": SubResource("Animation_ol07o"),
 "run": SubResource("Animation_pagft")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3o410"]
+animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6g45x"]
 animation = &"glide_end"
@@ -228,8 +249,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1di2q"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvu5o"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w55x6"]
 switch_mode = 1
 
@@ -254,9 +273,15 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nuogp"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rlmuy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lk4b7"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xc37f"]
-states/End/position = Vector2(174.5, 169.25)
+states/End/position = Vector2(174, 251.69)
 states/Start/position = Vector2(174.5, 63.125)
+states/death/node = SubResource("AnimationNodeAnimation_3o410")
+states/death/position = Vector2(567.75, 254.13)
 states/glide_end/node = SubResource("AnimationNodeAnimation_6g45x")
 states/glide_end/position = Vector2(768, -177.135)
 states/glide_middle/node = SubResource("AnimationNodeAnimation_hfh8v")
@@ -264,7 +289,7 @@ states/glide_middle/position = Vector2(567, -178.135)
 states/glide_start/node = SubResource("AnimationNodeAnimation_pdsxg")
 states/glide_start/position = Vector2(343, -174.135)
 states/idle/node = SubResource("AnimationNodeAnimation_mx4eq")
-states/idle/position = Vector2(567, 99.125)
+states/idle/position = Vector2(567.375, 72.125)
 states/jump_end/node = SubResource("AnimationNodeAnimation_41axe")
 states/jump_end/position = Vector2(768, -79.75)
 states/jump_middle/node = SubResource("AnimationNodeAnimation_s8yeq")
@@ -272,9 +297,9 @@ states/jump_middle/position = Vector2(567, -79.75)
 states/jump_start/node = SubResource("AnimationNodeAnimation_2ejgu")
 states/jump_start/position = Vector2(343, -79.75)
 states/run/node = SubResource("AnimationNodeAnimation_udh60")
-states/run/position = Vector2(920, 99.125)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_e85pr"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_fcjvc"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_5irwp"), "idle", "jump_start", SubResource("AnimationNodeStateMachineTransition_u0v76"), "jump_start", "jump_middle", SubResource("AnimationNodeStateMachineTransition_rg16m"), "jump_middle", "jump_end", SubResource("AnimationNodeStateMachineTransition_dbngd"), "jump_end", "idle", SubResource("AnimationNodeStateMachineTransition_rxamn"), "glide_start", "glide_middle", SubResource("AnimationNodeStateMachineTransition_5r6pw"), "glide_middle", "glide_end", SubResource("AnimationNodeStateMachineTransition_1di2q"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_uvu5o"), "jump_start", "glide_start", SubResource("AnimationNodeStateMachineTransition_w55x6"), "glide_start", "jump_start", SubResource("AnimationNodeStateMachineTransition_sieqn"), "jump_middle", "glide_middle", SubResource("AnimationNodeStateMachineTransition_75cww"), "glide_middle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_nktcm"), "jump_end", "run", SubResource("AnimationNodeStateMachineTransition_5txl8"), "glide_end", "idle", SubResource("AnimationNodeStateMachineTransition_345hl"), "glide_end", "run", SubResource("AnimationNodeStateMachineTransition_rrrhn"), "idle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_7p2hl"), "jump_middle", "jump_start", SubResource("AnimationNodeStateMachineTransition_nuogp")]
-graph_offset = Vector2(-57, -198.135)
+states/run/position = Vector2(998.5, 72.625)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_e85pr"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_fcjvc"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_5irwp"), "idle", "jump_start", SubResource("AnimationNodeStateMachineTransition_u0v76"), "jump_start", "jump_middle", SubResource("AnimationNodeStateMachineTransition_rg16m"), "jump_middle", "jump_end", SubResource("AnimationNodeStateMachineTransition_dbngd"), "jump_end", "idle", SubResource("AnimationNodeStateMachineTransition_rxamn"), "glide_start", "glide_middle", SubResource("AnimationNodeStateMachineTransition_5r6pw"), "glide_middle", "glide_end", SubResource("AnimationNodeStateMachineTransition_1di2q"), "jump_start", "glide_start", SubResource("AnimationNodeStateMachineTransition_w55x6"), "glide_start", "jump_start", SubResource("AnimationNodeStateMachineTransition_sieqn"), "jump_middle", "glide_middle", SubResource("AnimationNodeStateMachineTransition_75cww"), "glide_middle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_nktcm"), "jump_end", "run", SubResource("AnimationNodeStateMachineTransition_5txl8"), "glide_end", "idle", SubResource("AnimationNodeStateMachineTransition_345hl"), "glide_end", "run", SubResource("AnimationNodeStateMachineTransition_rrrhn"), "idle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_7p2hl"), "jump_middle", "jump_start", SubResource("AnimationNodeStateMachineTransition_nuogp"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_rlmuy"), "death", "End", SubResource("AnimationNodeStateMachineTransition_lk4b7")]
+graph_offset = Vector2(-2, 14.1295)
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_4rni7")
