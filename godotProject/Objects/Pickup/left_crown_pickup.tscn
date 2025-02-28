@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://objects/pickup/pickup.gd" id="1_pgafa"]
 [ext_resource type="Texture2D" uid="uid://duv2tsgdgourb" path="res://objects/pickup/Crown piece center.png" id="2_i4fdu"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i755o"]
 
 [node name="LeftCrownPickup" type="Area2D"]

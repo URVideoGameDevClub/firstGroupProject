@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://objects/gui/health_bar.gd" id="2_alww7"]
 [ext_resource type="Texture2D" uid="uid://4ksvbkm274w3" path="res://objects/gui/assets/health diamond shatter.png" id="3_lds3r"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q25d"]
 atlas = ExtResource("3_lds3r")
 region = Rect2(0, 0, 25, 25)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://objects/world/hurt_zone.gd" id="1_3yqf6"]
 [ext_resource type="Texture2D" uid="uid://b0gr8obt534pl" path="res://objects/world/Tilemap/Crystal.png" id="1_sxh4j"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om7ps"]
 size = Vector2(16, 32)
 

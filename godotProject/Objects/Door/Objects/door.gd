@@ -4,7 +4,7 @@ extends Node2D
 
 
 ## PackedScene of the room this door leads to.
-@export var target_room := Route.Level.NONE
+@export var target_room := Game.Level.NONE
 
 ## Area2D to detect player entering the door.
 @export var area: Area2D = null
@@ -27,7 +27,7 @@ extends Node2D
 func _ready() -> void:
 	if area == null:
 		push_warning("area is null")
-	if target_room == Route.Level.NONE:
+	if target_room == Game.Level.NONE:
 		push_warning("target_room is NONE")
 	if spawn_marker == null:
 		push_warning("spawn_marker is null")

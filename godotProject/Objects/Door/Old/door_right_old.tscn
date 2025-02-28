@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://objects/door/Old/door_old.gd" id="2_3c1s1"]
 
 
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntri8"]
 animations = [{
 "frames": [{

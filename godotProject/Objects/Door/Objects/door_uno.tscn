@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://objects/door/Objects/door.gd" id="1_abd74"]
 [ext_resource type="Texture2D" uid="uid://bqly3evih4m3" path="res://objects/door/Assets/LargeDoor var 2 crystals.png" id="2_46vy0"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4mai"]
 size = Vector2(16, 60)
 

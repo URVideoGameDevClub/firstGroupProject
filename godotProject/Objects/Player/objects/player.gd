@@ -182,7 +182,7 @@ func _air_state() -> void:
 		can_jump = false
 		set_state(State.AIR, {"jump": true})
 		return
-	elif Input.is_action_just_pressed(&"glide") and Global.root.has_item("glider"):
+	elif Input.is_action_just_pressed(&"glide") and Global.has_item("glider"):
 		set_state(State.GLIDE)
 		return
 	

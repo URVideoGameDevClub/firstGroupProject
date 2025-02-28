@@ -12,6 +12,12 @@ signal checkpoint_entered(pos: Marker2D)
 signal show_crown_anim
 
 
-var root: Route
+var _game: Game
 # TODO: move to root
 var paused := false
+
+func has_item(item_name: String) -> bool:
+	if _game and item_name in _game.inventory:
+		return true
+	else:
+		return false

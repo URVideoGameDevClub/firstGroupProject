@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://objects/levels/real/glide_label.gd" id="11_bx8va"]
 [ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="12_bsrn5"]
 
+
 [node name="LeftLevel" type="Node2D"]
 
 [node name="WallTiles" type="TileMapLayer" parent="."]

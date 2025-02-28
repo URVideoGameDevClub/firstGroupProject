@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://objects/door/Old/door_right_old.tscn" id="4_pt1x3"]
 
 
+
 [node name="Level" type="Node2D"]
 
 [node name="Goal" parent="." instance=ExtResource("1_nupno")]

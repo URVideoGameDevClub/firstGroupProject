@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://0hay0exh8tsr" path="res://objects/pickup/Crown full.png" id="1_b5kbg"]
 [ext_resource type="Texture2D" uid="uid://duv2tsgdgourb" path="res://objects/pickup/Crown piece center.png" id="2_e306p"]
 
+
 [sub_resource type="Animation" id="Animation_6738d"]
 resource_name = "the_anim"
 length = 6.0

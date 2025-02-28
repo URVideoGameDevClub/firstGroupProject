@@ -2,5 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="1_3feyg"]
 
+
 [node name="Tilemap" type="TileMapLayer"]
 tile_set = ExtResource("1_3feyg")

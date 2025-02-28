@@ -1,4 +1,4 @@
-class_name Route
+class_name Game
 extends Node
 
 enum Level { NONE, SPAWN, LEFT, RIGHT }
@@ -15,35 +15,30 @@ const LEVELS := {
 @export var current_level: Node2D
 @export var last_spawn_marker: Marker2D
 @export var player: Player
-@export var _inventory: Array[String]
+@export var inventory: Array[String]
 
 
 func _enter_tree() -> void:
-	Global.root = self
+	Global._game = self
 
 
 func _ready() -> void:
-	Global.root = self
 	Global.door_entered.connect(_on_door_entered)
 	Global.spike_hit.connect(_on_spike_hit)
 	Global.checkpoint_entered.connect(_on_checkpoint_entered)
 	Global.show_crown_anim.connect(_on_show_crown_anim)
 	Global.player_death.connect(_on_player_death)
-	Global.item_picked_up.connect(add_to_inventory)
+	Global.item_picked_up.connect(_add_to_inventory)
 	
 	if current_level == null:
 		push_error("Root.current_level is null")
 
 
-func add_to_inventory(item_name: String) -> void:
-	if item_name in _inventory:
+func _add_to_inventory(item_name: String) -> void:
+	if item_name in inventory:
 		push_warning("%s already present in inventory" % item_name)
 	
-	_inventory.push_back(item_name)
-
-
-func has_item(item_name: String) -> bool:
-	return item_name in _inventory
+	inventory.push_back(item_name)
 
 
 # TODO: CHANGE ALL OF THIS
