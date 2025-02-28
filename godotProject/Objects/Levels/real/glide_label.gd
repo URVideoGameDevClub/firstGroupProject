@@ -3,9 +3,9 @@ extends Label
 
 func _ready() -> void:
 	hide()
-	Global.item_added.connect(_on_item_added)
+	Global.item_picked_up.connect(_on_item_picked_up)
 
 
-func _on_item_added(item_name: String) -> void:
+func _on_item_picked_up(item_name: String) -> void:
 	if item_name == "glider":
 		show()

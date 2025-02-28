@@ -1,8 +1,10 @@
 class_name Game
 extends Node
+## Master game node. Holds all game state. Friend class of Global Singleton.
 
 enum Level { NONE, SPAWN, LEFT, RIGHT }
 
+# TODO: change to uids if they stop throwing errors
 const PLAYER_SCENE := preload("res://objects/player/objects/player.tscn")
 const CROWN_ANIM_SCENE := preload("res://objects/anim/crown_anim.tscn")
 const THANK_YOU_SCENE := preload("res://objects/anim/thank_you_anim.tscn")
@@ -16,6 +18,9 @@ const LEVELS := {
 @export var last_spawn_marker: Marker2D
 @export var player: Player
 @export var inventory: Array[String]
+@export var paused := false
+
+@onready var gui: Gui = $Gui
 
 
 func _enter_tree() -> void:
@@ -50,6 +55,10 @@ func _on_door_entered(door: Door) -> void:
 		add_child(thank_you)
 		thank_you.get_node("AnimationPlayer").play(&"new_animation")
 		return
+		
+	paused = true
+	gui.anim.play(&"fade_to_black")
+	await gui.fade_to_black_finished
 	
 	current_level.queue_free()
 	print(door.target_room)
@@ -61,6 +70,10 @@ func _on_door_entered(door: Door) -> void:
 		if i_door.id == target_id:
 			last_spawn_marker = i_door.spawn_marker
 			player.global_position = last_spawn_marker.global_position
+	
+	gui.anim.play_backwards(&"fade_to_black")
+	await gui.fade_to_black_finished
+	paused = false
 
 
 func _on_spike_hit() -> void:

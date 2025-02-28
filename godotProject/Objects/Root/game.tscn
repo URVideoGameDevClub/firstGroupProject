@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://objects/levels/real/spawn_level.tscn" id="3_pe7yd"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/player.tscn" id="4_q6e4d"]
 
-[node name="Root" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
+[node name="Game" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
 script = ExtResource("1_i7nlg")
 current_level = NodePath("SpawnLevel")
 last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
@@ -15,15 +15,8 @@ player = NodePath("NewPlayer")
 
 [node name="SpawnLevel" parent="." instance=ExtResource("3_pe7yd")]
 
-[node name="DoorUno" parent="SpawnLevel" index="5"]
-actual_pos = Vector2(0, 0)
-
 [node name="Checkpoint" parent="SpawnLevel" index="7"]
 position = Vector2(55, -42)
-
-[node name="DoorUno2" parent="SpawnLevel" index="9"]
-target_room = 0
-actual_pos = Vector2(0, 0)
 
 [node name="NewPlayer" parent="." instance=ExtResource("4_q6e4d")]
 

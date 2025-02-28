@@ -2,7 +2,6 @@
 class_name Door
 extends Node2D
 
-
 ## PackedScene of the room this door leads to.
 @export var target_room := Game.Level.NONE
 
@@ -45,7 +44,6 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		Global.door_entered.emit(self)
-		print(self)
 
 
 func _to_string() -> String:
