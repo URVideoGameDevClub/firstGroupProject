@@ -51,9 +51,11 @@ func set_state(value: State, opts := {}) -> void:
 	jump_animation_in_progress = false
 	land_animation_in_progress = false
 	jump_held = false
-	collision_shape.disabled = false
 	gravity = GRAVITY
 	double_attack_queued = false
+	
+	if state == State.DEATH:
+		collision_shape.disabled = false
 	
 	if value == State.AIR and opts.get("jump"):
 		velocity.y = -JUMP_VELOCITY
@@ -100,6 +102,7 @@ static func state_to_string(s: State) -> String:
 
 func _ready() -> void:
 	Global.player_health_updated.emit(health)
+	Global.door_entered.connect(_on_door_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -295,3 +298,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 func _on_jump_hold_timer_timeout() -> void:
 	pass
+
+
+func _on_door_entered(_door: Door) -> void:
+	set_state(State.IDLE)
