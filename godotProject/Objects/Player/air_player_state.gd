@@ -9,32 +9,33 @@ const JUMP_CUTOFF := 3.0
 const GRAVITY := 1100.0
 const GLIDE_GRAVITY := 600.0
 const MAX_GLIDE_FALL_SPEED := 50.0
-const JUMP_HOLD_TIME := 0.1
-const COYOTE_TIME := 0.05
+const COYOTE_TIME := 0.15
 
 var gliding := false
-var can_jump := false
 var jump_held := false
+var coyote_time := 0.0
 
 
 func enter() -> void:
-	gliding = false
-	can_jump = false
-	jump_held = false
-	
 	if Input.is_action_just_pressed(&"jump"):
 		_jump()
 	else:
-		player.get_tree().create_timer(COYOTE_TIME).timeout.connect(_on_coyote_timer_timeout)
-		can_jump = true
+		player.animation_state.travel(&"jump_middle")
+		coyote_time = COYOTE_TIME
 
 
 func exit() -> void:
-	pass
+	gliding = false
+	jump_held = false
+	coyote_time = 0.0
 
 
 func physics_update(delta: float) -> void:
-	if gliding and not Input.is_action_pressed(&"glide"):
+	coyote_time = maxf(coyote_time - delta, 0.0)
+	
+	if coyote_time > 0.0 and Input.is_action_just_pressed(&"jump"):
+		_jump()
+	elif gliding and not Input.is_action_pressed(&"glide"):
 		gliding = false
 		match player.animation_state.get_current_node():
 			&"glide_start":
@@ -69,11 +70,7 @@ func physics_update(delta: float) -> void:
 
 
 func _jump() -> void:
-	can_jump = false
+	coyote_time = 0.0
 	jump_held = true
 	player.velocity.y = -JUMP_VELOCITY
 	player.animation_state.travel(&"jump_start")
-
-
-func _on_coyote_timer_timeout() -> void:
-	can_jump = false
