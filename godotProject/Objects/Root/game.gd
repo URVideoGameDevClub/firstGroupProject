@@ -3,13 +3,13 @@ extends Node
 
 enum Level { NONE, SPAWN, LEFT, RIGHT }
 
-const PLAYER_SCENE := preload("uid://bo7ruckc5q446")
-const CROWN_ANIM_SCENE := preload("uid://fb5owoxxidir")
-const THANK_YOU_SCENE := preload("uid://cqay4eu5nq4kd")
+const PLAYER_SCENE := preload("res://objects/player/objects/player.tscn")
+const CROWN_ANIM_SCENE := preload("res://objects/anim/crown_anim.tscn")
+const THANK_YOU_SCENE := preload("res://objects/anim/thank_you_anim.tscn")
 const LEVELS := {
 	Level.NONE: null,
-	Level.SPAWN: preload("uid://bnjo3ngrhgibp"),
-	Level.LEFT: preload("uid://dcb3cx0bo07it"),
+	Level.SPAWN: preload("res://objects/levels/real/spawn_level.tscn"),
+	Level.LEFT: preload("res://objects/levels/real/left_level.tscn"),
 }
 
 @export var current_level: Node2D
