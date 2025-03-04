@@ -3,7 +3,7 @@ class_name Door
 extends Node2D
 
 ## PackedScene of the room this door leads to.
-@export var target_room := Game.Level.NONE
+@export var target_room: Game.Level
 
 ## Area2D to detect player entering the door.
 @export var area: Area2D = null

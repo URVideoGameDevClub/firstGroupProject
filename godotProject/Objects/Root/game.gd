@@ -8,14 +8,15 @@ enum Level { NONE, SPAWN, LEFT, RIGHT }
 const PLAYER_SCENE := preload("res://objects/player/objects/old_player.tscn")
 const CROWN_ANIM_SCENE := preload("res://objects/anim/crown_anim.tscn")
 const THANK_YOU_SCENE := preload("res://objects/anim/thank_you_anim.tscn")
-const LEVELS := {
+const LEVELS: Dictionary[Level, PackedScene] = {
 	Level.NONE: null,
 	Level.SPAWN: preload("res://objects/levels/real/spawn_level.tscn"),
 	Level.LEFT: preload("res://objects/levels/real/left_level.tscn"),
+	Level.RIGHT: null,
 }
 
 @export var current_level: Node2D
-@export var last_spawn_marker: Marker2D
+@export var respawn_point := Vector2.ZERO
 @export var player: OldPlayer
 @export var inventory: Array[String]
 @export var paused := false
@@ -68,8 +69,8 @@ func _on_door_entered(door: Door) -> void:
 	await get_tree().process_frame
 	for i_door: Door in get_tree().get_nodes_in_group(&"door"):
 		if i_door.id == target_id:
-			last_spawn_marker = i_door.spawn_marker
-			player.global_position = last_spawn_marker.global_position
+			respawn_point = i_door.spawn_marker.global_position
+			player.global_position = respawn_point
 	
 	gui.anim.play_backwards(&"fade_to_black")
 	await gui.fade_to_black_finished
@@ -77,15 +78,15 @@ func _on_door_entered(door: Door) -> void:
 
 
 func _on_spike_hit() -> void:
-	player.global_position = last_spawn_marker.global_position
+	player.global_position = respawn_point
 
 
-func _on_checkpoint_entered(marker: Marker2D) -> void:
-	last_spawn_marker = marker
+func _on_checkpoint_entered(pos: Vector2) -> void:
+	respawn_point = pos
 
 
 func _on_show_crown_anim() -> void:
-	Global.paused = true
+	paused = true
 	if player.state == OldPlayer.State.RUN:
 		player.set_state(OldPlayer.State.IDLE)
 	player.sprite.pause()
@@ -93,7 +94,7 @@ func _on_show_crown_anim() -> void:
 	add_child(crown_anim)
 	crown_anim.get_node("AnimationPlayer").play(&"the_anim")
 	await crown_anim.get_node("AnimationPlayer").animation_finished
-	Global.paused = false
+	paused = false
 	crown_anim.queue_free()
 	player.sprite.play()
 
@@ -102,8 +103,8 @@ func _on_player_death() -> void:
 	await get_tree().create_timer(2.0).timeout
 	player.health = 3
 	Global.player_health_updated.emit(player.health)
-	player.global_position = last_spawn_marker.global_position
+	player.global_position = respawn_point
 	player.velocity.y = 0.0
 	print(player.global_position)
-	print(last_spawn_marker.global_position)
+	print(respawn_point)
 	player.set_state(OldPlayer.State.IDLE)

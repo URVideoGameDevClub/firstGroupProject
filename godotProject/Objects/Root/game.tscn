@@ -10,6 +10,8 @@ script = ExtResource("1_i7nlg")
 current_level = NodePath("SpawnLevel")
 last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
 player = NodePath("OldPlayer")
+inventory = null
+paused = null
 
 [node name="Gui" parent="." instance=ExtResource("2_15dbo")]
 

@@ -8,7 +8,7 @@ signal player_health_updated(health: int)
 signal player_death
 signal item_picked_up(item_name: String)
 signal spike_hit
-signal checkpoint_entered(pos: Marker2D)
+signal checkpoint_entered(pos: Vector2)
 signal show_crown_anim
 
 var _game: Game
