@@ -1,30 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://c04k3f8ducxsx"]
+[gd_scene load_steps=8 format=3 uid="uid://c04k3f8ducxsx"]
 
-[ext_resource type="PackedScene" path="res://Goal/objects/goal.tscn" id="1_nupno"]
-[ext_resource type="PackedScene" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
-[ext_resource type="PackedScene" path="res://Wall/objects/wall.tscn" id="4_idaer"]
 [ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://objects/door/Old/door_right_old.tscn" id="4_pt1x3"]
 
+[sub_resource type="Resource" id="Resource_fooeo"]
+metadata/__load_path__ = "res://Goal/objects/goal.tscn"
 
+[sub_resource type="Resource" id="Resource_6pyy8"]
+metadata/__load_path__ = "res://Enemy/objects/enemy.tscn"
+
+[sub_resource type="Resource" id="Resource_s8tfi"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_s74g7"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_1ckfp"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_7q3rb"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
 
 [node name="Level" type="Node2D"]
 
-[node name="Goal" parent="." instance=ExtResource("1_nupno")]
+[node name="Goal" parent="."]
 position = Vector2(961, -24)
 
-[node name="Enemy" parent="." instance=ExtResource("3_7r54d")]
+[node name="Enemy" parent="."]
 position = Vector2(784, -20)
 
-[node name="Wall" parent="." instance=ExtResource("4_idaer")]
+[node name="Wall" parent="."]
 position = Vector2(179, 248)
 
-[node name="Wall2" parent="." instance=ExtResource("4_idaer")]
+[node name="Wall2" parent="."]
 position = Vector2(-205, 248)
 
-[node name="Wall3" parent="." instance=ExtResource("4_idaer")]
+[node name="Wall3" parent="."]
 position = Vector2(-77, 248)
 
-[node name="Wall4" parent="." instance=ExtResource("4_idaer")]
+[node name="Wall4" parent="."]
 position = Vector2(51, 248)
 
 [node name="DoorR" parent="." instance=ExtResource("4_pt1x3")]

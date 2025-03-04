@@ -1,19 +1,21 @@
 [gd_scene load_steps=6 format=4 uid="uid://csj7iaaseoh3b"]
 
-[ext_resource type="PackedScene" path="res://Enemy/objects/enemy.tscn" id="3_7r54d"]
-[ext_resource type="PackedScene" path="res://World/pickup/pickup.tscn" id="4_0oqot"]
 [ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://objects/door/Old/door_right_old.tscn" id="4_pt1x3"]
 [ext_resource type="PackedScene" uid="uid://0gdxb068m7v6" path="res://objects/world/Tilemap/Tilemap.tscn" id="5_1uyc3"]
 [ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="5_qecus"]
 
+[sub_resource type="Resource" id="Resource_p7e5b"]
+metadata/__load_path__ = "res://Enemy/objects/enemy.tscn"
 
+[sub_resource type="Resource" id="Resource_ns440"]
+metadata/__load_path__ = "res://World/pickup/pickup.tscn"
 
 [node name="Level1" type="Node2D"]
 
-[node name="Enemy" parent="." instance=ExtResource("3_7r54d")]
+[node name="Enemy" parent="."]
 position = Vector2(-359, 107)
 
-[node name="Pickup" parent="." instance=ExtResource("4_0oqot")]
+[node name="Pickup" parent="."]
 position = Vector2(47, 43)
 
 [node name="Tilemap" parent="." instance=ExtResource("5_1uyc3")]

@@ -55,7 +55,7 @@ func _on_door_entered(door: Door) -> void:
 		add_child(thank_you)
 		thank_you.get_node("AnimationPlayer").play(&"new_animation")
 		return
-		
+	
 	paused = true
 	gui.anim.play(&"fade_to_black")
 	await gui.fade_to_black_finished

@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dsijmt0hqu5fm" path="res://objects/world/bg/background.tscn" id="7_tcx1h"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://objects/world/checkpoint.tscn" id="8_ocl31"]
 [ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://objects/pickup/glider_pickup.tscn" id="10_xshdo"]
-[ext_resource type="Script" path="res://objects/levels/real/glide_label.gd" id="11_bx8va"]
+[ext_resource type="Script" uid="uid://bt815dr7me8jv" path="res://objects/levels/real/glide_label.gd" id="11_bx8va"]
 [ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="12_bsrn5"]
-
 
 [node name="LeftLevel" type="Node2D"]
 

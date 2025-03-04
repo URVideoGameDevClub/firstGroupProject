@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=4 uid="uid://bnjo3ngrhgibp"]
+[gd_scene load_steps=18 format=4 uid="uid://bnjo3ngrhgibp"]
 
 [ext_resource type="PackedScene" uid="uid://cg2mgdxyjp5sy" path="res://objects/world/bg/spawn_background.tscn" id="1_7rrul"]
 [ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://objects/door/Objects/door_uno.tscn" id="6_svg6m"]
-[ext_resource type="Script" path="res://objects/levels/real/stupid_label.gd" id="7_gktv8"]
+[ext_resource type="Script" uid="uid://c37uxhnqlg1jl" path="res://objects/levels/real/stupid_label.gd" id="7_gktv8"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://objects/world/checkpoint.tscn" id="7_vxjlm"]
 [ext_resource type="PackedScene" uid="uid://cdxsu8lg07h0y" path="res://objects/pickup/left_crown_pickup.tscn" id="8_08fn4"]
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="8_50q6f"]
 [ext_resource type="Texture2D" uid="uid://bj1tceg31spxy" path="res://objects/world/sign.png" id="9_rjxav"]
-[ext_resource type="Script" path="res://objects/pickup/left_crown_pickup.gd" id="9_x0nol"]
+[ext_resource type="Script" uid="uid://23iiy0royk4n" path="res://objects/pickup/left_crown_pickup.gd" id="9_x0nol"]
 [ext_resource type="PackedScene" uid="uid://gqfxkccfm8mv" path="res://objects/world/skeleton_spike.tscn" id="10_d2vks"]
 [ext_resource type="PackedScene" uid="uid://byjkctoh0ya5w" path="res://objects/world/crystal_spike.tscn" id="11_ipnip"]
 [ext_resource type="PackedScene" uid="uid://oi2dpma7qxym" path="res://objects/pickup/glider_pickup.tscn" id="11_jumpd"]
+[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="12_nnfjb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_03h4v"]
 atlas = ExtResource("9_rjxav")
@@ -155,3 +156,6 @@ target_id = 3
 
 [node name="GliderPickup" parent="." instance=ExtResource("11_jumpd")]
 position = Vector2(96, -87)
+
+[node name="SquirrelEnemy" parent="." instance=ExtResource("12_nnfjb")]
+position = Vector2(690, 224)

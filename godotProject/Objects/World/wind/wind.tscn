@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1kqnyhmiq00l"]
 
-[ext_resource type="Texture2D" uid="uid://d1627yj5x6wb8" path="res://icon.svg" id="2_nhucu"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6i1un"]
 size = Vector2(326, 884)
+
+[sub_resource type="Resource" id="Resource_mqqpm"]
+metadata/__load_path__ = "res://icon.svg"
 
 [node name="Wind" type="Area2D"]
 
@@ -16,7 +17,7 @@ debug_color = Color(0.823129, 0.963697, 1, 0.42)
 modulate = Color(1, 1, 1, 0.396078)
 position = Vector2(346, -94)
 scale = Vector2(2.54688, 6.90625)
-texture = ExtResource("2_nhucu")
+texture = SubResource("Resource_mqqpm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

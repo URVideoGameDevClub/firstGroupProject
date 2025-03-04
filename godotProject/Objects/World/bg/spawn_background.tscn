@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://objects/world/TILE_CaveBG_Vines2.png" id="6_vtgwu"]
 [ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://objects/world/TILE_CaveBG_Vines3.png" id="7_mnkyw"]
 
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hm42h"]
 texture = ExtResource("4_t3stj")
 texture_region_size = Vector2i(32, 32)

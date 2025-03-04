@@ -1,18 +1,17 @@
 [gd_scene load_steps=49 format=3 uid="uid://bu1yva487v1u5"]
 
-[ext_resource type="Script" path="res://objects/enemy/objects/squirrel_enemy.gd" id="1_6a6c2"]
+[ext_resource type="Script" uid="uid://puh34nuhijbc" path="res://objects/enemy/objects/squirrel_enemy.gd" id="1_6a6c2"]
 [ext_resource type="Texture2D" uid="uid://dku1qkdlx0ffy" path="res://objects/enemy/assets/enemy attack.png" id="1_8mg8b"]
 [ext_resource type="Texture2D" uid="uid://bis6g6r5n55f7" path="res://objects/enemy/assets/Enemy idle animation.png" id="1_tchrb"]
-[ext_resource type="Shader" path="res://objects/player/new_player.gdshader" id="2_kto7c"]
+[ext_resource type="Shader" uid="uid://cg0s8wty56ame" path="res://objects/player/new_player.gdshader" id="2_kto7c"]
 [ext_resource type="Texture2D" uid="uid://csf38krfju06c" path="res://objects/enemy/assets/enemy walk.png" id="3_vf2ar"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aryqg"]
 size = Vector2(25, 15)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmcbo"]
 shader = ExtResource("2_kto7c")
-shader_parameter/is_damage_state = null
+shader_parameter/is_damage_state = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acedg"]
 atlas = ExtResource("1_8mg8b")

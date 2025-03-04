@@ -1,29 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://fph2edm2g8cn"]
+[gd_scene load_steps=9 format=3 uid="uid://fph2edm2g8cn"]
 
-[ext_resource type="PackedScene" path="res://Wall/objects/wall.tscn" id="1_ske6q"]
 [ext_resource type="PackedScene" uid="uid://fbrry1fe32y5" path="res://objects/door/Old/door_right_old.tscn" id="2_75gm8"]
 [ext_resource type="PackedScene" uid="uid://d4fmtfarl5eqt" path="res://objects/door/Old/door_left_old.tscn" id="3_5t4s5"]
 
+[sub_resource type="Resource" id="Resource_vvari"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
 
+[sub_resource type="Resource" id="Resource_io003"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_nth2b"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_8nip3"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_m0ttq"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
+
+[sub_resource type="Resource" id="Resource_s6mlt"]
+metadata/__load_path__ = "res://Wall/objects/wall.tscn"
 
 [node name="Level2" type="Node2D"]
 
-[node name="Wall" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall" parent="."]
 position = Vector2(103, 293)
 
-[node name="Wall2" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall2" parent="."]
 position = Vector2(231, 293)
 
-[node name="Wall3" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall3" parent="."]
 position = Vector2(-25, 293)
 
-[node name="Wall4" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall4" parent="."]
 position = Vector2(615, 293)
 
-[node name="Wall5" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall5" parent="."]
 position = Vector2(487, 293)
 
-[node name="Wall6" parent="." instance=ExtResource("1_ske6q")]
+[node name="Wall6" parent="."]
 position = Vector2(359, 293)
 
 [node name="DoorR" parent="." instance=ExtResource("2_75gm8")]

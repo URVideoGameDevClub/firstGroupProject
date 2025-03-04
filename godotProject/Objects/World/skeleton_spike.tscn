@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gqfxkccfm8mv"]
 
-[ext_resource type="Script" path="res://objects/world/hurt_zone.gd" id="1_eakpq"]
+[ext_resource type="Script" uid="uid://ci7e0l3yg5p1a" path="res://objects/world/hurt_zone.gd" id="1_eakpq"]
 [ext_resource type="Texture2D" uid="uid://kxeopnbvbhv" path="res://objects/world/Tilemap/spike.png" id="1_uv3cv"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om7ps"]
 size = Vector2(27, 9)

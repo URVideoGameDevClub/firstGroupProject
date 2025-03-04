@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://byjccdh5legpc"]
 
 [ext_resource type="Texture2D" uid="uid://crjnp72gs05rr" path="res://objects/gui/assets/healthbar empty.png" id="1_bedkv"]
-[ext_resource type="Script" path="res://objects/gui/gui.gd" id="1_vac55"]
-[ext_resource type="Script" path="res://objects/gui/health_bar.gd" id="2_alww7"]
+[ext_resource type="Script" uid="uid://dwt4xsvo5yt5w" path="res://objects/gui/gui.gd" id="1_vac55"]
+[ext_resource type="Script" uid="uid://b7i2h7hvn0uu7" path="res://objects/gui/health_bar.gd" id="2_alww7"]
 [ext_resource type="Texture2D" uid="uid://4ksvbkm274w3" path="res://objects/gui/assets/health diamond shatter.png" id="3_lds3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q25d"]
@@ -115,8 +115,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o7cdx"]
 _data = {
-"RESET": SubResource("Animation_ey2kg"),
-"fade_to_black": SubResource("Animation_km1tj")
+&"RESET": SubResource("Animation_ey2kg"),
+&"fade_to_black": SubResource("Animation_km1tj")
 }
 
 [node name="Gui" type="CanvasLayer"]

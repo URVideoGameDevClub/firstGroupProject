@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl4unk7yiblu0"]
 
-[ext_resource type="Script" path="res://objects/root/game.gd" id="1_i7nlg"]
+[ext_resource type="Script" uid="uid://bryxuoepe0gcp" path="res://objects/root/game.gd" id="1_i7nlg"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://objects/gui/gui.tscn" id="2_15dbo"]
 [ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://objects/levels/real/spawn_level.tscn" id="3_pe7yd"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/old_player.tscn" id="4_q6e4d"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=92 format=3 uid="uid://bo7ruckc5q446"]
 
-[ext_resource type="Script" path="res://objects/player/objects/old_player.gd" id="1_2scs8"]
-[ext_resource type="Shader" path="res://objects/player/new_player.gdshader" id="2_sdteq"]
+[ext_resource type="Script" uid="uid://cju870f7d443s" path="res://objects/player/objects/old_player.gd" id="1_2scs8"]
+[ext_resource type="Shader" uid="uid://cg0s8wty56ame" path="res://objects/player/new_player.gdshader" id="2_sdteq"]
 [ext_resource type="Texture2D" uid="uid://bdheyy085rafh" path="res://objects/player/assets/Player jump animation.png" id="3_xdngr"]
 [ext_resource type="Texture2D" uid="uid://vvsc67kxpxl8" path="res://objects/player/assets/Player attack animation.png" id="4_fj7dh"]
 [ext_resource type="Texture2D" uid="uid://da7o2dbhwohd0" path="res://objects/player/assets/player_death.png" id="5_lf2j6"]

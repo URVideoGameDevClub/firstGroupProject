@@ -42,7 +42,7 @@ func physics_update(delta: float) -> void:
 				player.animation_state.travel(&"jump_start")
 			&"glide_middle":
 				player.animation_state.travel(&"jump_middle")
-	elif not gliding and Input.is_action_pressed(&"glide"):
+	elif not gliding and player.glide_enabled and Input.is_action_pressed(&"glide"):
 		gliding = true
 		match player.animation_state.get_current_node():
 			&"jump_start":
@@ -73,4 +73,4 @@ func _jump() -> void:
 	coyote_time = 0.0
 	jump_held = true
 	player.velocity.y = -JUMP_VELOCITY
-	player.animation_state.travel(&"jump_start")
+	player.animation_state.start(&"jump_start")
