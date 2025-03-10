@@ -8,7 +8,7 @@ const JUMP_VELOCITY := 400.0
 const JUMP_CUTOFF := 3.0
 const GRAVITY := 1100.0
 const GLIDE_GRAVITY := 600.0
-const MAX_GLIDE_FALL_SPEED := 50.0
+const MAX_GLIDE_FALL_SPEED := 60.0
 const COYOTE_TIME := 0.15
 
 var gliding := false
@@ -72,6 +72,9 @@ func physics_update(delta: float) -> void:
 
 
 func _jump() -> void:
+	if jumps_remaining <= 0:
+		return
+	
 	jumps_remaining -= 1
 	coyote_time = 0.0
 	jump_held = true
