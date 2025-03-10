@@ -275,11 +275,11 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7p2hl"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nuogp"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rlmuy"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lk4b7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ssrue"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xc37f"]
 states/End/position = Vector2(174, 251.69)
@@ -302,8 +302,8 @@ states/jump_start/node = SubResource("AnimationNodeAnimation_2ejgu")
 states/jump_start/position = Vector2(343, -79.75)
 states/run/node = SubResource("AnimationNodeAnimation_udh60")
 states/run/position = Vector2(998.5, 72.625)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_e85pr"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_fcjvc"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_5irwp"), "idle", "jump_start", SubResource("AnimationNodeStateMachineTransition_u0v76"), "jump_start", "jump_middle", SubResource("AnimationNodeStateMachineTransition_rg16m"), "jump_middle", "jump_end", SubResource("AnimationNodeStateMachineTransition_dbngd"), "jump_end", "idle", SubResource("AnimationNodeStateMachineTransition_rxamn"), "glide_start", "glide_middle", SubResource("AnimationNodeStateMachineTransition_5r6pw"), "glide_middle", "glide_end", SubResource("AnimationNodeStateMachineTransition_1di2q"), "jump_start", "glide_start", SubResource("AnimationNodeStateMachineTransition_w55x6"), "glide_start", "jump_start", SubResource("AnimationNodeStateMachineTransition_sieqn"), "jump_middle", "glide_middle", SubResource("AnimationNodeStateMachineTransition_75cww"), "glide_middle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_nktcm"), "jump_end", "run", SubResource("AnimationNodeStateMachineTransition_5txl8"), "glide_end", "idle", SubResource("AnimationNodeStateMachineTransition_345hl"), "glide_end", "run", SubResource("AnimationNodeStateMachineTransition_rrrhn"), "idle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_7p2hl"), "jump_middle", "jump_start", SubResource("AnimationNodeStateMachineTransition_nuogp"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_rlmuy"), "death", "End", SubResource("AnimationNodeStateMachineTransition_lk4b7")]
-graph_offset = Vector2(-46, -134.87)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_e85pr"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_fcjvc"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_5irwp"), "idle", "jump_start", SubResource("AnimationNodeStateMachineTransition_u0v76"), "jump_start", "jump_middle", SubResource("AnimationNodeStateMachineTransition_rg16m"), "jump_middle", "jump_end", SubResource("AnimationNodeStateMachineTransition_dbngd"), "jump_end", "idle", SubResource("AnimationNodeStateMachineTransition_rxamn"), "glide_start", "glide_middle", SubResource("AnimationNodeStateMachineTransition_5r6pw"), "glide_middle", "glide_end", SubResource("AnimationNodeStateMachineTransition_1di2q"), "jump_start", "glide_start", SubResource("AnimationNodeStateMachineTransition_w55x6"), "glide_start", "jump_start", SubResource("AnimationNodeStateMachineTransition_sieqn"), "jump_middle", "glide_middle", SubResource("AnimationNodeStateMachineTransition_75cww"), "glide_middle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_nktcm"), "jump_end", "run", SubResource("AnimationNodeStateMachineTransition_5txl8"), "glide_end", "idle", SubResource("AnimationNodeStateMachineTransition_345hl"), "glide_end", "run", SubResource("AnimationNodeStateMachineTransition_rrrhn"), "idle", "jump_middle", SubResource("AnimationNodeStateMachineTransition_7p2hl"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_rlmuy"), "death", "End", SubResource("AnimationNodeStateMachineTransition_lk4b7"), "jump_middle", "jump_start", SubResource("AnimationNodeStateMachineTransition_ssrue")]
+graph_offset = Vector2(-124, -257.87)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssrue"]
 

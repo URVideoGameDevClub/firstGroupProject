@@ -14,9 +14,11 @@ const COYOTE_TIME := 0.15
 var gliding := false
 var jump_held := false
 var coyote_time := 0.0
+var jumps_remaining := 0
 
 
 func enter() -> void:
+	jumps_remaining = player.jump_count
 	if Input.is_action_just_pressed(&"jump"):
 		_jump()
 	else:
@@ -33,7 +35,7 @@ func exit() -> void:
 func physics_update(delta: float) -> void:
 	coyote_time = maxf(coyote_time - delta, 0.0)
 	
-	if coyote_time > 0.0 and Input.is_action_just_pressed(&"jump"):
+	if (coyote_time > 0.0 or jumps_remaining > 0) and Input.is_action_just_pressed(&"jump"):
 		_jump()
 	elif gliding and not Input.is_action_pressed(&"glide"):
 		gliding = false
@@ -55,7 +57,7 @@ func physics_update(delta: float) -> void:
 		Global.input_vector().x * MAX_MOVE_SPEED,
 		ACCEL * delta,
 	)
-	if gliding:
+	if gliding and player.velocity.y > 0.0:
 		player.velocity.y = minf(player.velocity.y + GLIDE_GRAVITY * delta, MAX_GLIDE_FALL_SPEED)
 	else:
 		player.velocity.y = minf(player.velocity.y + GRAVITY * delta, MAX_FALL_SPEED)
@@ -70,7 +72,11 @@ func physics_update(delta: float) -> void:
 
 
 func _jump() -> void:
+	jumps_remaining -= 1
 	coyote_time = 0.0
 	jump_held = true
 	player.velocity.y = -JUMP_VELOCITY
-	player.animation_state.start(&"jump_start")
+	if gliding:
+		player.animation_state.start(&"glide_start")
+	else:
+		player.animation_state.start(&"jump_start")

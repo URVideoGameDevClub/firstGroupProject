@@ -5,7 +5,9 @@ const DAMAGE_FLASH_TIME := 0.2
 const ATTACK_AREA_X := 16.0
 const ATTACK_DAMAGE := 1
 
-@export var glide_enabled := true
+@export var attack_enabled := false
+@export var glide_enabled := false
+@export var jump_count := 1
 
 var ground_state := GroundPlayerState.new(self)
 var air_state := AirPlayerState.new(self)
@@ -17,6 +19,8 @@ var facing_right := false:
 		attack_area.position.x = ATTACK_AREA_X * (1.0 if value else -1.0)
 		sprite.flip_h = value
 		facing_right = value
+
+var is_attacking := false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -40,7 +44,7 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"kill_player"):
 		transition(death_state)
-	elif event.is_action_pressed(&"attack"):
+	elif attack_enabled and event.is_action_pressed(&"attack"):
 		send_attack()
 
 

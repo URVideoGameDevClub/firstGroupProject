@@ -5,10 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bnjo3ngrhgibp" path="res://objects/levels/real/spawn_level.tscn" id="3_pe7yd"]
 [ext_resource type="PackedScene" uid="uid://bo7ruckc5q446" path="res://objects/player/objects/old_player.tscn" id="4_q6e4d"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("current_level", "last_spawn_marker", "player")]
+[node name="Game" type="Node" node_paths=PackedStringArray("current_level", "player")]
 script = ExtResource("1_i7nlg")
 current_level = NodePath("SpawnLevel")
-last_spawn_marker = NodePath("SpawnLevel/SpawnMarker")
 player = NodePath("OldPlayer")
 inventory = null
 paused = null
