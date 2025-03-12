@@ -1,110 +1,56 @@
 class_name Game
 extends Node
-## Master game node. Holds all game state. Friend class of Global Singleton.
 
-enum Level { NONE, SPAWN, LEFT, RIGHT }
+enum Level { NONE, LEFT, SPAWN, RIGHT }
 
-# TODO: change to uids if they stop throwing errors
-const PLAYER_SCENE := preload("res://objects/player/objects/old_player.tscn")
-const CROWN_ANIM_SCENE := preload("res://objects/anim/crown_anim.tscn")
-const THANK_YOU_SCENE := preload("res://objects/anim/thank_you_anim.tscn")
-const LEVELS: Dictionary[Level, PackedScene] = {
-	Level.NONE: null,
-	Level.SPAWN: preload("res://objects/levels/real/spawn_level.tscn"),
-	Level.LEFT: preload("res://objects/levels/real/left_level.tscn"),
-	Level.RIGHT: null,
+const LEVELS: Dictionary[Level, String] = {
+	Level.NONE: "",
+	Level.LEFT: "uid://dcb3cx0bo07it",
+	Level.SPAWN: "uid://bnjo3ngrhgibp",
+	Level.RIGHT: "",
 }
+const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 
-@export var current_level: Node2D
-@export var respawn_point := Vector2.ZERO
-@export var player: OldPlayer
 @export var inventory: Array[String]
-@export var paused := false
+@export var current_level: Node2D
+@export var player: Player
 
-@onready var gui: Gui = $Gui
-
-
-func _enter_tree() -> void:
-	Global._game = self
+var respawn_point := Vector2.ZERO
 
 
 func _ready() -> void:
+	Global.set_game(self)
 	Global.door_entered.connect(_on_door_entered)
-	Global.spike_hit.connect(_on_spike_hit)
-	Global.checkpoint_entered.connect(_on_checkpoint_entered)
-	Global.show_crown_anim.connect(_on_show_crown_anim)
-	Global.player_death.connect(_on_player_death)
-	Global.item_picked_up.connect(_add_to_inventory)
-	
-	if current_level == null:
-		push_error("Root.current_level is null")
+	respawn_point = player.global_position
 
 
-func _add_to_inventory(item_name: String) -> void:
-	if item_name in inventory:
-		push_warning("%s already present in inventory" % item_name)
-	
-	inventory.push_back(item_name)
-
-
-# TODO: CHANGE ALL OF THIS
 func _on_door_entered(door: Door) -> void:
-	if door.id == 2:
-		Global.paused = true
-		player.visible = false
-		var thank_you := THANK_YOU_SCENE.instantiate()
-		add_child(thank_you)
-		thank_you.get_node("AnimationPlayer").play(&"new_animation")
-		return
+	_load_level.call_deferred(door)
+
+
+func _load_level(door: Door) -> void:
+	get_tree().paused = true
 	
-	paused = true
-	gui.anim.play(&"fade_to_black")
-	await gui.fade_to_black_finished
-	
-	current_level.queue_free()
-	print(door.target_room)
-	current_level = LEVELS[door.target_room].instantiate()
-	add_child.call_deferred(current_level)
 	var target_id := door.target_id
+	var new_level_path := LEVELS[door.target_room]
+	var new_level: PackedScene = load(new_level_path)
+	current_level.queue_free()
+	player.queue_free()
 	await get_tree().process_frame
-	for i_door: Door in get_tree().get_nodes_in_group(&"door"):
-		if i_door.id == target_id:
-			respawn_point = i_door.spawn_marker.global_position
-			player.global_position = respawn_point
 	
-	gui.anim.play_backwards(&"fade_to_black")
-	await gui.fade_to_black_finished
-	paused = false
-
-
-func _on_spike_hit() -> void:
+	current_level = new_level.instantiate()
+	add_child(current_level)
+	
+	var target_door: Door
+	for candidate_door: Door in get_tree().get_nodes_in_group(&"door"):
+		if candidate_door.id == target_id:
+			target_door = candidate_door
+			respawn_point = target_door.spawn_marker.global_position
+			break
+	assert(target_door)
+	
+	player = PLAYER_SCENE.instantiate()
 	player.global_position = respawn_point
-
-
-func _on_checkpoint_entered(pos: Vector2) -> void:
-	respawn_point = pos
-
-
-func _on_show_crown_anim() -> void:
-	paused = true
-	if player.state == OldPlayer.State.RUN:
-		player.set_state(OldPlayer.State.IDLE)
-	player.sprite.pause()
-	var crown_anim := CROWN_ANIM_SCENE.instantiate()
-	add_child(crown_anim)
-	crown_anim.get_node("AnimationPlayer").play(&"the_anim")
-	await crown_anim.get_node("AnimationPlayer").animation_finished
-	paused = false
-	crown_anim.queue_free()
-	player.sprite.play()
-
-
-func _on_player_death() -> void:
-	await get_tree().create_timer(2.0).timeout
-	player.health = 3
-	Global.player_health_updated.emit(player.health)
-	player.global_position = respawn_point
-	player.velocity.y = 0.0
-	print(player.global_position)
-	print(respawn_point)
-	player.set_state(OldPlayer.State.IDLE)
+	add_child(player)
+	
+	get_tree().paused = false

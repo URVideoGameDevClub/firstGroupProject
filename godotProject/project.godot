@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rabbit Hole"
-run/main_scene="res://objects/root/game.tscn"
+run/main_scene="uid://c7h8gr4trbcf5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]

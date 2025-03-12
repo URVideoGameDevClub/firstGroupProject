@@ -18,10 +18,10 @@ tile_set = ExtResource("1_wpe4n")
 [node name="DoorUno" parent="." instance=ExtResource("2_qd0l7")]
 z_index = -1
 position = Vector2(53, 0)
-target_room = 1
+target_room = 2
 id = 1
 target_id = 0
-actual_pos = null
+actual_pos = Vector2(0, 0)
 
 [node name="Label" type="Label" parent="DoorUno"]
 offset_left = -448.0

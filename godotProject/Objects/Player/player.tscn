@@ -338,3 +338,8 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ssrue")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -32)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

@@ -19,6 +19,10 @@ func _input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 
+func set_game(game: Game) -> void:
+	_game = game
+
+
 func has_item(item_name: String) -> bool:
 	if _game and item_name in _game.inventory:
 		return true

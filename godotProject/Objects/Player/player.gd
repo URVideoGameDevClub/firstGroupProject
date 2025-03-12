@@ -8,6 +8,7 @@ const ATTACK_DAMAGE := 1
 @export var attack_enabled := false
 @export var glide_enabled := false
 @export var jump_count := 1
+@export_range(0, 3) var health := 3
 
 var ground_state := GroundPlayerState.new(self)
 var air_state := AirPlayerState.new(self)
@@ -32,6 +33,7 @@ var is_attacking := false
 
 func _ready() -> void:
 	Global.item_picked_up.connect(_on_item_picked_up)
+	Global.player_health_updated.emit(health)
 	transition(ground_state)
 	facing_right = sprite.flip_h
 

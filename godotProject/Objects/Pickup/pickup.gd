@@ -10,6 +10,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: PhysicsBody2D) -> void:
-	if body is OldPlayer:
+	if body is Player:
 		Global.item_picked_up.emit(item_name)
 		queue_free()
