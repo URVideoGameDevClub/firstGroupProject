@@ -21,6 +21,7 @@ var respawn_point := Vector2.ZERO
 func _ready() -> void:
 	Global.set_game(self)
 	Global.door_entered.connect(_on_door_entered)
+	Global.item_picked_up.connect(_on_item_picked_up)
 	respawn_point = player.global_position
 
 
@@ -35,7 +36,6 @@ func _load_level(door: Door) -> void:
 	var new_level_path := LEVELS[door.target_room]
 	var new_level: PackedScene = load(new_level_path)
 	current_level.queue_free()
-	player.queue_free()
 	await get_tree().process_frame
 	
 	current_level = new_level.instantiate()
@@ -49,8 +49,14 @@ func _load_level(door: Door) -> void:
 			break
 	assert(target_door)
 	
-	player = PLAYER_SCENE.instantiate()
 	player.global_position = respawn_point
-	add_child(player)
 	
 	get_tree().paused = false
+
+
+func _on_item_picked_up(item_name: String) -> void:
+	if item_name in inventory:
+		push_warning("%s already in inventory" % item_name)
+		return
+	
+	inventory.push_back(item_name)
