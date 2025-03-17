@@ -2,7 +2,7 @@ class_name GroundPlayerState
 extends PlayerState
 
 const MAX_MOVE_SPEED := 200.0
-const ACCEL := 3000.0
+const ACCEL := 2500.0
 
 
 func enter() -> void:

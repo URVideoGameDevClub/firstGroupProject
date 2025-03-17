@@ -29,6 +29,7 @@ var is_attacking := false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var shader_material: ShaderMaterial = sprite.material
 @onready var attack_area: Area2D = $AttackArea
+@onready var camera: Camera2D = $Camera2D
 
 
 func _ready() -> void:

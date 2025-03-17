@@ -17,6 +17,8 @@ const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 
 var respawn_point := Vector2.ZERO
 
+@onready var gui: Gui = $Gui
+
 
 func _ready() -> void:
 	Global.set_game(self)
@@ -32,11 +34,13 @@ func _on_door_entered(door: Door) -> void:
 func _load_level(door: Door) -> void:
 	get_tree().paused = true
 	
+	gui.anim.play(&"fade_to_black")
+	await gui.anim.animation_finished
+	
 	var target_id := door.target_id
 	var new_level_path := LEVELS[door.target_room]
 	var new_level: PackedScene = load(new_level_path)
 	current_level.queue_free()
-	await get_tree().process_frame
 	
 	current_level = new_level.instantiate()
 	add_child(current_level)
@@ -50,6 +54,11 @@ func _load_level(door: Door) -> void:
 	assert(target_door)
 	
 	player.global_position = respawn_point
+	# this doesnt work for some reason
+	player.camera.reset_smoothing()
+	
+	gui.anim.play_backwards(&"fade_to_black")
+	await gui.anim.animation_finished
 	
 	get_tree().paused = false
 
