@@ -10,6 +10,9 @@ func enter() -> void:
 
 
 func physics_update(delta: float) -> void:
+	if player.input_frozen:
+		return
+	
 	player.velocity.x = move_toward(
 		player.velocity.x,
 		Global.input_vector().x * MAX_MOVE_SPEED,

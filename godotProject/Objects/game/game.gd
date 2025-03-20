@@ -73,7 +73,13 @@ func _on_item_picked_up(item_name: String) -> void:
 
 
 func _on_spike_hit() -> void:
+	gui.anim.play(&"fade_to_black", -1, 2.0)
+	await gui.anim.animation_finished
+	player.input_frozen = true
 	player.global_position = respawn_point
+	gui.anim.play(&"fade_to_black", -1, -2.0, true)
+	await gui.anim.animation_finished
+	player.input_frozen = false
 
 
 func _on_checkpoint_entered(pos: Vector2) -> void:

@@ -22,6 +22,8 @@ var facing_right := false:
 		facing_right = value
 
 var is_attacking := false
+# currently only applies to ground player state
+var input_frozen := false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree

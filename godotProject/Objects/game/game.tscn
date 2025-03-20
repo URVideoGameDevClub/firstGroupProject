@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://b5qdasw04pvli" path="res://objects/player/player.tscn" id="3_molxq"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://objects/gui/gui.tscn" id="4_icv08"]
 
-[node name="Game" type="Node" node_paths=PackedStringArray("current_level", "player")]
+[node name="Game" type="Node" node_paths=PackedStringArray("current_level", "player", "gui")]
 script = ExtResource("1_i7nlg")
 current_level = NodePath("LevelA")
 player = NodePath("Player")
+gui = NodePath("Gui")
 
 [node name="LevelA" parent="." instance=ExtResource("2_dnbg5")]
 
 [node name="Player" parent="." instance=ExtResource("3_molxq")]
+position = Vector2(923, -192)
 
 [node name="Gui" parent="." instance=ExtResource("4_icv08")]
