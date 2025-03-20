@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Rabbit Hole"
-run/main_scene="uid://c7h8gr4trbcf5"
+run/main_scene="uid://bx1fg2l7dpn5d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-Global="*res://objects/root/global.gd"
+Global="*res://objects/game/global.gd"
 
 [debug]
 

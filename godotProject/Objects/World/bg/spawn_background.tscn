@@ -8,34 +8,34 @@
 [ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://objects/world/TILE_CaveBG_Vines2.png" id="6_vtgwu"]
 [ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://objects/world/TILE_CaveBG_Vines3.png" id="7_mnkyw"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hm42h"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gu6xy"]
 texture = ExtResource("4_t3stj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_r55fb"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_hm42h")
+sources/1 = SubResource("TileSetAtlasSource_gu6xy")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nmmtw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ly2r0"]
 texture = ExtResource("5_djkog")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pslnk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lq7a0"]
 texture = ExtResource("6_vtgwu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5mm64"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b48te"]
 texture = ExtResource("7_mnkyw")
 texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_1kyil"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_nmmtw")
-sources/1 = SubResource("TileSetAtlasSource_pslnk")
-sources/2 = SubResource("TileSetAtlasSource_5mm64")
+sources/0 = SubResource("TileSetAtlasSource_ly2r0")
+sources/1 = SubResource("TileSetAtlasSource_lq7a0")
+sources/2 = SubResource("TileSetAtlasSource_b48te")
 
 [node name="Background" type="Node2D"]
 metadata/_edit_lock_ = true

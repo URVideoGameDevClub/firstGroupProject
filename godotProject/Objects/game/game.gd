@@ -14,16 +14,17 @@ const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 @export var inventory: Array[String]
 @export var current_level: Node2D
 @export var player: Player
+@export var gui: Gui
 
 var respawn_point := Vector2.ZERO
-
-@onready var gui: Gui = $Gui
 
 
 func _ready() -> void:
 	Global.set_game(self)
 	Global.door_entered.connect(_on_door_entered)
 	Global.item_picked_up.connect(_on_item_picked_up)
+	Global.spike_hit.connect(_on_spike_hit)
+	Global.checkpoint_entered.connect(_on_checkpoint_entered)
 	respawn_point = player.global_position
 
 
@@ -69,3 +70,11 @@ func _on_item_picked_up(item_name: String) -> void:
 		return
 	
 	inventory.push_back(item_name)
+
+
+func _on_spike_hit() -> void:
+	player.global_position = respawn_point
+
+
+func _on_checkpoint_entered(pos: Vector2) -> void:
+	respawn_point = pos
