@@ -1,7 +1,6 @@
 class_name PlayerState
 extends RefCounted
 
-
 var player: Player
 
 
@@ -9,7 +8,7 @@ func _init(p_player: Player) -> void:
 	player = p_player
 
 
-func enter() -> void:
+func enter(_args: Dictionary[String, Variant] = {}) -> void:
 	pass
 
 

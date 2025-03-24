@@ -8,12 +8,8 @@ size = Vector2(16, 60)
 
 [node name="DoorUno" type="Node2D" node_paths=PackedStringArray("area", "spawn_marker") groups=["door"]]
 script = ExtResource("1_abd74")
-target_room = null
 area = NodePath("Area2D")
 spawn_marker = NodePath("Marker2D")
-id = null
-target_id = null
-actual_pos = null
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -32)

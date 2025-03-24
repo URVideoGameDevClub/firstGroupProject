@@ -29,10 +29,10 @@ func _ready() -> void:
 
 
 func _on_door_entered(door: Door) -> void:
-	_load_level.call_deferred(door)
+	_load_level_from_door.call_deferred(door)
 
 
-func _load_level(door: Door) -> void:
+func _load_level_from_door(door: Door) -> void:
 	get_tree().paused = true
 	
 	gui.anim.play(&"fade_to_black")

@@ -5,7 +5,7 @@ const MAX_MOVE_SPEED := 200.0
 const ACCEL := 2500.0
 
 
-func enter() -> void:
+func enter(_args: Dictionary[String, Variant] = {}) -> void:
 	pass
 
 

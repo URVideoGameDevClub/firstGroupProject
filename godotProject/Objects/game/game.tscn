@@ -14,6 +14,6 @@ gui = NodePath("Gui")
 [node name="LevelA" parent="." instance=ExtResource("2_dnbg5")]
 
 [node name="Player" parent="." instance=ExtResource("3_molxq")]
-position = Vector2(923, -192)
+position = Vector2(3, -19)
 
 [node name="Gui" parent="." instance=ExtResource("4_icv08")]

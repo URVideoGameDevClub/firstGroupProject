@@ -16,7 +16,7 @@ var jump_held := false
 var jumps_remaining := 0
 
 
-func enter() -> void:
+func enter(args: Dictionary[String, Variant] = {}) -> void:
 	jumps_remaining = player.jump_count
 	if Input.is_action_just_pressed(&"jump"):
 		_jump()
@@ -73,7 +73,7 @@ func _jump() -> void:
 	
 	jumps_remaining -= 1
 	jump_held = true
-	player.velocity.y = -JUMP_VELOCITY
+	player.velocity.y = - JUMP_VELOCITY
 	if gliding:
 		player.animation_state.start(&"glide_start")
 	else:

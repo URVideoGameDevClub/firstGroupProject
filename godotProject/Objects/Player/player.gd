@@ -8,12 +8,16 @@ const ATTACK_DAMAGE := 1
 @export var attack_enabled := false
 @export var glide_enabled := false
 @export var jump_count := 1
-@export_range(0, 3) var health := 3
+@export_range(0, 3) var health := 3:
+	set(value):
+		if value != health:
+			Global.player_health_updated.emit(value)
+			health = value
 
 var ground_state := GroundPlayerState.new(self)
 var air_state := AirPlayerState.new(self)
 var death_state := DeathPlayerState.new(self)
-var state: PlayerState: set = transition
+var _state: PlayerState
 
 var facing_right := false:
 	set(value):
@@ -42,8 +46,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if state:
-		state.physics_update(delta)
+	if _state:
+		_state.physics_update(delta)
 
 
 func _input(event: InputEvent) -> void:
@@ -53,11 +57,15 @@ func _input(event: InputEvent) -> void:
 		send_attack()
 
 
-func transition(target: PlayerState) -> void:
-	if state:
-		state.exit()
-	state = target
-	state.enter()
+func get_state() -> PlayerState:
+	return _state
+
+
+func transition(target: PlayerState, args: Dictionary[String, Variant] = {}) -> void:
+	if _state:
+		_state.exit()
+	_state = target
+	_state.enter(args)
 
 
 func update_facing() -> void:
