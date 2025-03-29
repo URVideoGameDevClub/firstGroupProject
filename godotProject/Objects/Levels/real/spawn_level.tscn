@@ -130,7 +130,6 @@ scale = Vector2(-1, 1)
 target_room = 1
 id = 0
 target_id = 1
-actual_pos = Vector2(0, 0)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -283.0
@@ -152,10 +151,8 @@ script = ExtResource("9_x0nol")
 [node name="DoorUno2" parent="." instance=ExtResource("6_svg6m")]
 z_index = -9
 position = Vector2(1205, 640)
-target_room = 0
 id = 2
 target_id = 3
-actual_pos = Vector2(0, 0)
 
 [node name="GliderPickup" parent="." instance=ExtResource("11_jumpd")]
 position = Vector2(96, -87)

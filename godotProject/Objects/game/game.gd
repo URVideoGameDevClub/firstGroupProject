@@ -1,13 +1,12 @@
 class_name Game
 extends Node
 
-enum Level { NONE, LEFT, SPAWN, RIGHT }
+enum ELevel { NONE, A, B }
 
-const LEVELS: Dictionary[Level, String] = {
-	Level.NONE: "",
-	Level.LEFT: "uid://dcb3cx0bo07it",
-	Level.SPAWN: "uid://bnjo3ngrhgibp",
-	Level.RIGHT: "",
+const LEVELS: Dictionary[ELevel, String] = {
+	ELevel.NONE: "",
+	ELevel.A: "uid://cif4a0lvh2wti",
+	ELevel.B: "uid://w2g2bbasq27b",
 }
 const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 
@@ -47,13 +46,14 @@ func _load_level_from_door(door: Door) -> void:
 	add_child(current_level)
 	
 	var target_door: Door
-	for candidate_door: Door in get_tree().get_nodes_in_group(&"door"):
+	for candidate_door: Door in current_level.doors:
 		if candidate_door.id == target_id:
 			target_door = candidate_door
 			respawn_point = target_door.spawn_marker.global_position
 			break
 	assert(target_door)
 	
+	print(respawn_point)
 	player.global_position = respawn_point
 	# this doesnt work for some reason
 	player.camera.reset_smoothing()
