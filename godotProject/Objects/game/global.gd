@@ -1,5 +1,5 @@
 extends Node
-## Global signals and a reference to root. Should not hold any other state.
+## Global signals and a reference to game node. Should not hold any other state.
 
 signal game_entered_tree(game: Game)
 signal door_entered(door: Door)
@@ -11,6 +11,7 @@ signal spike_hit
 signal checkpoint_entered(pos: Vector2)
 signal show_crown_anim
 
+# Must NOT be null/freed during gameplay
 var _game: Game
 
 
@@ -24,15 +25,17 @@ func set_game(game: Game) -> void:
 
 
 func has_item(item_name: String) -> bool:
-	if _game and item_name in _game.inventory:
+	if is_instance_valid(_game) and item_name in _game.inventory:
 		return true
 	else:
 		return false
 
 
 func is_paused() -> bool:
-	return _game and _game.paused
+	return is_instance_valid(_game) and _game.paused
 
 
 func input_vector() -> Vector2:
 	return Input.get_vector(&"move_left", &"move_right", &"move_up", &"move_down")
+
+

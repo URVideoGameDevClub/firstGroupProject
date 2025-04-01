@@ -12,6 +12,8 @@ const ATTACK_DAMAGE := 1
 	set(value):
 		if value != health:
 			Global.player_health_updated.emit(value)
+			if value <= 0:
+				transition(death_state)
 			health = value
 
 var ground_state := GroundPlayerState.new(self)
@@ -40,7 +42,6 @@ var input_frozen := false
 
 func _ready() -> void:
 	Global.item_picked_up.connect(_on_item_picked_up)
-	Global.player_health_updated.emit(health)
 	transition(ground_state)
 	facing_right = sprite.flip_h
 
@@ -75,7 +76,8 @@ func update_facing() -> void:
 		facing_right = true
 
 
-func receive_attack(damage: int) -> void:
+func receive_attack(damage: int, knockback_direction := Vector2.ZERO) -> void:
+	health -= damage
 	shader_material.set_shader_parameter(&"is_damage_state", true)
 	await get_tree().create_timer(DAMAGE_FLASH_TIME).timeout
 	shader_material.set_shader_parameter(&"is_damage_state", false)

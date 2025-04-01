@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=4 uid="uid://cif4a0lvh2wti"]
 
 [ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="1_6l6hy"]
-[ext_resource type="Script" path="res://objects/levels/level.gd" id="1_hcubm"]
+[ext_resource type="Script" uid="uid://crrve4qxf3cf8" path="res://objects/levels/level.gd" id="1_hcubm"]
 [ext_resource type="PackedScene" uid="uid://hga80868cvc2" path="res://objects/world/checkpoint.tscn" id="2_6l6hy"]
 [ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://objects/world/TILE_CaveBG_Base.png" id="3_k7nfn"]
 [ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://objects/world/TILE_CaveBG_Vines1.png" id="4_p24xw"]

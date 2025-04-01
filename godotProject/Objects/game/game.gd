@@ -24,6 +24,7 @@ func _ready() -> void:
 	Global.item_picked_up.connect(_on_item_picked_up)
 	Global.spike_hit.connect(_on_spike_hit)
 	Global.checkpoint_entered.connect(_on_checkpoint_entered)
+	Global.player_health_updated.emit(player.health)
 	respawn_point = player.global_position
 
 
@@ -53,15 +54,12 @@ func _load_level_from_door(door: Door) -> void:
 			break
 	assert(target_door)
 	
-	print(respawn_point)
+	get_tree().paused = false
 	player.global_position = respawn_point
-	# this doesnt work for some reason
+	await get_tree().process_frame
 	player.camera.reset_smoothing()
 	
 	gui.anim.play_backwards(&"fade_to_black")
-	await gui.anim.animation_finished
-	
-	get_tree().paused = false
 
 
 func _on_item_picked_up(item_name: String) -> void:

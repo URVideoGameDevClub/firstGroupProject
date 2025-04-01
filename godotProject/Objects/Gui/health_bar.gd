@@ -14,6 +14,8 @@ func _ready() -> void:
 
 func _on_player_health_updated(health: int) -> void:
 	assert(health in range(0, 4))
+
+	print(health)
 	
 	if health < current_health:
 		for i: int in range(health, current_health):
