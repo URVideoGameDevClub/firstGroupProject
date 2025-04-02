@@ -1,12 +1,13 @@
 class_name Game
 extends Node
 
-enum ELevel { NONE, A, B }
+enum ELevel { NONE, A, B, C }
 
 const LEVELS: Dictionary[ELevel, String] = {
 	ELevel.NONE: "",
 	ELevel.A: "uid://cif4a0lvh2wti",
 	ELevel.B: "uid://w2g2bbasq27b",
+	ELevel.C: "",
 }
 const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 

@@ -15,5 +15,6 @@ gui = NodePath("Gui")
 
 [node name="Player" parent="." instance=ExtResource("3_molxq")]
 position = Vector2(2103, 61)
+glide_enabled = true
 
 [node name="Gui" parent="." instance=ExtResource("4_icv08")]
