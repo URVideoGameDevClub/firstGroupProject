@@ -91,6 +91,7 @@ target_id = 0
 position = Vector2(1816, 64)
 id = 1
 target_id = 0
+active = false
 
 [node name="HurtZone" type="Area2D" parent="."]
 position = Vector2(749, 210)

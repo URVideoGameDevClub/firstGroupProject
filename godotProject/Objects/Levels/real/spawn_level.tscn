@@ -124,7 +124,6 @@ position = Vector2(31, 0)
 [node name="SpawnMarker" type="Marker2D" parent="."]
 
 [node name="DoorUno" parent="." instance=ExtResource("6_svg6m")]
-z_index = -1
 position = Vector2(-1493, -191)
 scale = Vector2(-1, 1)
 target_room = 1
