@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=4 uid="uid://bm27f4yydshc7"]
+
+[ext_resource type="Script" uid="uid://crrve4qxf3cf8" path="res://objects/levels/level.gd" id="1_gsfnk"]
+[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="2_5wl30"]
+[ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://objects/world/TILE_CaveBG_Base.png" id="3_6hqgf"]
+[ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://objects/world/TILE_CaveBG_Vines1.png" id="4_kttjp"]
+[ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://objects/world/TILE_CaveBG_Vines2.png" id="5_o7v37"]
+[ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://objects/world/TILE_CaveBG_Vines3.png" id="6_706rj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpnne"]
+texture = ExtResource("3_6hqgf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_xfruu"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_bpnne")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_psgwo"]
+texture = ExtResource("4_kttjp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k88hg"]
+texture = ExtResource("5_o7v37")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ix86w"]
+texture = ExtResource("6_706rj")
+texture_region_size = Vector2i(32, 32)
+
+[sub_resource type="TileSet" id="TileSet_viqg3"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_psgwo")
+sources/1 = SubResource("TileSetAtlasSource_k88hg")
+sources/2 = SubResource("TileSetAtlasSource_ix86w")
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_gsfnk")
+metadata/_custom_type_script = "uid://crrve4qxf3cf8"
+
+[node name="StoneTiles" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_5wl30")
+
+[node name="Background" type="Parallax2D" parent="."]
+z_index = -16
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(256, 256)
+repeat_times = 10
+
+[node name="CaveWallTiles" type="TileMapLayer" parent="Background"]
+tile_map_data = PackedByteArray("AAD8//n/AQAAAAAAAAD8//r/AQAAAAAAAAD8//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD9//n/AQAAAAAAAAD9//r/AQAAAAAAAAD9//v/AQAAAAAAAAD9//z/AQAAAAAAAAD9//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD9/wAAAQAAAAAAAAD+//n/AQAAAAAAAAD+//r/AQAAAAAAAAD+//v/AQAAAAAAAAD+//z/AQAAAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD+////AQAAAAAAAAD+/wAAAQAAAAAAAAD///n/AQAAAAAAAAD///r/AQAAAAAAAAD///v/AQAAAAAAAAD///z/AQAAAAAAAAD///3/AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAAAAPn/AQAAAAAAAAAAAPr/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAP3/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAAAAQAAAAAAAAABAPn/AQAAAAAAAAABAPr/AQAAAAAAAAABAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAABAAAAAQAAAAAAAAACAPn/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAADAPn/AQAAAAAAAAADAPr/AQAAAAAAAAADAPv/AQAAAAAAAAADAPz/AQAAAAAAAAADAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_xfruu")
+
+[node name="VineTiles" type="TileMapLayer" parent="Background"]
+tile_map_data = PackedByteArray("AAD9//v/AAAAAAAAAAACAPz/AAAAAAAAAAD/////AAAAAAAAAAD+//7/AQAAAAAAAAABAPn/AQAAAAAAAAD///z/AQAAAAAAAAADAAAAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_viqg3")
+
+[node name="Doors" type="Node2D" parent="."]

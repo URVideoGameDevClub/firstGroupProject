@@ -10,34 +10,34 @@
 [ext_resource type="Script" uid="uid://ci7e0l3yg5p1a" path="res://objects/world/hurt_zone.gd" id="7_p24xw"]
 [ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://objects/door/Objects/door_uno.tscn" id="8_lriki"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07grp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcubm"]
 texture = ExtResource("3_k7nfn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tqopx"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_07grp")
+sources/1 = SubResource("TileSetAtlasSource_hcubm")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvwsq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07grp"]
 texture = ExtResource("4_p24xw")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4cq0y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqopx"]
 texture = ExtResource("5_lriki")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iftkc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvwsq"]
 texture = ExtResource("6_hcubm")
 texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_5adq6"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_xvwsq")
-sources/1 = SubResource("TileSetAtlasSource_4cq0y")
-sources/2 = SubResource("TileSetAtlasSource_iftkc")
+sources/0 = SubResource("TileSetAtlasSource_07grp")
+sources/1 = SubResource("TileSetAtlasSource_tqopx")
+sources/2 = SubResource("TileSetAtlasSource_xvwsq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lriki"]
 size = Vector2(256, 256)

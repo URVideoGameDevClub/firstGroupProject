@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://bx1fg2l7dpn5d"]
 
 [ext_resource type="Script" uid="uid://dnuhxpvxfwymf" path="res://objects/game/game.gd" id="1_i7nlg"]
-[ext_resource type="PackedScene" uid="uid://cif4a0lvh2wti" path="res://objects/levels/level_a.tscn" id="2_dnbg5"]
 [ext_resource type="PackedScene" uid="uid://b5qdasw04pvli" path="res://objects/player/player.tscn" id="3_molxq"]
+[ext_resource type="PackedScene" uid="uid://bxkkkrbgr5jf1" path="res://objects/levels/level_c.tscn" id="4_2phe8"]
 [ext_resource type="PackedScene" uid="uid://byjccdh5legpc" path="res://objects/gui/gui.tscn" id="4_icv08"]
 
 [node name="Game" type="Node" node_paths=PackedStringArray("current_level", "player", "gui")]
 script = ExtResource("1_i7nlg")
-current_level = NodePath("LevelA")
+inventory = Array[String](["glider"])
+current_level = NodePath("LevelC")
 player = NodePath("Player")
 gui = NodePath("Gui")
 
-[node name="LevelA" parent="." instance=ExtResource("2_dnbg5")]
-
 [node name="Player" parent="." instance=ExtResource("3_molxq")]
-position = Vector2(2103, 61)
-glide_enabled = true
+position = Vector2(76, 0)
 
 [node name="Gui" parent="." instance=ExtResource("4_icv08")]
+
+[node name="LevelC" parent="." instance=ExtResource("4_2phe8")]

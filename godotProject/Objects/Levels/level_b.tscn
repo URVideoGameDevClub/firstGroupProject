@@ -89,9 +89,9 @@ target_id = 0
 
 [node name="DoorToC" parent="Doors" instance=ExtResource("6_c8uvh")]
 position = Vector2(1816, 64)
+target_room = 3
 id = 1
 target_id = 0
-active = false
 
 [node name="HurtZone" type="Area2D" parent="."]
 position = Vector2(749, 210)

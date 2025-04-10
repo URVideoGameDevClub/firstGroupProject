@@ -1,13 +1,13 @@
 class_name Game
 extends Node
 
-enum ELevel { NONE, A, B, C }
+enum ELevel {NONE, A, B, C}
 
 const LEVELS: Dictionary[ELevel, String] = {
 	ELevel.NONE: "",
 	ELevel.A: "uid://cif4a0lvh2wti",
 	ELevel.B: "uid://w2g2bbasq27b",
-	ELevel.C: "",
+	ELevel.C: "uid://bxkkkrbgr5jf1",
 }
 const PLAYER_SCENE := preload("uid://b5qdasw04pvli")
 
@@ -72,6 +72,7 @@ func _on_item_picked_up(item_name: String) -> void:
 
 
 func _on_spike_hit() -> void:
+	player.accept_damage = false
 	gui.anim.play(&"fade_to_black", -1, 2.0)
 	await gui.anim.animation_finished
 	player.input_frozen = true
@@ -79,6 +80,7 @@ func _on_spike_hit() -> void:
 	gui.anim.play(&"fade_to_black", -1, -2.0, true)
 	await gui.anim.animation_finished
 	player.input_frozen = false
+	player.accept_damage = true
 
 
 func _on_checkpoint_entered(pos: Vector2) -> void:
