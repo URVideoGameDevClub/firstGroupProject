@@ -9,11 +9,11 @@ const JUMP_VELOCITY := 400.0
 const JUMP_VELOCITY_REDUCTION := 3.0
 const AIR_ACCELERATION := 2500.0
 const AIR_GRAVITY := 1100.0
-const MAX_AIR_FALL_SPEED := 500.0
+const MAX_AIR_FALL_SPEED := 1000.0
 const GLIDE_GRAVITY := 600.0
 const MAX_GLIDE_FALL_SPEED := 60.0
 const MAX_HEALTH := 3
-const DAMAGE_FLASH_TIME := 0.1
+const DAMAGE_FLASH_TIME := 0.2
 
 @export_range(0, MAX_HEALTH) var _health := 3
 
@@ -22,18 +22,23 @@ var _input_vector := Vector2.ZERO
 var _physics_delta := 0.0
 var _is_facing_right := false
 var _is_jumping_up := false
+var _is_invincible := false
 
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _sprite: Sprite2D = $Sprite2D
 @onready var _attack_hitbox: Area2D = $AttackHitbox
 @onready var _shader_material: ShaderMaterial = _sprite.material
+@onready var _invincibility_timer: Timer = $InvincibilityTimer
+
+
+func _enter_tree() -> void:
+    Global.player_damage_requested.connect(take_attack)
 
 
 func _ready() -> void:
     _transition(State.IDLE)
     _update_is_facing_right(-1) # face left
     Global.player_health_updated.emit(_health)
-    Global.player_damage_requested.connect(take_attack)
 
 
 func _physics_process(delta: float) -> void:
@@ -48,18 +53,29 @@ func _physics_process(delta: float) -> void:
         _transition(target_state)
 
 
-func take_attack(damage: int, wait_for_respawn := false) -> void:
-    if _state == State.DEATH:
-        return
+func take_attack(damage: int, wait_for_respawn := false) -> bool:
+    if _state == State.DEATH or _is_invincible:
+        return false
     
     _health = clampi(_health - damage, 0, MAX_HEALTH)
     Global.player_health_updated.emit(_health)
     _damage_flash(DAMAGE_FLASH_TIME)
+    _is_invincible = true
+    _invincibility_timer.start()
     
     if _health <= 0:
         if wait_for_respawn:
             await Global.player_respawned
         _transition(State.DEATH)
+    
+    return true
+
+
+func _die(wait_for_respawn := false) -> void:
+    if wait_for_respawn:
+        await Global.player_respawned
+    _transition(State.DEATH)
+
     
 
 func _damage_flash(time: float) -> void:
@@ -96,6 +112,7 @@ func _state_enter(state: State) -> void:
                 _animation_player.seek(anim_pos)
         State.DEATH:
             _animation_player.play(&"death")
+            Global.player_death.emit()
 
 
 func _state_exit(state: State) -> void:
@@ -140,8 +157,9 @@ func _idle_state_physics_process() -> State:
     if is_on_floor() and Input.is_action_just_pressed(&"jump"):
         return _jump()
     if not is_on_floor():
+        _animation_player.play(&"jump_middle")
         return State.AIR
-    if Input.is_action_just_pressed(&"attack"):
+    if Input.is_action_just_pressed(&"attack") and Global.main and Global.main.has_knife:
         return State.ATTACK
     if _input_vector.x:
         return State.RUN
@@ -157,8 +175,9 @@ func _run_state_physics_process() -> State:
     if is_on_floor() and Input.is_action_just_pressed(&"jump"):
         return _jump()
     if not is_on_floor():
+        _animation_player.play(&"jump_middle")
         return State.AIR
-    if Input.is_action_just_pressed(&"attack"):
+    if Input.is_action_just_pressed(&"attack") and Global.main and Global.main.has_knife:
         return State.ATTACK_RUN
     if not (velocity.x or _input_vector.x):
         return State.IDLE
@@ -218,6 +237,7 @@ func _attack_run_state_physics_process() -> State:
     if is_on_floor() and Input.is_action_just_pressed(&"jump"):
         return _jump()
     if not is_on_floor():
+        _animation_player.play(&"jump_middle")
         return State.AIR
     if not (velocity.x or _input_vector.x):
         return State.ATTACK
@@ -300,3 +320,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
         State.GLIDE:
             if anim_name == &"glide_start":
                 _animation_player.play(&"glide_middle")
+
+
+func _on_invincibility_timer_timeout() -> void:
+    _is_invincible = false

@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6238sqhsrhhq"]
+
+[ext_resource type="Script" uid="uid://ddv26q0nvboj6" path="res://scripts/gui.gd" id="1_b8iy7"]
+[ext_resource type="Texture2D" uid="uid://ndunpfircilf" path="res://sprites/healthbar empty.png" id="2_jqlde"]
+[ext_resource type="Script" uid="uid://cnim54u53637y" path="res://scenes/health_bar.gd" id="3_08a8y"]
+[ext_resource type="SpriteFrames" uid="uid://bfmtxwdybbfer" path="res://resources/health_diamond_sprite_frames.tres" id="4_7yii4"]
+
+[sub_resource type="Animation" id="Animation_85g3d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_choun"]
+_data = {
+&"RESET": SubResource("Animation_85g3d"),
+&"fade_to_black": SubResource("Animation_tipki")
+}
+
+[node name="Gui" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_b8iy7")
+
+[node name="HealthBar" type="TextureRect" parent="."]
+offset_right = 97.5
+offset_bottom = 37.5
+texture = ExtResource("2_jqlde")
+script = ExtResource("3_08a8y")
+
+[node name="Crystal" type="AnimatedSprite2D" parent="HealthBar"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("4_7yii4")
+centered = false
+
+[node name="Crystal2" type="AnimatedSprite2D" parent="HealthBar"]
+position = Vector2(30, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("4_7yii4")
+centered = false
+
+[node name="Crystal3" type="AnimatedSprite2D" parent="HealthBar"]
+position = Vector2(60, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("4_7yii4")
+centered = false
+
+[node name="BlackRect" type="ColorRect" parent="."]
+visible = false
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_choun")
+}

@@ -1,46 +1,27 @@
-[gd_scene load_steps=7 format=4 uid="uid://bt3rh08m2mlrm"]
+[gd_scene load_steps=5 format=3 uid="uid://bt3rh08m2mlrm"]
 
 [ext_resource type="PackedScene" uid="uid://b61xm2d28gfi1" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://coiyf1h4gs4t3" path="res://scripts/main.gd" id="1_sugp2"]
-[ext_resource type="TileSet" uid="uid://ch01mxvku1j78" path="res://resources/midground_tile_set.tres" id="2_0wfyh"]
-[ext_resource type="Texture2D" uid="uid://ndunpfircilf" path="res://sprites/healthbar empty.png" id="4_tbgi4"]
-[ext_resource type="Script" uid="uid://cnim54u53637y" path="res://scenes/health_bar.gd" id="5_o6xl0"]
-[ext_resource type="SpriteFrames" uid="uid://bfmtxwdybbfer" path="res://resources/health_diamond_sprite_frames.tres" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c6238sqhsrhhq" path="res://scenes/gui.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://c1kslsssaqaov" path="res://scenes/level_test.tscn" id="5_tbgi4"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("player")]
+[node name="Main" type="Node" node_paths=PackedStringArray("_player", "_gui", "_level", "_camera")]
 script = ExtResource("1_sugp2")
 has_knife = true
 has_glider = true
-player = NodePath("Player")
+_player = NodePath("Player")
+_gui = NodePath("Gui")
+_level = NodePath("LevelTest")
+_camera = NodePath("Camera")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(239.75, 192.815)
+position = Vector2(72, 239)
 
-[node name="MiddlegroundLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAoAAAAAAAMAAAABAAoAAAABAAMAAAACAAoAAAABAAMAAAADAAoAAAABAAMAAAAEAAoAAAABAAMAAAAFAAoAAAABAAIAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAIAAoAAAABAAIAAAAIAAkAAAABAAEAAAAJAAkAAAABAAEAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAACAAAAAAAQAAoAAAABAAIAAAARAAoAAAABAAMAAAASAAoAAAACAAMAAAAPAAoAAAABAAIAAAAOAAoAAAABAAIAAAANAAoAAAABAAIAAAAMAAoAAAABAAIAAAALAAoAAAABAAIAAAAKAAoAAAABAAIAAAAJAAoAAAABAAIAAAAJAAgAAAACAAAAAAAIAAgAAAABAAAAAAAHAAgAAAABAAAAAAAGAAgAAAABAAAAAAAFAAgAAAAAAAAAAAAGAAkAAAABAAEAAAAHAAkAAAABAAEAAAAFAAkAAAAAAAEAAAA=")
-tile_set = ExtResource("2_0wfyh")
+[node name="Gui" parent="." instance=ExtResource("4_tbgi4")]
 
-[node name="Gui" type="CanvasLayer" parent="."]
+[node name="LevelTest" parent="." instance=ExtResource("5_tbgi4")]
 
-[node name="HealthBar" type="TextureRect" parent="Gui"]
-offset_right = 97.5
-offset_bottom = 37.5
-texture = ExtResource("4_tbgi4")
-script = ExtResource("5_o6xl0")
-
-[node name="Crystal" type="AnimatedSprite2D" parent="Gui/HealthBar"]
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("5_tefeu")
-centered = false
-
-[node name="Crystal2" type="AnimatedSprite2D" parent="Gui/HealthBar"]
-position = Vector2(30, 0)
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("5_tefeu")
-centered = false
-
-[node name="Crystal3" type="AnimatedSprite2D" parent="Gui/HealthBar"]
-position = Vector2(60, 0)
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("5_tefeu")
-centered = false
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(0, -60)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

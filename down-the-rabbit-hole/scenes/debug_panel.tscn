@@ -2,23 +2,22 @@
 
 [ext_resource type="Script" uid="uid://ij1sa8dq6bms" path="res://scripts/debug_panel.gd" id="1_7of2g"]
 
-[node name="DebugPanel" type="PanelContainer"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="DebugPanel" type="PanelContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -238.0
+offset_bottom = 24.0
 grow_horizontal = 0
 script = ExtResource("1_7of2g")
 
-[node name="LabelContainer" type="VBoxContainer" parent="."]
+[node name="ButtonContainer" type="VBoxContainer" parent="DebugPanel"]
 layout_mode = 2
 
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="DamagePlayerButton" type="Button" parent="ButtonContainer"]
+[node name="DamagePlayerButton" type="Button" parent="DebugPanel/ButtonContainer"]
 layout_mode = 2
 text = "Damage Player by 1"
 
-[connection signal="pressed" from="ButtonContainer/DamagePlayerButton" to="." method="_on_damage_player_button_pressed"]
+[connection signal="pressed" from="DebugPanel/ButtonContainer/DamagePlayerButton" to="DebugPanel" method="_on_damage_player_button_pressed"]

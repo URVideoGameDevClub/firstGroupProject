@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbnjl8t0b6f2d"]
+
+[ext_resource type="Texture2D" uid="uid://bl51i57rhnbac" path="res://sprites/LargeDoor var 2 crystals.png" id="1_0n5bh"]
+[ext_resource type="Script" uid="uid://c3nt4da2b8ul7" path="res://scripts/door.gd" id="1_nxusr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n5bh"]
+size = Vector2(16, 60)
+
+[node name="CrystalDoor" type="Area2D" node_paths=PackedStringArray("_spawn_marker")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_nxusr")
+_spawn_marker = NodePath("SpawnMarker")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -30)
+shape = SubResource("RectangleShape2D_0n5bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(0, -32)
+texture = ExtResource("1_0n5bh")
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(-32, 0)
