@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cburnq1hcsjcq"]
+
+[ext_resource type="Script" uid="uid://ij1sa8dq6bms" path="res://scripts/debug_panel.gd" id="1_7of2g"]
+
+[node name="DebugPanel" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_7of2g")
+
+[node name="LabelContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DamagePlayerButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+text = "Damage Player by 1"
+
+[connection signal="pressed" from="ButtonContainer/DamagePlayerButton" to="." method="_on_damage_player_button_pressed"]

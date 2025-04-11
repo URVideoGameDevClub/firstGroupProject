@@ -1,0 +1,90 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://bfmtxwdybbfer"]
+
+[ext_resource type="Texture2D" uid="uid://by16ehkeyktn0" path="res://sprites/health diamond.png" id="1_04rc0"]
+[ext_resource type="Texture2D" uid="uid://cgy0r2xdxjj4w" path="res://sprites/health diamond shatter.png" id="2_4a471"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnt2p"]
+atlas = ExtResource("2_4a471")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mlob"]
+atlas = ExtResource("2_4a471")
+region = Rect2(25, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4a7s"]
+atlas = ExtResource("2_4a471")
+region = Rect2(50, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ir62"]
+atlas = ExtResource("2_4a471")
+region = Rect2(75, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16b3u"]
+atlas = ExtResource("2_4a471")
+region = Rect2(100, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxnih"]
+atlas = ExtResource("2_4a471")
+region = Rect2(125, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2c0f"]
+atlas = ExtResource("2_4a471")
+region = Rect2(150, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq803"]
+atlas = ExtResource("2_4a471")
+region = Rect2(175, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdy8e"]
+atlas = ExtResource("2_4a471")
+region = Rect2(200, 0, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_241ny"]
+atlas = ExtResource("2_4a471")
+region = Rect2(225, 0, 25, 25)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_04rc0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnt2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mlob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4a7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ir62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16b3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxnih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2c0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq803")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdy8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_241ny")
+}],
+"loop": false,
+"name": &"shatter",
+"speed": 12.0
+}]
