@@ -104,7 +104,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is OldPlayer:
+	if body is Player:
 		body.receive_attack(ATTACK_DAMAGE)
 
 

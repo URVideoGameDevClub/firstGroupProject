@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drsta5vl3vo00"
-path="res://.godot/imported/left bg roots.png-44ce2a54dbbbc4a5657a22688690d528.ctex"
+path="res://.godot/imported/left bg roots.png-080048362e5bd01dde1862c5f52ca656.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/world/bg/left bg roots.png"
-dest_files=["res://.godot/imported/left bg roots.png-44ce2a54dbbbc4a5657a22688690d528.ctex"]
+source_file="res://Objects/World/bg/left bg roots.png"
+dest_files=["res://.godot/imported/left bg roots.png-080048362e5bd01dde1862c5f52ca656.ctex"]
 
 [params]
 

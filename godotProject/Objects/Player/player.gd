@@ -57,8 +57,6 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"kill_player"):
 		transition(death_state)
-	elif attack_enabled and event.is_action_pressed(&"attack"):
-		send_attack()
 
 
 func get_state() -> PlayerState:
@@ -92,7 +90,6 @@ func receive_attack(damage: int, knockback_direction := Vector2.ZERO) -> void:
 
 
 func send_attack() -> void:
-	print("sending attack")
 	for body: Node2D in attack_area.get_overlapping_bodies():
 		if body.has_method(&"receive_attack") and body != self:
 			body.receive_attack(ATTACK_DAMAGE)

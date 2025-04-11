@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0symqnjey2fd"
-path="res://.godot/imported/player gliding animation 2.png-4b13b81ec2388dd66b7a99304dde4f9b.ctex"
+path="res://.godot/imported/player gliding animation 2.png-43ba43f539e18e3cdba94c23e0195b7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/player/assets/player gliding animation 2.png"
-dest_files=["res://.godot/imported/player gliding animation 2.png-4b13b81ec2388dd66b7a99304dde4f9b.ctex"]
+source_file="res://Objects/Player/assets/player gliding animation 2.png"
+dest_files=["res://.godot/imported/player gliding animation 2.png-43ba43f539e18e3cdba94c23e0195b7f.ctex"]
 
 [params]
 

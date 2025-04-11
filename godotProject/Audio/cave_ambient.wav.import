@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bfg50u3whupf2"
-path="res://.godot/imported/cave_ambient.wav-092532564dae73a2c809c1fb027d4730.sample"
+path="res://.godot/imported/cave_ambient.wav-d4a108887906dea82f9cf4d6c1f0df15.sample"
 
 [deps]
 
-source_file="res://audio/cave_ambient.wav"
-dest_files=["res://.godot/imported/cave_ambient.wav-092532564dae73a2c809c1fb027d4730.sample"]
+source_file="res://Audio/cave_ambient.wav"
+dest_files=["res://.godot/imported/cave_ambient.wav-d4a108887906dea82f9cf4d6c1f0df15.sample"]
 
 [params]
 

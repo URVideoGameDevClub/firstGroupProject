@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://duv2tsgdgourb"
-path="res://.godot/imported/Crown piece center.png-f6fb6a308fc124784e355ee4c271ffd2.ctex"
+path="res://.godot/imported/Crown piece center.png-8949a422257205ff52e92e43be9093a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/pickup/Crown piece center.png"
-dest_files=["res://.godot/imported/Crown piece center.png-f6fb6a308fc124784e355ee4c271ffd2.ctex"]
+source_file="res://Objects/Pickup/Crown piece center.png"
+dest_files=["res://.godot/imported/Crown piece center.png-8949a422257205ff52e92e43be9093a3.ctex"]
 
 [params]
 

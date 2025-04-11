@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://runcak2q8uqi"
-path="res://.godot/imported/player_double_attack.wav-a0ccefac225d8cb0bc340958a16ab7d6.sample"
+path="res://.godot/imported/player_double_attack.wav-d8d665a770222367b918d5674aeac48b.sample"
 
 [deps]
 
-source_file="res://audio/player_double_attack.wav"
-dest_files=["res://.godot/imported/player_double_attack.wav-a0ccefac225d8cb0bc340958a16ab7d6.sample"]
+source_file="res://Audio/player_double_attack.wav"
+dest_files=["res://.godot/imported/player_double_attack.wav-d8d665a770222367b918d5674aeac48b.sample"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bis6g6r5n55f7"
-path="res://.godot/imported/Enemy idle animation.png-ec3fd84e17b031103067a0a25b239587.ctex"
+path="res://.godot/imported/Enemy idle animation.png-e507cfbe0756da0cc493d6a2fb1a692d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/enemy/assets/Enemy idle animation.png"
-dest_files=["res://.godot/imported/Enemy idle animation.png-ec3fd84e17b031103067a0a25b239587.ctex"]
+source_file="res://Objects/Enemy/assets/Enemy idle animation.png"
+dest_files=["res://.godot/imported/Enemy idle animation.png-e507cfbe0756da0cc493d6a2fb1a692d.ctex"]
 
 [params]
 

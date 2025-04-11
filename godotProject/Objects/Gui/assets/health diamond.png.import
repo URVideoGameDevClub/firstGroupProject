@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be1tsb0krdiwf"
-path="res://.godot/imported/health diamond.png-e1c2000709c6dffc2552e7013d9e30a0.ctex"
+path="res://.godot/imported/health diamond.png-2481d50070c51b601510a9306b1e9cf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/gui/assets/health diamond.png"
-dest_files=["res://.godot/imported/health diamond.png-e1c2000709c6dffc2552e7013d9e30a0.ctex"]
+source_file="res://Objects/Gui/assets/health diamond.png"
+dest_files=["res://.godot/imported/health diamond.png-2481d50070c51b601510a9306b1e9cf5.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8gkflc8dg4jp"
-path="res://.godot/imported/blade.png-131328a11bc46423af0d59e42a3c2fa1.ctex"
+path="res://.godot/imported/blade.png-a79cf079ca8bb63f8e599d6b4ee0a778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/enemy/assets/blade.png"
-dest_files=["res://.godot/imported/blade.png-131328a11bc46423af0d59e42a3c2fa1.ctex"]
+source_file="res://Objects/Enemy/assets/blade.png"
+dest_files=["res://.godot/imported/blade.png-a79cf079ca8bb63f8e599d6b4ee0a778.ctex"]
 
 [params]
 

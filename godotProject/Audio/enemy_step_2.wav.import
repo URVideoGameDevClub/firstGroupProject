@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dupd18tgx71g"
-path="res://.godot/imported/enemy_step_2.wav-4933cc18a1270e4591116648ad08c1aa.sample"
+path="res://.godot/imported/enemy_step_2.wav-b887f5ad28fd2baaeae29d376ff11f69.sample"
 
 [deps]
 
-source_file="res://audio/enemy_step_2.wav"
-dest_files=["res://.godot/imported/enemy_step_2.wav-4933cc18a1270e4591116648ad08c1aa.sample"]
+source_file="res://Audio/enemy_step_2.wav"
+dest_files=["res://.godot/imported/enemy_step_2.wav-b887f5ad28fd2baaeae29d376ff11f69.sample"]
 
 [params]
 

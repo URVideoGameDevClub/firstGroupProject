@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=4 uid="uid://bt3rh08m2mlrm"]
+
+[ext_resource type="PackedScene" uid="uid://b61xm2d28gfi1" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://coiyf1h4gs4t3" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="TileSet" uid="uid://ch01mxvku1j78" path="res://resources/midground_tile_set.tres" id="2_0wfyh"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_sugp2")
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(239.75, 192.815)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAMAAAABAAoAAAABAAMAAAACAAoAAAABAAMAAAADAAoAAAABAAMAAAAEAAoAAAABAAMAAAAFAAoAAAABAAIAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAIAAoAAAABAAIAAAAIAAkAAAABAAEAAAAJAAkAAAABAAEAAAAKAAkAAAABAAAAAAALAAkAAAABAAAAAAAMAAkAAAABAAAAAAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAAAAAAQAAkAAAACAAAAAAAQAAoAAAABAAIAAAARAAoAAAABAAMAAAASAAoAAAACAAMAAAAPAAoAAAABAAIAAAAOAAoAAAABAAIAAAANAAoAAAABAAIAAAAMAAoAAAABAAIAAAALAAoAAAABAAIAAAAKAAoAAAABAAIAAAAJAAoAAAABAAIAAAAJAAgAAAACAAAAAAAIAAgAAAABAAAAAAAHAAgAAAABAAAAAAAGAAgAAAABAAAAAAAFAAgAAAAAAAAAAAAGAAkAAAABAAEAAAAHAAkAAAABAAEAAAAFAAkAAAAAAAEAAAA=")
+tile_set = ExtResource("2_0wfyh")

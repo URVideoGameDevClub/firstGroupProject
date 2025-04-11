@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yjmq5go6kaho"
-path="res://.godot/imported/glider item sprite.png-216dc4b4908851f8d1c6cbbca899a4eb.ctex"
+path="res://.godot/imported/glider item sprite.png-c024170a210e7cc4b346de9a6024b47d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/pickup/glider item sprite.png"
-dest_files=["res://.godot/imported/glider item sprite.png-216dc4b4908851f8d1c6cbbca899a4eb.ctex"]
+source_file="res://Objects/Pickup/glider item sprite.png"
+dest_files=["res://.godot/imported/glider item sprite.png-c024170a210e7cc4b346de9a6024b47d.ctex"]
 
 [params]
 
