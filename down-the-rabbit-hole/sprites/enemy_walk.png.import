@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl51i57rhnbac"
-path="res://.godot/imported/LargeDoor var 2 crystals.png-31a5cb9b1d3eafc631e875d78e472405.ctex"
+uid="uid://dlrp6mp2jdsmy"
+path="res://.godot/imported/enemy_walk.png-aecdf3f7dd0c74b829a1462e6e469ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/LargeDoor var 2 crystals.png"
-dest_files=["res://.godot/imported/LargeDoor var 2 crystals.png-31a5cb9b1d3eafc631e875d78e472405.ctex"]
+source_file="res://sprites/enemy_walk.png"
+dest_files=["res://.godot/imported/enemy_walk.png-aecdf3f7dd0c74b829a1462e6e469ab1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by16ehkeyktn0"
-path="res://.godot/imported/health diamond.png-af7303d6efe12ff9f152758766ba6267.ctex"
+uid="uid://cctya3hps02am"
+path="res://.godot/imported/enemy_idle.png-b3aac917b71b855bb51c8fe2f29061bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/health diamond.png"
-dest_files=["res://.godot/imported/health diamond.png-af7303d6efe12ff9f152758766ba6267.ctex"]
+source_file="res://sprites/enemy_idle.png"
+dest_files=["res://.godot/imported/enemy_idle.png-b3aac917b71b855bb51c8fe2f29061bf.ctex"]
 
 [params]
 

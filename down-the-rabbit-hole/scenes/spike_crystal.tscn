@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv0rp1qcw13lq"]
+
+[ext_resource type="Script" uid="uid://cgi28nwod0x3n" path="res://scripts/hurt_tp_area.gd" id="1_jyxpw"]
+[ext_resource type="Texture2D" uid="uid://dol6l540ehhdw" path="res://sprites/spike_crystal.png" id="1_vxed7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyxpw"]
+size = Vector2(16, 29)
+
+[node name="SpikeCrystal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_jyxpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_jyxpw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_vxed7")

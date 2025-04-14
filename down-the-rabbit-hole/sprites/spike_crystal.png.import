@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drerw0ogln3cj"
-path="res://.godot/imported/LargeDoor_Side.png-f3504ad0b756139223393cda0c587d0a.ctex"
+uid="uid://dol6l540ehhdw"
+path="res://.godot/imported/spike_crystal.png-e32d3016e635ae278d8be35d66e26848.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/LargeDoor_Side.png"
-dest_files=["res://.godot/imported/LargeDoor_Side.png-f3504ad0b756139223393cda0c587d0a.ctex"]
+source_file="res://sprites/spike_crystal.png"
+dest_files=["res://.godot/imported/spike_crystal.png-e32d3016e635ae278d8be35d66e26848.ctex"]
 
 [params]
 

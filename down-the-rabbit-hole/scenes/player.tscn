@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0u1ct0wypnhd" path="res://sprites/player_spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dw3edxqpkv5mr" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Material" uid="uid://b57a5ndltr87s" path="res://resources/player_shader.tres" id="1_qhqgy"]
+[ext_resource type="Material" uid="uid://b57a5ndltr87s" path="res://resources/damage_flash_shader.tres" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(10, 27)
@@ -268,6 +268,7 @@ _data = {
 radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_g2els")
 
@@ -276,7 +277,7 @@ position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("1_qhqgy")
+material = ExtResource("2_qhqgy")
 position = Vector2(0, -15)
 texture = ExtResource("1_3vyb7")
 hframes = 20

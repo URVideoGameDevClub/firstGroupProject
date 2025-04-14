@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgy0r2xdxjj4w"
-path="res://.godot/imported/health diamond shatter.png-d478204eaa0698ff5828308eb6bcf9b4.ctex"
+uid="uid://by16ehkeyktn0"
+path="res://.godot/imported/health_diamond.png-3d835d467716628ae50b85bc332478c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/health diamond shatter.png"
-dest_files=["res://.godot/imported/health diamond shatter.png-d478204eaa0698ff5828308eb6bcf9b4.ctex"]
+source_file="res://sprites/health_diamond.png"
+dest_files=["res://.godot/imported/health_diamond.png-3d835d467716628ae50b85bc332478c2.ctex"]
 
 [params]
 

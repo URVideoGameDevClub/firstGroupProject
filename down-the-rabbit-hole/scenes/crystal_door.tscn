@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbnjl8t0b6f2d"]
 
-[ext_resource type="Texture2D" uid="uid://bl51i57rhnbac" path="res://sprites/LargeDoor var 2 crystals.png" id="1_0n5bh"]
+[ext_resource type="Texture2D" uid="uid://bl51i57rhnbac" path="res://sprites/door_crystal_v2.png" id="1_0n5bh"]
 [ext_resource type="Script" uid="uid://c3nt4da2b8ul7" path="res://scripts/door.gd" id="1_nxusr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0n5bh"]

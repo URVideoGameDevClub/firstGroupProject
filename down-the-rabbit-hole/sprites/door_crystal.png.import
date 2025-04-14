@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ndunpfircilf"
-path="res://.godot/imported/healthbar empty.png-5db6cc5a8aa13fe850586baa49ef0582.ctex"
+uid="uid://drerw0ogln3cj"
+path="res://.godot/imported/door_crystal.png-5b9b7c2b1b143c74fe5fa556e1672ee9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/healthbar empty.png"
-dest_files=["res://.godot/imported/healthbar empty.png-5db6cc5a8aa13fe850586baa49ef0582.ctex"]
+source_file="res://sprites/door_crystal.png"
+dest_files=["res://.godot/imported/door_crystal.png-5b9b7c2b1b143c74fe5fa556e1672ee9.ctex"]
 
 [params]
 

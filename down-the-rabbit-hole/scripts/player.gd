@@ -71,6 +71,10 @@ func take_attack(damage: int, wait_for_respawn := false) -> bool:
     return true
 
 
+func reset_state() -> void:
+    _transition(State.IDLE)
+
+
 func _die(wait_for_respawn := false) -> void:
     if wait_for_respawn:
         await Global.player_respawned

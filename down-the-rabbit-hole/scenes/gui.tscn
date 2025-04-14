@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6238sqhsrhhq"]
 
 [ext_resource type="Script" uid="uid://ddv26q0nvboj6" path="res://scripts/gui.gd" id="1_b8iy7"]
-[ext_resource type="Texture2D" uid="uid://ndunpfircilf" path="res://sprites/healthbar empty.png" id="2_jqlde"]
-[ext_resource type="Script" uid="uid://cnim54u53637y" path="res://scenes/health_bar.gd" id="3_08a8y"]
+[ext_resource type="Texture2D" uid="uid://ndunpfircilf" path="res://sprites/health_bar_empty.png" id="2_jqlde"]
+[ext_resource type="Script" uid="uid://cnim54u53637y" path="res://scripts/health_bar.gd" id="3_08a8y"]
 [ext_resource type="SpriteFrames" uid="uid://bfmtxwdybbfer" path="res://resources/health_diamond_sprite_frames.tres" id="4_7yii4"]
 
 [sub_resource type="Animation" id="Animation_85g3d"]

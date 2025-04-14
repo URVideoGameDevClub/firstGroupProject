@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx8nix830x4jp"
-path="res://.godot/imported/Walls-v11.png-b193456e33bc0858c411134b474296d5.ctex"
+uid="uid://bl51i57rhnbac"
+path="res://.godot/imported/door_crystal_v2.png-9c695a608ab30013e14c14c1c00bc6d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Walls-v11.png"
-dest_files=["res://.godot/imported/Walls-v11.png-b193456e33bc0858c411134b474296d5.ctex"]
+source_file="res://sprites/door_crystal_v2.png"
+dest_files=["res://.godot/imported/door_crystal_v2.png-9c695a608ab30013e14c14c1c00bc6d7.ctex"]
 
 [params]
 

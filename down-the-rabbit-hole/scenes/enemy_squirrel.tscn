@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy03mkjc42djn"]
+
+[ext_resource type="Script" uid="uid://q06nstxs6hk1" path="res://scripts/enemy_squirrel.gd" id="1_efdpy"]
+[ext_resource type="SpriteFrames" uid="uid://ds3j3ditl0rsp" path="res://resources/squirrel_sprite_frames.tres" id="1_i81pq"]
+[ext_resource type="Material" uid="uid://b57a5ndltr87s" path="res://resources/damage_flash_shader.tres" id="2_1lu6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i81pq"]
+size = Vector2(20, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i81pq"]
+radius = 13.0
+
+[node name="EnemySquirrel" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_efdpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -5)
+shape = SubResource("RectangleShape2D_i81pq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_1lu6u")
+position = Vector2(0, -8)
+sprite_frames = ExtResource("1_i81pq")
+animation = &"attack"
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-15, -6)
+shape = SubResource("CircleShape2D_i81pq")
+
+[node name="GroundCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-12, 0)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[node name="GroundCastRight" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+target_position = Vector2(0, 8)
+hit_from_inside = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -6,5 +6,6 @@ signal player_damage_requested(damage: int)
 signal player_death
 signal door_entered(target_level: Main.ELevel, target_id: int)
 signal checkpoint_entered(spawn_point: Vector2)
+signal hurt_tp_area_entered
 
 var main: Main

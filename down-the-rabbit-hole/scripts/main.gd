@@ -27,6 +27,12 @@ func _enter_tree() -> void:
 	Global.main = self
 	Global.door_entered.connect(_on_door_entered)
 	Global.checkpoint_entered.connect(func(spawn_point: Vector2) -> void: _respawn_point = spawn_point)
+	Global.hurt_tp_area_entered.connect(_on_hurt_tp_area_entered)
+
+
+func _ready() -> void:
+	_camera.global_position = _player.global_position
+	_camera.reset_smoothing()
 
 
 func _process(_delta: float) -> void:
@@ -64,3 +70,14 @@ func _on_door_entered(target_level: ELevel, target_id: int) -> void:
 	for door: Door in doors:
 		door.monitoring = true
 	
+
+# todo
+func _on_hurt_tp_area_entered() -> void:
+	var anim := _gui.get_animation_player()
+	anim.play(&"fade_to_black", -1, 3.0)
+	await anim.animation_finished
+	
+	_player.global_position = _respawn_point
+	Global.player_respawned.emit()
+
+	anim.play(&"fade_to_black", -1, -3.0, true)
