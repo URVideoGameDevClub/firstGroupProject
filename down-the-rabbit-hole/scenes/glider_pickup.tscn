@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvro7ge7siuc7"]
+
+[ext_resource type="Texture2D" uid="uid://ii58b4teoix" path="res://sprites/glider item sprite.png" id="1_l2wqv"]
+[ext_resource type="Script" uid="uid://bp5oxa8qh7kpv" path="res://scripts/pickup.gd" id="1_qcsta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2wqv"]
+size = Vector2(32, 32)
+
+[node name="GliderPickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qcsta")
+item_kind = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l2wqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_l2wqv")

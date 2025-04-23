@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v3alkrluom76"
-path="res://.godot/imported/CONCEPT_-_Player (2) (1).png-ac9eec571f3ad46a549b292807d97b04.ctex"
+path="res://.godot/imported/CONCEPT_-_Player (2) (1).png-004d71a54a0d018e2fbbf3745514bc50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Door/Old/CONCEPT_-_Player (2) (1).png"
-dest_files=["res://.godot/imported/CONCEPT_-_Player (2) (1).png-ac9eec571f3ad46a549b292807d97b04.ctex"]
+source_file="res://objects/door/Old/CONCEPT_-_Player (2) (1).png"
+dest_files=["res://.godot/imported/CONCEPT_-_Player (2) (1).png-004d71a54a0d018e2fbbf3745514bc50.ctex"]
 
 [params]
 

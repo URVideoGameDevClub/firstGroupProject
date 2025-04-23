@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnw6dvynnr3wu"
-path="res://.godot/imported/right roots 2.png-b661ff39bb0a9109436574f55ed96d1a.ctex"
+path="res://.godot/imported/right roots 2.png-a92b21a07ae2735936f0910045567a17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/World/bg/right roots 2.png"
-dest_files=["res://.godot/imported/right roots 2.png-b661ff39bb0a9109436574f55ed96d1a.ctex"]
+source_file="res://objects/world/bg/right roots 2.png"
+dest_files=["res://.godot/imported/right roots 2.png-a92b21a07ae2735936f0910045567a17.ctex"]
 
 [params]
 

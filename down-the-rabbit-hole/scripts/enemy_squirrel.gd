@@ -54,6 +54,9 @@ func take_attack(_damage: int) -> bool:
 
 
 func _transition(target_state: State) -> void:
+	if target_state == _state:
+		return
+	
 	match target_state:
 		State.IDLE:
 			_animated_sprite.play(&"idle")
@@ -66,9 +69,7 @@ func _transition(target_state: State) -> void:
 		State.ATTACK:
 			_animated_sprite.play(&"attack")
 		State.DEATH:
-			_shader_material.set_shader_parameter(&"is_damage_state", true)
-			await get_tree().create_timer(DAMAGE_FLASH_TIME).timeout
-			queue_free()
+			_animated_sprite.play(&"death")
 	
 	_state = target_state
 
@@ -97,6 +98,8 @@ func _deliver_attack() -> bool:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if _animated_sprite.animation == &"attack":
 		_transition(State.IDLE)
+	elif _animated_sprite.animation == &"death":
+		queue_free()
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:

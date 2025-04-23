@@ -45,3 +45,5 @@ tile_set = ExtResource("2_iw5l3")
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Spikes" type="Node2D" parent="."]
+
+[node name="Decor" type="Node2D" parent="."]

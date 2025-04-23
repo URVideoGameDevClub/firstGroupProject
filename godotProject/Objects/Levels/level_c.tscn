@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=4 uid="uid://bxkkkrbgr5jf1"]
 
-[ext_resource type="Script" uid="uid://crrve4qxf3cf8" path="res://Objects/Levels/level.gd" id="1_4mxli"]
-[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://Objects/World/Tilemap/basic_tiles.tres" id="2_0famj"]
-[ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://Objects/World/TILE_CaveBG_Base.png" id="3_wmqhv"]
-[ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://Objects/World/TILE_CaveBG_Vines1.png" id="4_jqb7o"]
-[ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://Objects/World/TILE_CaveBG_Vines2.png" id="5_jv020"]
-[ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://Objects/World/TILE_CaveBG_Vines3.png" id="6_1kyl2"]
-[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://Objects/Door/Objects/door_uno.tscn" id="7_wmqhv"]
-[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://Objects/Enemy/objects/squirrel_enemy.tscn" id="8_n0jss"]
+[ext_resource type="Script" uid="uid://crrve4qxf3cf8" path="res://objects/levels/level.gd" id="1_4mxli"]
+[ext_resource type="TileSet" uid="uid://dosrv4evqxp34" path="res://objects/world/Tilemap/basic_tiles.tres" id="2_0famj"]
+[ext_resource type="Texture2D" uid="uid://b3wu6af7j04n7" path="res://objects/world/TILE_CaveBG_Base.png" id="3_wmqhv"]
+[ext_resource type="Texture2D" uid="uid://reh23y3b25qm" path="res://objects/world/TILE_CaveBG_Vines1.png" id="4_jqb7o"]
+[ext_resource type="Texture2D" uid="uid://d23a55ym1sdoa" path="res://objects/world/TILE_CaveBG_Vines2.png" id="5_jv020"]
+[ext_resource type="Texture2D" uid="uid://cer165vmg6ljf" path="res://objects/world/TILE_CaveBG_Vines3.png" id="6_1kyl2"]
+[ext_resource type="PackedScene" uid="uid://3aykqq2lsaxt" path="res://objects/door/Objects/door_uno.tscn" id="7_wmqhv"]
+[ext_resource type="PackedScene" uid="uid://bu1yva487v1u5" path="res://objects/enemy/objects/squirrel_enemy.tscn" id="8_n0jss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wmqhv"]
 texture = ExtResource("3_wmqhv")

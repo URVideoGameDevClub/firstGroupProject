@@ -2,6 +2,7 @@ class_name Main
 extends Node
 
 enum ELevel {NONE, TEST, A, B, C, D, E}
+enum ItemKind {NONE, GLIDER, KNIFE}
 
 const LEVEL_SCENES: Dictionary[ELevel, String] = {
 	ELevel.NONE: "",
