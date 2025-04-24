@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b61xm2d28gfi1" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://coiyf1h4gs4t3" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bd6n8owwfvcp" path="res://scenes/level_first_enemy.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c6238sqhsrhhq" path="res://scenes/gui.tscn" id="4_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://c1kslsssaqaov" path="res://scenes/level_test.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("_player", "_gui", "_level", "_camera")]
 script = ExtResource("1_sugp2")
@@ -11,17 +11,17 @@ has_knife = true
 has_glider = true
 _player = NodePath("Player")
 _gui = NodePath("Gui")
-_level = NodePath("LevelTest")
+_level = NodePath("Level")
 _camera = NodePath("Camera")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(96, 256)
+position = Vector2(-1763, -401)
 
 [node name="Gui" parent="." instance=ExtResource("4_tbgi4")]
-
-[node name="LevelTest" parent="." instance=ExtResource("5_tbgi4")]
 
 [node name="Camera" type="Camera2D" parent="."]
 offset = Vector2(0, -60)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="Level" parent="." instance=ExtResource("4_jyhfs")]
