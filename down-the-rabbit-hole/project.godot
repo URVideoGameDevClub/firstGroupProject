@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 Global="*res://scenes/global.tscn"
-DebugPanel="*res://scenes/debug_panel.tscn"
 SignalLens="*res://addons/signal_lens/autoload/signal_lens_autoload.gd"
 
 [debug]
