@@ -15,7 +15,7 @@ _level = NodePath("Level")
 _camera = NodePath("Camera")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(-1763, -401)
+position = Vector2(-1760, -384)
 
 [node name="Gui" parent="." instance=ExtResource("4_tbgi4")]
 
