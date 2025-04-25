@@ -22,7 +22,9 @@ shape = SubResource("RectangleShape2D_i81pq")
 material = ExtResource("2_1lu6u")
 position = Vector2(0, -8)
 sprite_frames = ExtResource("1_i81pq")
-animation = &"death"
+animation = &"attack"
+frame = 8
+frame_progress = 1.0
 
 [node name="AttackHitbox" type="Area2D" parent="."]
 collision_layer = 0

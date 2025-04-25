@@ -54,7 +54,7 @@ func take_attack(_damage: int) -> bool:
 
 
 func _transition(target_state: State) -> void:
-	if target_state == _state:
+	if _state == State.DEATH:
 		return
 	
 	match target_state:

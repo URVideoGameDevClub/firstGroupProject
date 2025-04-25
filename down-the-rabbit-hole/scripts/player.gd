@@ -324,6 +324,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
         State.GLIDE:
             if anim_name == &"glide_start":
                 _animation_player.play(&"glide_middle")
+        State.DEATH:
+            if anim_name == &"death":
+                process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _on_invincibility_timer_timeout() -> void:
