@@ -242,10 +242,10 @@ position = Vector2(744, 416)
 position = Vector2(712, 256)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -1424.0
-offset_top = -464.0
-offset_right = -1132.0
-offset_bottom = -391.0
+offset_left = -1736.0
+offset_top = -528.0
+offset_right = -1444.0
+offset_bottom = -455.0
 text = "Movement - Arrow Keys
 Jump - C
 Glide - X
@@ -278,6 +278,8 @@ position = Vector2(-1168, 288)
 
 [node name="HurtTpArea" type="Area2D" parent="."]
 position = Vector2(1892.81, 3230.27)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("15_a12ii")
 metadata/_custom_type_script = "uid://cgi28nwod0x3n"
 

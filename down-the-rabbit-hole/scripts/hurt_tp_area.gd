@@ -9,5 +9,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	(body as Player).take_attack(damage, true)
-	Global.hurt_tp_area_entered.emit()
+	if body is Player:
+		(body as Player).take_attack(damage, true)
+		Global.hurt_tp_area_entered.emit()
