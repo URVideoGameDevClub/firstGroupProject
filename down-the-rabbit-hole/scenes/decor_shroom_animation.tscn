@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dt8xa0ltds4pl"]
+
+[ext_resource type="Texture2D" uid="uid://d257lgpth7mdy" path="res://sprites/decor shroom animation.png" id="1_krnb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uapb0"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1k7m"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxots"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_852jo"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv6u1"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg5is"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua6wp"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qhxu"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vnwa"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auj81"]
+atlas = ExtResource("1_krnb4")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dupyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uapb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1k7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxots")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_852jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv6u1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg5is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua6wp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qhxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vnwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auj81")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="decor_shroom_animation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dupyd")
+autoplay = "default"
